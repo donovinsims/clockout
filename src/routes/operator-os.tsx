@@ -83,35 +83,12 @@ function OperatorOS() {
               <li>Total relief from the admin drag.</li>
             </ul>
           </div>
-          <div className="iphone">
-            <div className="iphone__screen">
-              <div className="iphone__notch"></div>
-              <div className="iphone__time">9:41</div>
-              <div className="iphone__date">Monday, August 14</div>
-              <div className="iphone__bigtime">9:41</div>
-              
-              <div className="iphone__notif">
-                <div className="iphone__icon iphone__icon--sms">💬</div>
-                <div className="iphone__notif-body">
-                  <div className="iphone__notif-row">
-                    <span className="iphone__notif-title">Assistant</span>
-                    <span>now</span>
-                  </div>
-                  <div className="iphone__notif-text">Logged the Smith lead to your CRM and scheduled their estimate for tomorrow at 9 AM.</div>
-                </div>
-              </div>
-              
-              <div className="iphone__notif">
-                <div className="iphone__icon iphone__icon--sms">💬</div>
-                <div className="iphone__notif-body">
-                  <div className="iphone__notif-row">
-                    <span className="iphone__notif-title">Assistant</span>
-                    <span>2m ago</span>
-                  </div>
-                  <div className="iphone__notif-text">Drafted the contract from your voice memo and emailed it to the client.</div>
-                </div>
-              </div>
-            </div>
+          <div className="iphone-mockup">
+            <img
+              src="/phone-mockup.png"
+              alt="iPhone showing Executive Assistant iMessage conversation"
+              className="iphone-mockup__img"
+            />
           </div>
         </div>
       </section>
