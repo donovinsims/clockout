@@ -29,7 +29,8 @@ export function Nav() {
         </nav>
         <CalModal>
           <button className="nav__cta cursor-pointer border-0 outline-none">
-            <span>Book Your Free Assessment</span>
+            <span className="nav__cta-text-desktop">Book Your Free Assessment</span>
+            <span className="nav__cta-text-mobile">Free Assessment</span>
             <span className="nav__cta-arrow" aria-hidden="true">
               →
             </span>

@@ -246,15 +246,20 @@ a { color: inherit; text-decoration: none; }
 .nav__links a:hover { color: var(--color-ink); }
 .nav__cta {
   display: inline-flex; align-items: center; gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-md);
-  background: var(--color-accent); color: var(--color-accent-ink);
-  border-radius: var(--radius-pill);
-  font-size: var(--text-sm); font-weight: 600; white-space: nowrap;
-  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: 100px;
+  background: var(--color-ink); color: var(--color-paper);
+  font-family: inherit; font-size: var(--text-sm); font-weight: 500;
+  text-decoration: none; white-space: nowrap;
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
+.nav__cta-text-mobile { display: none; }
 .nav__cta:hover {
   transform: translateY(-1px);
-  background: color-mix(in oklch, var(--color-accent) 88%, var(--color-ink));
+  background: color-mix(in oklch, var(--color-ink) 88%, var(--color-paper));
+}
+.nav__cta:active {
+  transform: scale(0.96);
 }
 .nav__cta-arrow { transition: transform var(--dur-fast) var(--ease-out); }
 .nav__cta:hover .nav__cta-arrow { transform: translateX(3px); }
@@ -525,6 +530,19 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-mono); font-size: var(--text-sm);
   color: var(--color-accent); letter-spacing: 0.05em; margin: 0 0 var(--space-md);
 }
+.h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 450;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
 .how__h {
   font-family: var(--font-display); font-weight: 700;
   font-size: var(--text-xl); letter-spacing: -0.02em;
@@ -568,6 +586,7 @@ a { color: inherit; text-decoration: none; }
     0 0 0 2px oklch(25% 0.01 35),
     0 30px 80px -20px color-mix(in oklch, var(--color-accent) 30%, transparent),
     0 50px 120px -40px oklch(0% 0 0);
+  outline: var(--rule-hair) solid color-mix(in oklch, var(--color-ink) 20%, transparent);
 }
 .iphone__screen {
   position: relative; width: 100%; height: 100%;
@@ -773,6 +792,14 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--text-lg); line-height: 1.4; color: var(--color-ink);
   letter-spacing: -0.015em;
 }
+.hero__stat-val {
+  font-size: var(--text-4xl);
+  font-weight: 450;
+  color: var(--color-ink);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 .test__q::before {
   content: "“"; font-family: var(--font-accent); font-style: italic;
   color: var(--color-accent); font-size: 2em; line-height: 0; vertical-align: -0.35em;
@@ -949,16 +976,18 @@ a { color: inherit; text-decoration: none; }
 
 /* ── responsive ───────────────────────────────────────────── */
 @media (max-width: 60rem) {
+  .nav__cta-text-desktop { display: none; }
+  .nav__cta-text-mobile { display: inline; }
   .nav__links { display: none; }
-  .nav__cta { font-size: var(--text-xs); padding: var(--space-2xs) var(--space-md); }
+  .nav__cta { font-size: var(--text-xs); padding: var(--space-2xs) var(--space-sm); }
 
   .hero {
-    min-height: clamp(30rem, 76dvh, 44rem);
-    padding: var(--space-2xl) var(--page-gutter); gap: var(--space-lg);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
   }
-  .hero__display { letter-spacing: -0.035em; }
-  .hero__stats { flex-direction: column; gap: var(--space-md); padding-top: var(--space-md); }
-
+  .hero__h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -0.03em; }
+  .hero__stats { flex-direction: column; align-items: center; gap: var(--space-md); padding-top: var(--space-md); }
+  .hero__stat-val { font-size: 2rem; }
   .section-h, .finalcta__h, .letter h1 { font-size: var(--text-3xl); }
 
   .math__grid { grid-template-columns: 1fr; }
@@ -991,6 +1020,25 @@ a { color: inherit; text-decoration: none; }
   .nav__brand-dot, .hero__rail-dot { animation: none; opacity: 1; }
   .hero__spotlight { transition: none; --mx: 50%; --my: 35%; }
   .bloom { opacity: 0.45; }
+}
+
+/* Hide Lovable tagger */
+#lovable-badge, .lovable-tagger, [id^="lovable-"] {
+  display: none !important;
+}
+
+/* Image depth */
+img {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+@media (prefers-color-scheme: dark) {
+  img { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1); }
+}
+
+/* Tactile buttons */
+button:active, .nav__cta:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.1s ease-out !important;
 }
 
 @layer base {

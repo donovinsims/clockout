@@ -31,7 +31,7 @@ export function LeadBar() {
                   id="missedCalls"
                   value={missedCalls} 
                   onChange={(e) => setMissedCalls(e.target.value)}
-                  style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+                  style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid var(--color-rule-strong)', backgroundColor: 'var(--color-paper-2)', color: 'var(--color-ink)' }}
                 >
                   <option value="1-5">1-5 calls</option>
                   <option value="5-15">5-15 calls</option>
