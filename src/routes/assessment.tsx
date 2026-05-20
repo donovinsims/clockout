@@ -95,7 +95,7 @@ function Assessment() {
           </p>
           <h2 className="section-h">Four things. In writing. After 20 minutes.</h2>
         </header>
-        <div className="how__steps" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+        <div className="how__steps how__steps--2col">
           {ITEMS.map((i, idx) => (
             <div key={i.h} className="how__step">
               <p className="how__num tnum">0{idx + 1}</p>
@@ -107,7 +107,7 @@ function Assessment() {
       </section>
 
       <section className="proof">
-        <div className="proof__grid" style={{ gridTemplateColumns: "1fr 1fr", alignItems: "start" }}>
+        <div className="proof__grid">
           <div className="proof__copy">
             <p className="section-eyebrow">
               <span className="num tnum">02</span> · Who this is for

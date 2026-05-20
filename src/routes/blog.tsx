@@ -52,7 +52,7 @@ function Blog() {
         {POSTS.map((post) => (
           <article key={post.slug} style={{ paddingBottom: "var(--space-xl)", borderBottom: "1px solid var(--color-rule)" }}>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.875rem", color: "var(--color-ink-3)", marginBottom: "var(--space-xs)" }}>{post.date}</p>
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 var(--space-sm)" }}>
+            <h2 className="blog__post-h">
               <Link to="/" style={{ color: "var(--color-ink)", textDecoration: "none" }}>{post.title}</Link>
             </h2>
             <p style={{ fontSize: "1.125rem", color: "var(--color-ink-2)", lineHeight: 1.6, margin: "0 0 var(--space-md)" }}>

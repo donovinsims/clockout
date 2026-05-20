@@ -263,6 +263,48 @@ a { color: inherit; text-decoration: none; }
 }
 .nav__cta-arrow { transition: transform var(--dur-fast) var(--ease-out); }
 .nav__cta:hover .nav__cta-arrow { transform: translateX(3px); }
+
+.nav__menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--space-xs);
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.nav__drawer {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  left: 0;
+  right: 0;
+  background: color-mix(in oklch, var(--color-paper) 94%, transparent);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: var(--rule-hair) solid var(--color-rule-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  box-shadow: 0 8px 24px -6px color-mix(in oklch, var(--color-paper) 100%, transparent);
+}
+
+.nav__drawer a {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink-2);
+  transition: all var(--dur-fast) var(--ease-out);
+  font-size: var(--text-sm);
+}
+
+.nav__drawer a:hover {
+  color: var(--color-ink);
+  background: color-mix(in oklch, var(--color-paper-2) 60%, transparent);
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(0.85); }
@@ -519,6 +561,9 @@ a { color: inherit; text-decoration: none; }
   max-width: var(--max-width); margin: 0 auto;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-lg);
+}
+.how__steps--2col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .how__step {
   padding: var(--space-xl) var(--space-lg);
@@ -908,6 +953,23 @@ p {
   color: var(--color-ink-3); margin: var(--space-sm) 0 0;
 }
 
+/* ── blog ─────────────────────────────────────────────────── */
+.blog__post-h {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-sm);
+}
+
+/* ── agents ───────────────────────────────────────────────── */
+.agents__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
 /* ── footer ───────────────────────────────────────────────── */
 .footer {
   padding: var(--space-3xl) var(--page-gutter) var(--space-2xl);
@@ -979,19 +1041,28 @@ p {
   .nav__cta-text-desktop { display: none; }
   .nav__cta-text-mobile { display: inline; }
   .nav__links { display: none; }
+  .nav__menu-btn { display: block; }
   .nav__cta { font-size: var(--text-xs); padding: var(--space-2xs) var(--space-sm); }
 
   .hero {
     padding-top: var(--space-2xl);
     padding-bottom: var(--space-xl);
   }
+  .hero__rail { white-space: normal; text-align: center; }
   .hero__h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -0.03em; }
   .hero__stats { flex-direction: column; align-items: center; gap: var(--space-md); padding-top: var(--space-md); }
   .hero__stat-val { font-size: 2rem; }
   .section-h, .finalcta__h, .letter h1 { font-size: var(--text-3xl); }
 
+  .cta--lg { padding: var(--space-sm) var(--space-lg); white-space: normal; text-align: center; }
+
+  .trust__inner { gap: var(--space-sm) var(--space-lg); }
+
+  .guarantee__card { padding: var(--space-xl) var(--space-md); }
+
   .math__grid { grid-template-columns: 1fr; }
   .how__steps { grid-template-columns: 1fr; }
+  .how__steps--2col { grid-template-columns: 1fr; }
   .proof__grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
   .fixes__grid { grid-template-columns: 1fr; }
   .fixes__grid .fix { border-right: none; }
@@ -1007,8 +1078,17 @@ p {
   .footer__meta { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
 }
 
+@media (max-width: 48rem) {
+  .hero { padding-top: var(--space-xl); }
+  .section-h, .finalcta__h { font-size: var(--text-2xl); }
+}
+
 @media (max-width: 26rem) {
   .nav__brand-num { display: none; }
+  .hero { padding-top: var(--space-lg); }
+  .math__stat-num { font-size: var(--text-2xl); }
+  .faq__item summary { font-size: var(--text-md); }
+  .footer__statement { font-size: var(--text-xl); }
 }
 
 @media (prefers-reduced-motion: reduce) {

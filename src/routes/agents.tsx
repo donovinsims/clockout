@@ -159,7 +159,7 @@ function Agents() {
         </p>
       </header>
 
-      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "var(--space-lg)" }}>
+      <div className="agents__grid">
         {AGENTS.map((agent) => (
           <Dialog key={agent.id}>
             <DialogTrigger asChild>
