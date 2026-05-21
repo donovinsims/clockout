@@ -32,6 +32,14 @@ function About() {
           A letter to the operators <em>still doing it all.</em>
         </h1>
 
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', margin: '2rem 0' }}>
+          <img 
+            src="/founder.png" 
+            alt="Donovin - Local Operator" 
+            style={{ width: '100%', maxWidth: '400px', borderRadius: '8px', objectFit: 'cover' }} 
+          />
+        </div>
+
         <p>
           I live off I-39. I know what it sounds like when your phone rings while you're under a
           hood, or up on a roof in March, or talking to a customer about why the furnace died on a

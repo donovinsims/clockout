@@ -294,7 +294,7 @@ export function Guarantee() {
         </p>
         <CalModal>
           <button className="cta cta--primary cta--lg border-0 cursor-pointer outline-none">
-            <span>Book Your Free Assessment</span>
+            <span>Claim Your Free Install</span>
             <span className="cta__arrow" aria-hidden="true">
               →
             </span>
@@ -309,7 +309,7 @@ const TIERS = [
   {
     type: "Tier 01",
     h: "Single System Fix",
-    price: "$250–$750",
+    price: "Starts at $250",
     sub: "One targeted automation. Built and deployed in 3–7 days.",
     feature: false,
     list: [
@@ -323,7 +323,7 @@ const TIERS = [
   {
     type: "Tier 02",
     h: "Operations Stack",
-    price: "$1,200–$3,000",
+    price: "Let's Talk",
     sub: "Three to five workflows. The core after-hours admin, gone.",
     feature: true,
     list: [
@@ -332,20 +332,6 @@ const TIERS = [
       "Same install model. Same handover.",
       "Built around your phone, your CRM, your way of working",
       "Natural next step after Tier 01",
-    ],
-  },
-  {
-    type: "Tier 03",
-    h: "Monthly Monitoring",
-    price: "$20–$75",
-    sub: "Optional. Dashboard, log review, maintenance.",
-    feature: false,
-    list: [
-      "Live dashboard access",
-      "Quarterly log review",
-      "Tweaks and small adjustments",
-      "Cancel anytime. Truly.",
-      "Never required. Never pushed.",
     ],
   },
 ];
@@ -385,7 +371,7 @@ export function Pricing() {
               <button
                 className={`cta ${t.feature ? "cta--primary" : "cta--ghost"} tier__cta border-0 cursor-pointer outline-none`}
               >
-                <span>Book Your Free Assessment</span>
+                <span>Claim Your Spot</span>
                 <span className="cta__arrow" aria-hidden="true">
                   →
                 </span>
@@ -520,7 +506,7 @@ export function FinalCTA() {
         </p>
         <CalModal>
           <button className="cta cta--primary cta--lg border-0 cursor-pointer outline-none">
-            <span>Book Your Free Assessment</span>
+            <span>Get Your Free ROI Math (3 spots left)</span>
             <span className="cta__arrow" aria-hidden="true">
               →
             </span>
@@ -579,7 +565,7 @@ export function Hero() {
       <div className="hero__ctas">
         <CalModal>
           <button className="cta cta--primary cta--lg border-0 cursor-pointer outline-none">
-            <span>Get My Free Assessment</span>
+            <span>Find My Leaks (3 Spots Left)</span>
             <span className="cta__arrow" aria-hidden="true">
               →
             </span>

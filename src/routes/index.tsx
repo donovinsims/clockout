@@ -66,15 +66,14 @@ function Home() {
       <Hero />
       <TrustBar />
       <CostCalculator />
+      <LeadBar />
       <HowItWorks />
       <IPhoneProof />
       <WhatYouGet />
       <Guarantee />
       <Pricing />
-      <Testimonials />
       <FAQ />
       <FinalCTA />
-      <LeadBar />
       <AiDigest />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
     </>
