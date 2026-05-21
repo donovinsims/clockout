@@ -22,6 +22,12 @@ export function Nav() {
             Clockout<span className="nav__brand-num">/IL</span>
           </span>
         </Link>
+        <nav className="nav__links" aria-label="Primary">
+          <Link to="/about">About</Link>
+          <Link to="/agents">Agents</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/operator-os">Operator OS</Link>
+        </nav>
         <button 
           className="nav__menu-btn" 
           aria-label="Toggle menu"
@@ -30,29 +36,29 @@ export function Nav() {
         >
           <span aria-hidden="true">{mobileOpen ? "×" : "☰"}</span>
         </button>
-        <nav className="nav__links" aria-label="Primary">
-          <Link to="/about">About</Link>
-          <Link to="/agents">Agents</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/operator-os">Operator OS</Link>
-        </nav>
         {mobileOpen && (
           <nav className="nav__drawer" aria-label="Mobile menu">
             <Link to="/about" onClick={() => setMobileOpen(false)}>About</Link>
             <Link to="/agents" onClick={() => setMobileOpen(false)}>Agents</Link>
             <Link to="/blog" onClick={() => setMobileOpen(false)}>Blog</Link>
             <Link to="/operator-os" onClick={() => setMobileOpen(false)}>Operator OS</Link>
+            <div style={{ marginTop: "0.5rem", display: "flex" }}>
+              <CalModal>
+                <button 
+                  className="nav__cta cursor-pointer border-0 outline-none" 
+                  style={{ width: "100%", justifyContent: "center" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span className="nav__cta-text-desktop">Book Your Free Assessment</span>
+                  <span className="nav__cta-text-mobile">Free Assessment</span>
+                  <span className="nav__cta-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </button>
+              </CalModal>
+            </div>
           </nav>
         )}
-        <CalModal>
-          <button className="nav__cta cursor-pointer border-0 outline-none">
-            <span className="nav__cta-text-desktop">Book Your Free Assessment</span>
-            <span className="nav__cta-text-mobile">Free Assessment</span>
-            <span className="nav__cta-arrow" aria-hidden="true">
-              →
-            </span>
-          </button>
-        </CalModal>
       </div>
     </header>
   );
