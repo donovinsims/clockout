@@ -1,0 +1,168 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  /* Legacy aliases — kept so older components don't break during the refactor */
+  --color-amber: var(--primary);
+  --color-amber-foreground: var(--primary-foreground);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-line: var(--line);
+  --color-dim: var(--muted-foreground);
+
+  --font-display: "Geist", "Inter", system-ui, sans-serif;
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 24px 48px -24px rgb(15 64 45 / 0.18);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.02 160);
+  --surface: oklch(0.985 0.005 150);
+  --surface-2: oklch(0.96 0.008 150);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 160);
+
+  --primary: oklch(0.48 0.13 160);
+  --primary-foreground: oklch(0.98 0.005 150);
+  --primary-hover: oklch(0.42 0.14 160);
+
+  /* Scarcity / warning accent — used SPARINGLY (BetaSpots only) */
+  --signal: oklch(0.65 0.16 55);
+  --signal-foreground: oklch(0.18 0.04 60);
+
+  --secondary: oklch(0.96 0.008 150);
+  --secondary-foreground: oklch(0.18 0.02 160);
+  --muted: oklch(0.96 0.008 150);
+  --muted-foreground: oklch(0.42 0.015 160);
+  --accent: oklch(0.48 0.13 160);
+  --accent-foreground: oklch(0.98 0.005 150);
+  --destructive: oklch(0.58 0.21 27);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.88 0.008 150);
+  --line: oklch(0.92 0.006 150);
+  --input: oklch(0.88 0.008 150);
+  --ring: oklch(0.48 0.13 160);
+}
+
+.dark {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.02 160);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
+  }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+@utility hairline {
+  background-image: linear-gradient(to right, var(--color-line), transparent);
+  height: 1px;
+}
+
+@utility skip-link {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  padding: 8px 12px;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+  z-index: 100;
+  &:focus {
+    transform: translateY(0);
+  }
+}
