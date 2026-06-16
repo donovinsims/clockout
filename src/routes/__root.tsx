@@ -86,12 +86,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. You own the system. No subscription." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3a73cd9c-ca3b-4199-9457-b73286ef6538/id-preview-fa2b124f--ac552740-9e6b-48de-87eb-2fd8df51507d.lovable.app-1781576500363.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3a73cd9c-ca3b-4199-9457-b73286ef6538/id-preview-fa2b124f--ac552740-9e6b-48de-87eb-2fd8df51507d.lovable.app-1781576500363.png" },
+      { name: "theme-color", content: "#ffffff" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" },
+      { rel: "dns-prefetch", href: "https://tally.so" },
+      { rel: "preconnect", href: "https://tally.so" },
     ],
     scripts: [
       {
@@ -123,10 +125,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const fontHref =
+    "https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap";
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var d=document;var l=d.createElement('link');l.rel='stylesheet';l.href='${fontHref}';l.media='print';l.onload=function(){this.media='all'};d.head.appendChild(l)})();`,
+          }}
+        />
+        <noscript>
+          <link rel="stylesheet" href={fontHref} />
+        </noscript>
       </head>
       <body>
         {children}
@@ -136,8 +149,67 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function useServiceWorker() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {
+        // SW registration failure is non-critical; swallow silently
+      });
+    }
+  }, []);
+}
+
+function useWebVitalsLogging() {
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof PerformanceObserver === "undefined") return;
+
+    let lcpValue = 0;
+    let clsValue = 0;
+
+    const lcpObserver = new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      if (lastEntry) lcpValue = lastEntry.startTime;
+    });
+
+    const clsObserver = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        const e = entry as PerformanceEntry & { value?: number; hadRecentInput?: boolean };
+        if (!e.hadRecentInput) clsValue += e.value ?? 0;
+      }
+    });
+
+    try {
+      lcpObserver.observe({ type: "largest-contentful-paint", buffered: true });
+      clsObserver.observe({ type: "layout-shift", buffered: true });
+    } catch {
+      return;
+    }
+
+    const report = () => {
+      if (lcpValue > 0) {
+        console.info("[vitals]", { name: "LCP", value: Math.round(lcpValue) });
+      }
+      console.info("[vitals]", { name: "CLS", value: parseFloat(clsValue.toFixed(3)) });
+    };
+
+    const onHide = () => {
+      if (document.visibilityState === "hidden") report();
+    };
+
+    document.addEventListener("visibilitychange", onHide);
+    return () => {
+      document.removeEventListener("visibilitychange", onHide);
+      lcpObserver.disconnect();
+      clsObserver.disconnect();
+    };
+  }, []);
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useServiceWorker();
+  useWebVitalsLogging();
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />

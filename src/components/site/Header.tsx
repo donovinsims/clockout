@@ -123,7 +123,7 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[88vw] max-w-sm">
+            <SheetContent side="right" className="z-[60] w-[88vw] max-w-sm">
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
                 <SheetDescription className="sr-only">Site navigation</SheetDescription>

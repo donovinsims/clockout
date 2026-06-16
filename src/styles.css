@@ -118,6 +118,21 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @font-face {
+    font-family: "Geist Fallback";
+    src: local("Inter"), local("system-ui");
+    size-adjust: 98%;
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
 }
 
 @utility container-x {
@@ -165,4 +180,20 @@
   &:focus {
     transform: translateY(0);
   }
+}
+
+@utility aspect-landscape {
+  aspect-ratio: 3 / 2;
+}
+
+@utility aspect-square-hd {
+  aspect-ratio: 16 / 9;
+}
+
+@utility aspect-portrait {
+  aspect-ratio: 2 / 3;
+}
+
+@utility aspect-auto {
+  aspect-ratio: auto;
 }
