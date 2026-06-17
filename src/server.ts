@@ -37,44 +37,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
-function applyCacheHeaders(request: Request, response: Response): Response {
-  if (request.method !== "GET") return response;
-
-  const url = new URL(request.url);
-  const { pathname } = url;
-  const contentType = response.headers.get("content-type") ?? "";
-  const isSw = pathname === "/sw.js";
-  const isAsset = pathname.startsWith("/assets/");
-  const isHtml = !isSw && !isAsset && contentType.includes("text/html");
-
-  if (!isSw && !isAsset && !isHtml) return response;
-
-  const headers = new Headers(response.headers);
-
-  if (isSw || isHtml) {
-    if (!headers.has("Cache-Control")) {
-      headers.set("Cache-Control", "no-cache");
-    }
-  } else if (isAsset) {
-    if (!headers.has("Cache-Control")) {
-      headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    }
-  }
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
-}
-
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      const normalized = await normalizeCatastrophicSsrResponse(response);
-      return applyCacheHeaders(request, normalized);
+      return normalizeCatastrophicSsrResponse(response);
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
