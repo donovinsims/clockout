@@ -29,7 +29,7 @@ export const Route = createFileRoute("/services/$slug")({
     }
     const title = `${i.name} Automation in ${i.town}, IL — Clockout · 9-Day Builds, You Own It`;
     const description = `${i.painHeadline} Flat-fee, one-time automation builds for ${i.name.toLowerCase()} shops in ${i.town} and across the Rockford–Roscoe–Beloit corridor. $497 beta. You own the system. No subscription.`;
-    const url = `/services/${params.slug}`;
+    const url = `https://clockout.us/services/${params.slug}`;
     return {
       meta: [
         { title },

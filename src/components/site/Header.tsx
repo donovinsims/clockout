@@ -24,7 +24,6 @@ const PHONE_DISPLAY = "(608) 713-1651";
 const PHONE_HREF = "tel:+16087131651";
 
 const nav = [
-  { to: "/operator-os", label: "Operator OS" },
   { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
   { to: "/faq", label: "FAQ" },
@@ -152,6 +151,17 @@ export function Header() {
                     {n.label}
                   </Link>
                 ))}
+                <div className="my-3 h-px bg-line" />
+                <div className="px-3 pb-1 text-xs uppercase tracking-wider text-muted-foreground">
+                  Also available
+                </div>
+                <Link
+                  to="/operator-os"
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-surface hover:text-foreground"
+                >
+                  Operator OS — a personal system for founders & operators
+                </Link>
                 <div className="my-3 h-px bg-line" />
                 <a
                   href={PHONE_HREF}

@@ -81,9 +81,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Clockout — Done-for-you automation for local service businesses" },
       { name: "twitter:description", content: "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. You own the system. No subscription." },
       { name: "theme-color", content: "#ffffff" },
-      // TODO: Replace with your own OG image URL before going live
-      // { property: "og:image", content: "https://clockout.us/og.png" },
-      // { name: "twitter:image", content: "https://clockout.us/og.png" },
+      { property: "og:image", content: "https://clockout.us/og.png" },
+      { name: "twitter:image", content: "https://clockout.us/og.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

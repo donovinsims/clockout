@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Calendar } from "lucide-react";
 
@@ -6,38 +6,41 @@ import { Calendar } from "lucide-react";
  * Minimal mobile floating CTA.
  * - Tiny icon-only FAB in the bottom-right.
  * - Never expands to a bottom sheet. Never spans the viewport width.
- * - Appears only after the user has scrolled well past the hero.
- * - Auto-hides while scrolling down so it never blocks reading flow.
+ * - Uses IntersectionObserver on #main-content to detect when hero exits viewport.
+ * - Content-aware: works at any screen size, on any page.
  */
 export function MobileStickyCta() {
   const [show, setShow] = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    let lastY = window.scrollY;
-    let ticking = false;
+    const main = document.getElementById("main-content");
+    if (!main) return;
 
-    const update = () => {
-      const y = window.scrollY;
-      const scrollingDown = y > lastY + 4;
-      const scrollingUp = y < lastY - 4;
-      // Only show after the hero, and only when paused or scrolling up.
-      if (y > 1200 && !scrollingDown) setShow(true);
-      if (scrollingDown || y < 1000) setShow(false);
-      lastY = y;
-      ticking = false;
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show CTA when the top of page content has scrolled past the viewport
+        // (hero section exited). Hide when content re-enters (scrolled back up).
+        setShow(!entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: "-60px 0px 0px 0px" },
+    );
+    observer.observe(main);
 
+    // While scrolling down, hide the CTA so it doesn't block reading.
     const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
+      const y = window.scrollY;
+      const scrollingDown = y > lastY.current + 8;
+      if (scrollingDown) setShow(false);
+      lastY.current = y;
     };
-
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (

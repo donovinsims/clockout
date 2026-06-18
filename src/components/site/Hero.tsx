@@ -43,18 +43,15 @@ export function Hero() {
           {/* RIGHT — founder card */}
           <div>
             <div className="overflow-hidden rounded-[12px] border border-line bg-surface shadow-card">
-              <div className="aspect-[4/5] w-full bg-gradient-to-br from-surface-2 via-surface to-background">
-                <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
-                  <div className="grid h-20 w-20 place-items-center rounded-full bg-primary/10 font-mono text-2xl font-bold text-primary">
-                    D
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    [Founder photo placeholder]
+              <div className="aspect-[4/5] w-full bg-gradient-to-br from-primary/5 via-surface to-background">
+                <div className="flex h-full flex-col items-center justify-center p-6 text-center">
+                  <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 text-primary ring-1 ring-primary/20">
+                    <span className="font-display text-4xl font-bold tracking-tight">D</span>
                   </div>
                 </div>
               </div>
               <div className="border-t border-line bg-background p-5">
-                <div className="font-semibold text-foreground">Donovin</div>
+                <div className="font-semibold text-foreground">Donovin Sims</div>
                 <div className="mt-0.5 text-sm text-muted-foreground">
                   Founder · Roscoe, IL · ex-Uber Ops, ex-Walgreens
                 </div>

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/assessment")({
       { name: "description", content: "20 minutes to fill the form. 48 hours later you get a written report quantifying every revenue leak in your service business — in dollars. Free. No sales call." },
       { property: "og:title", content: "Clockout Revenue-Leak Assessment — find your leaks in 48 hours" },
       { property: "og:description", content: "Fill the form. Get a written 48-hour report with every leak priced in dollars. Free. No call." },
-      { property: "og:url", content: "/assessment" },
+      { property: "og:url", content: "https://clockout.us/assessment" },
     ],
     links: [{ rel: "canonical", href: "/assessment" }],
   }),
@@ -26,11 +26,20 @@ const leakCategories = [
 ];
 
 function AssessmentPage() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handler = () => setFormSubmitted(true);
+    document.addEventListener("tally-form-submitted", handler);
+    return () => document.removeEventListener("tally-form-submitted", handler);
+  }, []);
+
   return (
     <SiteShell>
       {/* 1. Hero */}
       <section className="relative border-b border-line">
-        <div className="absolute inset-0 grid-bg opacity-30" aria-hidden />
+        <div className="absolute inset-0 opacity-30" aria-hidden />
         <div className="absolute inset-0 torch" aria-hidden />
         <div className="container-x relative py-20 md:py-28">
           <BetaSpots className="mb-6" />
@@ -98,9 +107,25 @@ function AssessmentPage() {
           <p className="mt-5 max-w-2xl text-foreground/80">
             Six fields. No phone tag. I'll email you back inside 48 hours with either a clarifying question or the start of your report.
           </p>
-          <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
-            <TallyForm />
-          </div>
+          {formSubmitted ? (
+            <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface p-9 text-center">
+              <h3 className="text-2xl md:text-3xl">Thanks for filling that out!</h3>
+              <p className="mx-auto mt-4 max-w-lg text-foreground/80">
+                I'll review your assessment and email you within 48 hours. Check your inbox (and spam).
+              </p>
+              <p className="mt-4 font-semibold">— Donovin</p>
+              <p className="mt-2 text-sm text-dim">
+                Follow-up:{" "}
+                <a href="mailto:don@clockout.us" className="text-amber hover:underline">
+                  don@clockout.us
+                </a>
+              </p>
+            </div>
+          ) : (
+            <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
+              <TallyForm />
+            </div>
+          )}
           <p className="mt-4 text-center text-xs text-dim">
             No spam. No newsletter. I email back personally at <a className="text-amber hover:underline" href="mailto:don@clockout.us">don@clockout.us</a>.
           </p>
@@ -128,6 +153,7 @@ function AssessmentPage() {
 function TallyForm() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [mount, setMount] = useState(false);
+  const [tallyFailed, setTallyFailed] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -150,6 +176,17 @@ function TallyForm() {
   }, []);
 
   useEffect(() => {
+    if (!mount) return;
+    const timer = setTimeout(() => {
+      // @ts-expect-error global injected by Tally
+      if (typeof window.Tally === "undefined") {
+        setTallyFailed(true);
+      }
+    }, 10_000);
+    return () => clearTimeout(timer);
+  }, [mount]);
+
+  useEffect(() => {
     if (!mount || typeof window === "undefined") return;
     const SRC = "https://tally.so/widgets/embed.js";
     const existing = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);
@@ -170,7 +207,17 @@ function TallyForm() {
 
   return (
     <div ref={wrapRef} className="min-h-[600px]">
-      {mount ? (
+      {tallyFailed ? (
+        <div className="flex min-h-[600px] items-center justify-center px-6 text-center">
+          <p className="text-foreground/80">
+            Form temporarily unavailable —{" "}
+            <a href="mailto:don@clockout.us" className="text-amber hover:underline">
+              email don@clockout.us
+            </a>{" "}
+            directly
+          </p>
+        </div>
+      ) : mount ? (
         <iframe
           data-tally-src="https://tally.so/embed/RGVJ1J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
           loading="lazy"

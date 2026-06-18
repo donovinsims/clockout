@@ -1,5 +1,5 @@
 import { Check, ShieldCheck } from "lucide-react";
-import { offer } from "@/data/offer";
+import { GUARANTEE, offer } from "@/data/offer";
 import { CTA } from "./CTA";
 import { BetaSpots } from "./BetaSpots";
 
@@ -38,7 +38,7 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
             </CTA>
             {!compact && (
               <p className="mt-3 text-xs text-muted-foreground">
-                No payment until we talk. <span className="font-medium text-foreground">{offer.spotsRemaining} of {offer.spotsTotal}</span> beta spots remain.
+                Early beta — limited to 15 shops. <span className="font-medium text-foreground">{offer.spotsRemaining}</span> spots remain.
               </p>
             )}
           </div>
@@ -62,7 +62,7 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
       <div className="flex items-start gap-3 border-t border-line bg-surface px-7 py-5 md:px-10">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
         <p className="text-sm text-foreground">
-          <span className="font-semibold">Founder-signed guarantee:</span> if the system doesn't give you 10 hours a week back inside 30 days of handover, I refund the build in full — and you keep the system.
+          <span className="font-semibold">Founder-signed guarantee:</span> {GUARANTEE}
         </p>
       </div>
     </div>

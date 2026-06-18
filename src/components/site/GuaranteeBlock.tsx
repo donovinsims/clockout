@@ -1,5 +1,5 @@
 import { ShieldCheck } from "lucide-react";
-import { offer } from "@/data/offer";
+import { GUARANTEE } from "@/data/offer";
 
 export function GuaranteeBlock() {
   return (
@@ -10,8 +10,7 @@ export function GuaranteeBlock() {
         </div>
         <div>
           <div className="eyebrow mb-3">The guarantee</div>
-          <h2 className="max-w-3xl text-3xl md:text-4xl">{offer.guaranteeShort}</h2>
-          <p className="mt-4 max-w-3xl text-foreground/75">{offer.guaranteeLong}</p>
+          <h2 className="max-w-3xl text-3xl md:text-4xl">{GUARANTEE}</h2>
         </div>
       </div>
     </section>

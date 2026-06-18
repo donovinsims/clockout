@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "$497 beta. 48-hour audit, 7-day build, you own it outright. For owner-operated trade shops in Northern Illinois and Southern Wisconsin." },
       { property: "og:title", content: "Clockout — Answer every call. Follow up every quote. In 9 days, for $497." },
       { property: "og:description", content: "Done-for-you automation for owner-operated trade shops. Flat fee. You own it. 10 hrs/week back in 30 days or free." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://clockout.us/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [

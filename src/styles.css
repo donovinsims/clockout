@@ -62,9 +62,9 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 160);
 
-  --primary: oklch(0.48 0.13 160);
+  --primary: oklch(0.40 0.13 160);
   --primary-foreground: oklch(0.98 0.005 150);
-  --primary-hover: oklch(0.42 0.14 160);
+  --primary-hover: oklch(0.34 0.14 160);
 
   /* Scarcity / warning accent — used SPARINGLY (BetaSpots only) */
   --signal: oklch(0.65 0.16 55);
@@ -73,8 +73,8 @@
   --secondary: oklch(0.96 0.008 150);
   --secondary-foreground: oklch(0.18 0.02 160);
   --muted: oklch(0.96 0.008 150);
-  --muted-foreground: oklch(0.42 0.015 160);
-  --accent: oklch(0.48 0.13 160);
+  --muted-foreground: oklch(0.46 0.015 160);
+  --accent: oklch(0.40 0.13 160);
   --accent-foreground: oklch(0.98 0.005 150);
   --destructive: oklch(0.58 0.21 27);
   --destructive-foreground: oklch(0.98 0 0);
@@ -82,7 +82,7 @@
   --border: oklch(0.88 0.008 150);
   --line: oklch(0.92 0.006 150);
   --input: oklch(0.88 0.008 150);
-  --ring: oklch(0.48 0.13 160);
+  --ring: oklch(0.40 0.13 160);
 }
 
 .dark {
@@ -196,4 +196,16 @@
 
 @utility aspect-auto {
   aspect-ratio: auto;
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@utility torch {
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, oklch(0.40 0.13 160 / 0.03) 0%, transparent 70%);
+  pointer-events: none;
 }

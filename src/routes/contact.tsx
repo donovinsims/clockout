@@ -30,15 +30,33 @@ type V = z.infer<typeof schema>;
 
 function ContactPage() {
   const [done, setDone] = useState(false);
+  const [mailtoFailed, setMailtoFailed] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<V>({ resolver: zodResolver(schema) });
   const onSubmit = async (data: V) => {
     // No backend wired up yet — open the user's mail client with a pre-filled message
     // so the form actually delivers something instead of silently dropping it.
     const subject = encodeURIComponent(`New message from ${data.name} via clockout.us`);
     const body = encodeURIComponent(`${data.message}\n\n— ${data.name}\nReply-to: ${data.email}`);
-    window.location.href = `mailto:don@clockout.us?subject=${subject}&body=${body}`;
-    toast.success("Opening your email app — hit send to deliver it.");
-    setDone(true);
+    const url = `mailto:don@clockout.us?subject=${subject}&body=${body}`;
+
+    // Detect if a mail client actually opened (window loses focus)
+    let mailtoOpened = false;
+    const onBlur = () => {
+      mailtoOpened = true;
+    };
+    window.addEventListener("blur", onBlur);
+    window.location.href = url;
+
+    // After a short window, check if the mail client opened
+    setTimeout(() => {
+      window.removeEventListener("blur", onBlur);
+      if (mailtoOpened) {
+        toast.success("Opening your email app — hit send to deliver it.");
+        setDone(true);
+      } else {
+        setMailtoFailed(true);
+      }
+    }, 1000);
   };
   return (
     <SiteShell>
@@ -56,7 +74,16 @@ function ContactPage() {
             </div>
           </div>
           <div className="rounded-2xl border border-line bg-surface p-7 md:p-9">
-            {done ? (
+            {mailtoFailed ? (
+              <div className="py-10 text-center">
+                <p className="text-foreground/80">
+                  Email us directly at{" "}
+                  <a href="mailto:don@clockout.us" className="text-amber hover:underline">
+                    don@clockout.us
+                  </a>
+                </p>
+              </div>
+            ) : done ? (
               <div className="py-10 text-center">
                 <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-amber/15 text-amber">
                   <Check className="h-7 w-7" />

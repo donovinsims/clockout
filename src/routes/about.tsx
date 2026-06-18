@@ -5,6 +5,7 @@ import { CTA } from "@/components/site/CTA";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { Mail } from "lucide-react";
 import { FacebookIcon } from "@/components/site/FacebookIcon";
+import { GUARANTEE } from "@/data/offer";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Roscoe-raised. Hononegah baseball, NIU pitcher, ex-Uber Product Ops and ex-Walgreens. Donovin built Clockout to install the enterprise revenue-leak playbook into Northern Illinois trade shops at a flat one-time price." },
       { property: "og:title", content: "About Donovin Sims — Founder of Clockout" },
       { property: "og:description", content: "Operator. Roscoe local. Ex-Uber, ex-Walgreens. Bringing the enterprise revenue-leak playbook to Main Street trades." },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://clockout.us/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
     scripts: [
@@ -41,7 +42,7 @@ function AboutPage() {
   return (
     <SiteShell>
       <section className="relative border-b border-line">
-        <div className="absolute inset-0 grid-bg opacity-30" aria-hidden />
+        <div className="absolute inset-0 opacity-30" aria-hidden />
         <div className="container-x relative grid gap-12 py-20 md:grid-cols-[1fr_1.4fr] md:gap-16 md:py-28">
           <div>
             <ImageWithFallback
@@ -113,7 +114,7 @@ function AboutPage() {
               </Link>
             </div>
             <p className="mt-3 text-sm text-dim">
-              10 hrs/week back in 30 days or the build is free.
+              {GUARANTEE}
             </p>
           </article>
         </div>
