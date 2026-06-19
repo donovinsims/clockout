@@ -52,9 +52,9 @@ export function SocialProof() {
           </div>
         </div>
 
-        {/* Single case study placeholder — honest but compact */}
-        <div className="mt-6 rounded-xl border border-dashed border-line bg-surface/40 px-6 py-5 text-center text-sm text-muted-foreground">
-          Case studies — published as soon as the 30-day numbers come in.
+        {/* Live testimonial until case studies are published */}
+        <div className="mt-6 rounded-xl border border-line bg-surface/40 px-6 py-5 text-center text-sm text-muted-foreground">
+          First case study in progress. Until then: Saved me 10+ hours a week &mdash; Shea S., Trading Community
         </div>
       </div>
     </section>

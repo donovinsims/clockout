@@ -1,6 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate } from "motion/react";
 import { CTA } from "./CTA";
+import { createSubscriber } from "@/lib/api/sequenzy.functions";
+
+const INDUSTRIES = [
+  { value: "hvac", label: "HVAC" },
+  { value: "plumbing", label: "Plumbing" },
+  { value: "roofing", label: "Roofing" },
+  { value: "electrical", label: "Electrical" },
+  { value: "landscaping", label: "Landscaping / Lawn Care" },
+  { value: "cleaning", label: "Cleaning / Janitorial" },
+  { value: "property-management", label: "Property Management" },
+  { value: "real-estate", label: "Real Estate" },
+  { value: "other", label: "Other trade" },
+];
 
 function useCountUp(target: number, trigger: boolean, duration = 0.8) {
   const [val, setVal] = useState(0);
@@ -23,6 +36,15 @@ export function LeakCalculator() {
   const weekly = missed * ticket;
   const monthly = weekly * 4;
   const fmt = (n: number) => n.toLocaleString("en-US");
+
+  // Email capture state
+  const [showCapture, setShowCapture] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [capturing, setCapturing] = useState(false);
+  const [captured, setCaptured] = useState(false);
+  const [captureError, setCaptureError] = useState("");
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -104,6 +126,102 @@ export function LeakCalculator() {
               Get the real number in 48 hours →
             </CTA>
           </div>
+
+          {!captured ? (
+            <div className="mt-6 rounded-[12px] border border-line bg-surface/30 p-5 text-center">
+              <p className="text-sm font-medium text-foreground">
+                Want the free guide?{" "}
+                <button
+                  onClick={() => setShowCapture(!showCapture)}
+                  className="underline underline-offset-2 hover:text-primary"
+                >
+                  {showCapture ? "No thanks" : "Show me the 10-Hour Recovery Guide →"}
+                </button>
+              </p>
+              {showCapture && (
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    if (!name.trim() || !email.trim() || !industry) return;
+                    setCapturing(true);
+                    setCaptureError("");
+                    try {
+                      await createSubscriber({
+                        data: {
+                          email: email.trim(),
+                          firstName: name.trim(),
+                          tag: `industry-${industry}`,
+                        },
+                      });
+                      setCaptured(true);
+                    } catch {
+                      setCaptureError("Something went wrong. Try again or email don@clockout.us directly.");
+                    } finally {
+                      setCapturing(false);
+                    }
+                  }}
+                  className="mt-4 grid gap-3 text-left"
+                >
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <input
+                      type="text"
+                      placeholder="First name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <select
+                      value={industry}
+                      onChange={(e) => setIndustry(e.target.value)}
+                      required
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      <option value="">Your trade</option>
+                      {INDUSTRIES.map((ind) => (
+                        <option key={ind.value} value={ind.value}>
+                          {ind.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {captureError && (
+                    <p className="text-xs text-destructive">{captureError}</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={capturing}
+                    className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+                  >
+                    {capturing ? "Sending..." : "Send me the free guide →"}
+                  </button>
+                  <p className="text-xs text-muted-foreground">
+                    No spam. Unsubscribe anytime.
+                  </p>
+                </form>
+              )}
+            </div>
+          ) : (
+            <div className="mt-6 rounded-[12px] border border-primary/30 bg-primary/5 p-5 text-center">
+              <p className="text-sm font-semibold text-foreground">
+                Sent! Check your inbox for the 10-Hour Recovery Guide.
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Want the full audit?{" "}
+                <a href="/assessment" className="underline underline-offset-2 hover:text-primary">
+                  Book your 48-hour leak assessment →
+                </a>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -7,10 +7,10 @@ import { BetaSpots } from "@/components/site/BetaSpots";
 export const Route = createFileRoute("/assessment")({
   head: () => ({
     meta: [
-      { title: "Free Revenue-Leak Assessment — Clockout · 20 minutes, 48-hour report" },
-      { name: "description", content: "20 minutes to fill the form. 48 hours later you get a written report quantifying every revenue leak in your service business — in dollars. Free. No sales call." },
-      { property: "og:title", content: "Clockout Revenue-Leak Assessment — find your leaks in 48 hours" },
-      { property: "og:description", content: "Fill the form. Get a written 48-hour report with every leak priced in dollars. Free. No call." },
+      { title: "Free 10-Hour Recovery Assessment — Clockout · 20 min form, 48 hr report" },
+      { name: "description", content: "20 minutes to fill the form. 48 hours later you get a written report quantifying every revenue and time leak — in dollars. If we don't find $10K in fixable leaks, it's free." },
+      { property: "og:title", content: "Clockout — Find your 10 hours back" },
+      { property: "og:description", content: "20 minutes to fill the form. 48 hours later you get a written report with every revenue and time leak priced in dollars. If we don't find $10K in fixable leaks, it's free." },
       { property: "og:url", content: "https://clockout.us/assessment" },
     ],
     links: [{ rel: "canonical", href: "/assessment" }],
@@ -44,10 +44,10 @@ function AssessmentPage() {
         <div className="container-x relative py-20 md:py-28">
           <BetaSpots className="mb-6" />
           <h1 className="max-w-4xl text-5xl leading-[1.04] md:text-7xl">
-            20 minutes to find out exactly how much you're leaving on the table.
+            Find your 10 hours back. It takes 20 minutes.
           </h1>
           <p className="mt-7 max-w-2xl text-lg text-foreground/80">
-            Fill the short form below. Inside 48 hours you'll get a written report that walks one real job through your business and quantifies every revenue leak in dollars. No 30-minute call. No pitch deck. Just the number.
+            Fill the short form. Inside 48 hours I send you a written report that traces one real job through your business — every revenue and time leak priced in dollars. If I can't find $10K in fixable leaks, the audit is free and you keep the report.
           </p>
         </div>
       </section>
@@ -105,7 +105,7 @@ function AssessmentPage() {
           <div className="eyebrow mb-3">Step 1</div>
           <h2 className="max-w-3xl text-4xl md:text-5xl">Tell me about your shop.</h2>
           <p className="mt-5 max-w-2xl text-foreground/80">
-            Six fields. No phone tag. I'll email you back inside 48 hours with either a clarifying question or the start of your report.
+            Six fields. No phone tag. I'll email you back inside 48 hours. If the report doesn't show $10K in fixable leaks, you pay $0. That's the guarantee.
           </p>
           {formSubmitted ? (
             <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface p-9 text-center">
@@ -135,10 +135,13 @@ function AssessmentPage() {
       {/* 6. Scarcity footer */}
       <section className="bg-surface/40 py-12">
         <div className="container-x flex flex-wrap items-center justify-between gap-4 text-sm">
-          <BetaSpots />
-          <div className="text-foreground/85">
-            <span className="mono-num text-amber">$497</span> beta · normally <span className="mono-num line-through">$1,494</span> · 10 hrs/week back in 30 days or the build is free
-          </div>
+            <BetaSpots />
+            <div className="text-foreground/85">
+              <span className="mono-num text-amber">$497</span> beta · <span className="mono-num line-through">$1,494</span> standard
+            </div>
+            <div className="text-sm text-muted-foreground">
+              Saved me 10+ hours a week &mdash; Shea S., Trading Community &middot; 10 hrs/week back in 30 days or free
+            </div>
         </div>
       </section>
     </SiteShell>

@@ -16,10 +16,10 @@ const homeFaqs = faqs.slice(0, 8);
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clockout — 9-day automation builds for HVAC, plumbing, electrical & roofing shops in Northern IL" },
-      { name: "description", content: "$497 beta. 48-hour audit, 7-day build, you own it outright. For owner-operated trade shops in Northern Illinois and Southern Wisconsin." },
-      { property: "og:title", content: "Clockout — Answer every call. Follow up every quote. In 9 days, for $497." },
-      { property: "og:description", content: "Done-for-you automation for owner-operated trade shops. Flat fee. You own it. 10 hrs/week back in 30 days or free." },
+      { title: "Clockout — 9-day automation builds for local service businesses" },
+      { name: "description", content: "What would you do with 10 extra hours a week? 48-hour audit, 7-day build, you own it outright. Flat fee. No subscription." },
+      { property: "og:title", content: "Clockout — What would you do with 10 extra hours a week?" },
+      { property: "og:description", content: "I audit your business in 48 hours, surface $10K+ in fixable revenue leaks, and build the automations in 7 days — for one flat fee. 10 hrs/week back in 30 days or free." },
       { property: "og:url", content: "https://clockout.us/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -47,6 +47,30 @@ function Index() {
       <Hero />
       <ToolsStrip />
       <HowItWorks />
+
+      {/* Testimonial */}
+      <section className="border-b border-line py-20 md:py-28">
+        <div className="container-x max-w-4xl text-center">
+          <div className="eyebrow mb-4">First testimonial</div>
+          <h2 className="text-3xl md:text-4xl">
+            It works across industries. The outcome is the same.
+          </h2>
+          <blockquote className="relative mt-12">
+            <p className="text-balance text-lg leading-relaxed text-foreground/85 md:text-xl">
+              &ldquo;I started a trading community and needed a seamless, professional portal for my clients, and the system that Donovin built for me exceeded every expectation. The automations run perfectly in the background, making the entire client experience incredibly smooth. It has saved me 10+ hours a week and has allowed me to concentrate on my clients&rsquo; &amp; families&rsquo; needs. If you need complex operations, simplified and automated, this is exactly who you want building it!&rdquo;
+            </p>
+            <footer className="mt-8">
+              <cite className="not-italic font-semibold text-foreground">
+                &mdash; Shea S.
+              </cite>
+              <span className="block mt-1 text-sm text-muted-foreground">
+                Trading Community Founder
+              </span>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
       <FounderProof />
       <LeakCalculator />
 

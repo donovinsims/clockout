@@ -42,8 +42,11 @@ function PricingPage() {
             ${BETA}. One time. You own it.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-foreground/80">
-            No retainer. No subscription. No "starter plan" upsell at month three. The beta price gets you the same audit and the same build I'll charge ${STANDARD} for after the first 15 case studies are done.
+            No retainer. No subscription. No &ldquo;starter plan&rdquo; upsell at month three. One flat fee &mdash; you own the whole system. If it doesn't save you 10 hours a week within 30 days, I keep working until it does. That's on me.
           </p>
+          <div className="mt-8 max-w-xl rounded-xl border border-line bg-surface/40 px-5 py-4 text-sm text-muted-foreground">
+            &ldquo;The automations run perfectly in the background, making the entire client experience incredibly smooth.&rdquo; &mdash; Shea S., Trading Community
+          </div>
         </div>
       </section>
 
@@ -57,7 +60,7 @@ function PricingPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">Compare</div>
           <h2 className="max-w-3xl text-4xl md:text-5xl">
-            What you'd pay an agency vs. what you pay Clockout.
+            What $4,000/month looks like vs. a one-time ${BETA} build.
           </h2>
           <div className="mt-10 overflow-x-auto rounded-2xl border border-line">
             <div className="min-w-[600px]">
@@ -73,6 +76,33 @@ function PricingPage() {
                   <div className="p-5 text-foreground font-medium">{row.us}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Objection mini-cards */}
+      <section className="border-b border-line py-16 md:py-20">
+        <div className="container-x">
+          <div className="eyebrow mb-3">Three things people ask before buying</div>
+          <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+            <div className="bg-background p-6">
+              <h3 className="text-lg font-semibold text-foreground">What if it doesn&rsquo;t work?</h3>
+              <p className="mt-3 text-sm text-muted-foreground">
+                I guarantee the outcome: 10 hours/week back in 30 days or I keep building until it works. Not a refund &mdash; a commitment to the result.
+              </p>
+            </div>
+            <div className="bg-background p-6">
+              <h3 className="text-lg font-semibold text-foreground">Why is it so affordable?</h3>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Beta pricing for the first 15 clients in exchange for letting me study your operation. Same build I&rsquo;ll charge ${STANDARD} for after launch.
+              </p>
+            </div>
+            <div className="bg-background p-6">
+              <h3 className="text-lg font-semibold text-foreground">I already tried automation.</h3>
+              <p className="mt-3 text-sm text-muted-foreground">
+                You tried a template. I build custom to your exact workflow, inside the tools you already use. If I can&rsquo;t find $10K in leaks during the audit, you pay nothing and walk away.
+              </p>
             </div>
           </div>
         </div>

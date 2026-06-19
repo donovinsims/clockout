@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { MobileStickyCta } from "./MobileStickyCta";
+import { LeadMagnetPopup } from "./LeadMagnetPopup";
 
 export function SiteShell({ children, stickyCta = true }: { children: ReactNode; stickyCta?: boolean }) {
   return (
@@ -11,6 +12,7 @@ export function SiteShell({ children, stickyCta = true }: { children: ReactNode;
       <main id="main-content" className="flex-1">{children}</main>
       <Footer />
       {stickyCta && <MobileStickyCta />}
+      <LeadMagnetPopup />
     </div>
   );
 }

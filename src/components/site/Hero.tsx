@@ -9,7 +9,7 @@ export function Hero() {
           {/* LEFT — copy */}
           <div>
             <div className="eyebrow mb-5">
-              For HVAC · Plumbing · Electrical · Roofing — Northern IL & Southern WI
+              The 9-Day Time Recovery System
             </div>
             <h1
               className="font-display text-foreground"
@@ -20,14 +20,14 @@ export function Hero() {
                 fontWeight: 600,
               }}
             >
-              Answer every call. Follow up every quote. Ask for every review. In 9 days, for $497.
+              What would you do with 10 extra hours a week?
             </h1>
             <p className="mt-7 max-w-xl text-lg text-muted-foreground md:text-xl">
-              I audit your shop in 48 hours, build the automations inside the tools you already use, and hand you the keys. Flat price. No subscription. You own it.
+              I audit your business in 48 hours, surface $10K+ in fixable revenue leaks, and build the automations in 7 days — for one flat fee. If it doesn't save you 10 hours a week, I keep working until it does.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">
-                Book the 48-hour audit →
+                Get Your 10 Hours Back →
               </CTA>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
@@ -40,20 +40,20 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — founder card */}
+          {/* RIGHT — testimonial card */}
           <div>
             <div className="overflow-hidden rounded-[12px] border border-line bg-surface shadow-card">
-              <div className="aspect-[4/5] w-full bg-gradient-to-br from-primary/5 via-surface to-background">
-                <div className="flex h-full flex-col items-center justify-center p-6 text-center">
-                  <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 text-primary ring-1 ring-primary/20">
-                    <span className="font-display text-4xl font-bold tracking-tight">D</span>
-                  </div>
-                </div>
+              <div className="flex h-full flex-col justify-center bg-gradient-to-br from-primary/5 via-surface to-background">
+                <blockquote className="px-6 py-10 md:px-8 md:py-14">
+                  <p className="text-[15px] leading-relaxed text-foreground/90 md:text-base">
+                    &ldquo;The system that Donovin built for me exceeded every expectation. The automations run perfectly in the background, making the entire client experience incredibly smooth. It has saved me 10+ hours a week and has allowed me to concentrate on my clients&rsquo; &amp; families&rsquo; needs.&rdquo;
+                  </p>
+                </blockquote>
               </div>
               <div className="border-t border-line bg-background p-5">
-                <div className="font-semibold text-foreground">Donovin Sims</div>
+                <div className="font-semibold text-foreground">Shea S.</div>
                 <div className="mt-0.5 text-sm text-muted-foreground">
-                  Founder · Roscoe, IL · ex-Uber Ops, ex-Walgreens
+                  Trading Community Founder
                 </div>
               </div>
             </div>
