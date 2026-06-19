@@ -37,7 +37,8 @@ export const createSubscriber = createServerFn({ method: "POST" })
 
     if (!res.ok) {
       const errBody = await res.text();
-      throw new Error(`Sequenzy API error (${res.status}): ${errBody}`);
+      console.error("[sequenzy] createSubscriber failed:", res.status, errBody);
+      throw new Error(errBody);
     }
 
     const json = await res.json();
@@ -76,7 +77,8 @@ export const addTag = createServerFn({ method: "POST" })
 
     if (!res.ok) {
       const errBody = await res.text();
-      throw new Error(`Sequenzy API error (${res.status}): ${errBody}`);
+      console.error("[sequenzy] addTag failed:", res.status, errBody);
+      throw new Error(errBody);
     }
 
     const json = await res.json();
