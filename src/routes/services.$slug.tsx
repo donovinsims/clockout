@@ -1,7 +1,16 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
-import { ForIndustryLanding } from "@/components/site/ForIndustryLanding";
+import { ProofBar } from "@/components/site/ProofBar";
+import { HowItWorks } from "@/components/site/HowItWorks";
+import { OfferCard } from "@/components/site/OfferCard";
+import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
+import { FinalCta } from "@/components/site/FinalCta";
+import { CTA } from "@/components/site/CTA";
+import { BetaSpots } from "@/components/site/BetaSpots";
 import { getIndustry } from "@/data/industries";
+import { towns as allServiceTowns } from "@/data/serviceArea";
+import { motion } from "motion/react";
+import { Check } from "lucide-react";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -61,10 +70,7 @@ export const Route = createFileRoute("/services/$slug")({
       ],
     };
   },
-  component: () => {
-    const { industry } = Route.useLoaderData();
-    return <ForIndustryLanding industry={industry} />;
-  },
+  component: IndustryPage,
   notFoundComponent: () => (
     <SiteShell>
       <div className="container-x py-32 text-center">
@@ -90,3 +96,197 @@ export const Route = createFileRoute("/services/$slug")({
     </SiteShell>
   ),
 });
+
+function IndustryPage() {
+  const { industry: i } = Route.useLoaderData();
+  const localTowns = allServiceTowns
+    .map((t) => t.split(",")[0])
+    .filter((t) => t !== i.town)
+    .slice(0, 2);
+
+  return (
+    <SiteShell>
+      {/* 1. Hero — trade-specific */}
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="container-x grid gap-12 pt-16 pb-20 md:grid-cols-[1.3fr_1fr] md:pt-24 md:pb-28">
+          <div>
+            <div className="eyebrow mb-5">
+              {i.name} · {i.town}, {localTowns.join(" & ")}
+            </div>
+            <h1
+              className="font-display"
+              style={{ fontSize: "clamp(2.2rem, 5vw, 3.75rem)", lineHeight: 1.05, letterSpacing: "-0.02em", fontWeight: 600 }}
+            >
+              {i.heroHeadline}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+              {i.heroSub(i.town)}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <CTA to="/assessment" size="lg">Book the 48-hour audit →</CTA>
+            </div>
+            <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+              <BetaSpots />
+              <span aria-hidden>·</span>
+              <span>10 hrs/week back in 30 days — or free</span>
+            </div>
+          </div>
+          <aside className="overflow-hidden rounded-[12px] border border-border bg-background shadow-card flex flex-col">
+            <div className="px-6 pt-6 md:px-7 md:pt-7">
+              <div className="eyebrow">The process</div>
+            </div>
+
+            <div className="flex-1 flex flex-col px-6 pb-6 md:px-7 md:pb-7">
+              {/* Phase 1 — Audit */}
+              <motion.div
+                className="flex gap-4 items-start"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">48hr Audit</div>
+                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                    One real job tracked through your business
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Connector */}
+              <motion.div
+                className="flex flex-1 justify-center overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+              >
+                <div className="w-px bg-line" />
+              </motion.div>
+
+              {/* Phase 2 — Build */}
+              <motion.div
+                className="flex gap-4 items-start"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">7-day Build</div>
+                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                    Automation built inside your existing tools
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Connector */}
+              <motion.div
+                className="flex flex-1 justify-center overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.45 }}
+              >
+                <div className="w-px bg-line" />
+              </motion.div>
+
+              {/* Phase 3 — Handover */}
+              <motion.div
+                className="flex gap-4 items-start"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">Day 9 Handover</div>
+                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                    Every credential — you own it, no subscription
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* 2. ProofBar */}
+      <ProofBar stats={i.proof} />
+
+      {/* 3. PainPoints */}
+      <section className="border-b border-line py-20 md:py-28">
+        <div className="container-x grid gap-14 md:grid-cols-[1fr_1.3fr]">
+          <div>
+            <div className="eyebrow mb-3">Where it hurts</div>
+            <h2 className="text-4xl md:text-5xl">
+              {i.painHeadline}
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              You already know what this list says. Reading it out loud just makes it real.
+            </p>
+          </div>
+          <ul className="space-y-5">
+            {i.pains.map((p: string, idx: number) => (
+              <li key={p} className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5">
+                <span className="mono-num text-primary">{String(idx + 1).padStart(2, "0")}</span>
+                <span className="text-[17px] text-foreground/90">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 4. WhatGetsBuilt */}
+      <section className="border-b border-line py-20 md:py-28">
+        <div className="container-x">
+          <div className="eyebrow mb-3">What gets built</div>
+          <h2 className="max-w-3xl text-4xl md:text-5xl">
+            The exact deliverables for your {i.name.toLowerCase()} shop.
+          </h2>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:grid-cols-2">
+            {i.built.map((b: string) => (
+              <div key={b} className="bg-background p-6">
+                <div className="flex items-start gap-3">
+                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary/15 text-primary">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <p className="text-[16px] text-foreground/90">{b}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-muted-foreground">
+            Installed in the tools you already use. Your team gets zero new logins. You keep every credential.
+          </p>
+        </div>
+      </section>
+
+      {/* 5. HowItWorks */}
+      <HowItWorks />
+
+      {/* 6. OfferCard */}
+      <section className="border-b border-line py-20 md:py-28">
+        <div className="container-x">
+          <div className="eyebrow mb-3">The offer</div>
+          <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
+            $497, all-in. You own everything. 10 hrs/week back in 30 days or the build is free.
+          </h2>
+          <OfferCard />
+        </div>
+      </section>
+
+      {/* 7. GuaranteeBlock */}
+      <GuaranteeBlock />
+
+      {/* 8. FinalCta */}
+      <FinalCta
+        headline={`Tell me about your ${i.name.toLowerCase()} shop. I'll show you the leak in 48 hours.`}
+      />
+    </SiteShell>
+  );
+}

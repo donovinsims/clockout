@@ -15,9 +15,6 @@ import { Route as RecoveryGuideRouteImport } from './routes/recovery-guide'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as OperatorOsRouteImport } from './routes/operator-os'
-import { Route as ForRealEstateRouteImport } from './routes/for-real-estate'
-import { Route as ForPropertyManagementRouteImport } from './routes/for-property-management'
-import { Route as ForHvacRouteImport } from './routes/for-hvac'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -55,21 +52,6 @@ const PricingRoute = PricingRouteImport.update({
 const OperatorOsRoute = OperatorOsRouteImport.update({
   id: '/operator-os',
   path: '/operator-os',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForRealEstateRoute = ForRealEstateRouteImport.update({
-  id: '/for-real-estate',
-  path: '/for-real-estate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForPropertyManagementRoute = ForPropertyManagementRouteImport.update({
-  id: '/for-property-management',
-  path: '/for-property-management',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForHvacRoute = ForHvacRouteImport.update({
-  id: '/for-hvac',
-  path: '/for-hvac',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -121,9 +103,6 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/for-hvac': typeof ForHvacRoute
-  '/for-property-management': typeof ForPropertyManagementRoute
-  '/for-real-estate': typeof ForRealEstateRoute
   '/operator-os': typeof OperatorOsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -140,9 +119,6 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/for-hvac': typeof ForHvacRoute
-  '/for-property-management': typeof ForPropertyManagementRoute
-  '/for-real-estate': typeof ForRealEstateRoute
   '/operator-os': typeof OperatorOsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -160,9 +136,6 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/for-hvac': typeof ForHvacRoute
-  '/for-property-management': typeof ForPropertyManagementRoute
-  '/for-real-estate': typeof ForRealEstateRoute
   '/operator-os': typeof OperatorOsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -181,9 +154,6 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/faq'
-    | '/for-hvac'
-    | '/for-property-management'
-    | '/for-real-estate'
     | '/operator-os'
     | '/pricing'
     | '/privacy'
@@ -200,9 +170,6 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/faq'
-    | '/for-hvac'
-    | '/for-property-management'
-    | '/for-real-estate'
     | '/operator-os'
     | '/pricing'
     | '/privacy'
@@ -219,9 +186,6 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/faq'
-    | '/for-hvac'
-    | '/for-property-management'
-    | '/for-real-estate'
     | '/operator-os'
     | '/pricing'
     | '/privacy'
@@ -239,9 +203,6 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  ForHvacRoute: typeof ForHvacRoute
-  ForPropertyManagementRoute: typeof ForPropertyManagementRoute
-  ForRealEstateRoute: typeof ForRealEstateRoute
   OperatorOsRoute: typeof OperatorOsRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -292,27 +253,6 @@ declare module '@tanstack/react-router' {
       path: '/operator-os'
       fullPath: '/operator-os'
       preLoaderRoute: typeof OperatorOsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/for-real-estate': {
-      id: '/for-real-estate'
-      path: '/for-real-estate'
-      fullPath: '/for-real-estate'
-      preLoaderRoute: typeof ForRealEstateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/for-property-management': {
-      id: '/for-property-management'
-      path: '/for-property-management'
-      fullPath: '/for-property-management'
-      preLoaderRoute: typeof ForPropertyManagementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/for-hvac': {
-      id: '/for-hvac'
-      path: '/for-hvac'
-      fullPath: '/for-hvac'
-      preLoaderRoute: typeof ForHvacRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -394,9 +334,6 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  ForHvacRoute: ForHvacRoute,
-  ForPropertyManagementRoute: ForPropertyManagementRoute,
-  ForRealEstateRoute: ForRealEstateRoute,
   OperatorOsRoute: OperatorOsRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
