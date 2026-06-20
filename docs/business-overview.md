@@ -100,7 +100,7 @@ A personal productivity system for founders, operators, and managers. Three-pill
 
 ## Contact
 
-- **Email:** don@clockout.us / hello@clockout.us
+- **Email:** contact@clockout.us / hello@clockout.us
 - **Phone / SMS:** (608) 713-1651
 - **Facebook:** Clockout on Facebook, Donovin on Facebook
 - **Domain:** clockout.us

@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Clockout" },
-      { name: "description", content: "Email don@clockout.us or send a message. For audits and builds, the faster path is the assessment form." },
+      { name: "description", content: "Email contact@clockout.us or send a message. For audits and builds, the faster path is the assessment form." },
       { property: "og:title", content: "Contact Clockout" },
       { property: "og:description", content: "Real email. Real reply." },
     ],
@@ -37,7 +37,7 @@ function ContactPage() {
     // so the form actually delivers something instead of silently dropping it.
     const subject = encodeURIComponent(`New message from ${data.name} via clockout.us`);
     const body = encodeURIComponent(`${data.message}\n\n— ${data.name}\nReply-to: ${data.email}`);
-    const url = `mailto:don@clockout.us?subject=${subject}&body=${body}`;
+    const url = `mailto:contact@clockout.us?subject=${subject}&body=${body}`;
 
     // Detect if a mail client actually opened (window loses focus)
     let mailtoOpened = false;
@@ -69,7 +69,7 @@ function ContactPage() {
               Want an audit? The <Link to="/assessment" className="text-amber hover:underline">assessment form</Link> is faster. For anything else — partnerships, press, questions — this works.
             </p>
             <div className="mt-8 space-y-3 text-sm">
-              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="mailto:don@clockout.us"><Mail className="h-4 w-4" /> don@clockout.us</a>
+              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="mailto:contact@clockout.us"><Mail className="h-4 w-4" /> contact@clockout.us</a>
               <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="https://www.facebook.com/profile.php?id=61590861503566" target="_blank" rel="noreferrer"><FacebookIcon /> Clockout on Facebook</a>
             </div>
           </div>
@@ -78,8 +78,8 @@ function ContactPage() {
               <div className="py-10 text-center">
                 <p className="text-foreground/80">
                   Email us directly at{" "}
-                  <a href="mailto:don@clockout.us" className="text-amber hover:underline">
-                    don@clockout.us
+                  <a href="mailto:contact@clockout.us" className="text-amber hover:underline">
+                    contact@clockout.us
                   </a>
                 </p>
               </div>

@@ -25,7 +25,7 @@ function FaqPage() {
             The honest version.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-foreground/80">
-            If a question isn't here, email <a href="mailto:don@clockout.us" className="text-amber hover:underline">don@clockout.us</a> and I'll answer it directly.
+            If a question isn't here, email <a href="mailto:contact@clockout.us" className="text-amber hover:underline">contact@clockout.us</a> and I'll answer it directly.
           </p>
         </div>
       </section>

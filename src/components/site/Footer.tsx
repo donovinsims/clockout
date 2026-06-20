@@ -35,9 +35,9 @@ export function Footer() {
                 <Phone className="h-4 w-4" aria-hidden />
                 <span className="mono-num">{PHONE_DISPLAY}</span>
               </a>
-              <a href="mailto:don@clockout.us" className="flex items-center gap-2 text-foreground hover:text-primary">
+              <a href="mailto:contact@clockout.us" className="flex items-center gap-2 text-foreground hover:text-primary">
                 <Mail className="h-4 w-4" aria-hidden />
-                don@clockout.us
+                contact@clockout.us
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" aria-hidden />

@@ -60,8 +60,8 @@ function AboutPage() {
               <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="https://www.facebook.com/donovinsims/" target="_blank" rel="noreferrer">
                 <FacebookIcon /> Donovin on Facebook
               </a>
-              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="mailto:don@clockout.us">
-                <Mail className="h-4 w-4" /> don@clockout.us
+              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="mailto:contact@clockout.us">
+                <Mail className="h-4 w-4" /> contact@clockout.us
               </a>
             </div>
           </div>

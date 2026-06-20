@@ -114,8 +114,8 @@ function AssessmentPage() {
               <p className="mt-4 font-semibold">— Donovin</p>
               <p className="mt-2 text-sm text-dim">
                 Follow-up:{" "}
-                <a href="mailto:don@clockout.us" className="text-amber hover:underline">
-                  don@clockout.us
+                <a href="mailto:contact@clockout.us" className="text-amber hover:underline">
+                  contact@clockout.us
                 </a>
               </p>
             </div>
@@ -125,7 +125,7 @@ function AssessmentPage() {
             </div>
           )}
           <p className="mt-4 text-center text-xs text-dim">
-            No spam. No newsletter. I email back personally at <a className="text-amber hover:underline" href="mailto:don@clockout.us">don@clockout.us</a>.
+            No spam. No newsletter. I email back personally at <a className="text-amber hover:underline" href="mailto:contact@clockout.us">contact@clockout.us</a>.
           </p>
         </div>
       </section>
@@ -212,8 +212,8 @@ function TallyForm() {
         <div className="flex min-h-[600px] items-center justify-center px-6 text-center">
           <p className="text-foreground/80">
             Form temporarily unavailable —{" "}
-            <a href="mailto:don@clockout.us" className="text-amber hover:underline">
-              email don@clockout.us
+            <a href="mailto:contact@clockout.us" className="text-amber hover:underline">
+              email contact@clockout.us
             </a>{" "}
             directly
           </p>

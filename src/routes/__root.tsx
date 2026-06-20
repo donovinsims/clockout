@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Clockout",
           description: "Done-for-you automation for owner-operated trade and local service businesses in Northern Illinois & Southern Wisconsin.",
           telephone: "+1-608-713-1651",
-          email: "don@clockout.us",
+          email: "contact@clockout.us",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Roscoe",

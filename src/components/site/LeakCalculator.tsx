@@ -155,7 +155,7 @@ export function LeakCalculator() {
                       });
                       setCaptured(true);
                     } catch {
-                      setCaptureError("Something went wrong. Try again or email don@clockout.us directly.");
+                      setCaptureError("Something went wrong. Try again or email contact@clockout.us directly.");
                     } finally {
                       setCapturing(false);
                     }

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/privacy")({
             <h2 className="pt-6 text-2xl">Cookies & analytics</h2>
             <p>Analytics are planned but not yet active. No tracking scripts are currently loaded on this site.</p>
             <h2 className="pt-6 text-2xl">Your rights</h2>
-            <p>Email <a href="mailto:don@clockout.us" className="text-amber hover:underline">don@clockout.us</a> at any time to ask what we have on you, request a copy, or have it deleted.</p>
+            <p>Email <a href="mailto:contact@clockout.us" className="text-amber hover:underline">contact@clockout.us</a> at any time to ask what we have on you, request a copy, or have it deleted.</p>
           </div>
         </div>
       </section>

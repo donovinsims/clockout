@@ -140,7 +140,7 @@ export function LeadMagnetPopup() {
       setCaptured(true);
       setConverted();
     } catch {
-      setError("Something went wrong. Try again or email don@clockout.us.");
+      setError("Something went wrong. Try again or email contact@clockout.us.");
     } finally {
       setCapturing(false);
     }

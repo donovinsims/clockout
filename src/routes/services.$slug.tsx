@@ -55,7 +55,7 @@ export const Route = createFileRoute("/services/$slug")({
               "@type": "LocalBusiness",
               name: "Clockout",
               address: { "@type": "PostalAddress", addressLocality: "Roscoe", addressRegion: "IL", addressCountry: "US" },
-              email: "don@clockout.us",
+              email: "contact@clockout.us",
               telephone: "+1-608-713-1651",
             },
             areaServed: [i.town, "Rockford, IL", "Loves Park, IL", "Machesney Park, IL", "Roscoe, IL", "Beloit, WI", "Janesville, WI"],
