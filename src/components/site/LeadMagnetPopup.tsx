@@ -10,12 +10,14 @@ function isBrowser() {
   return typeof window !== "undefined" && typeof localStorage !== "undefined";
 }
 
-function getDismissal() {
+type LsRecord = { dismissedAt?: number; convertedAt?: number; version: number } | null;
+
+function getDismissal(): LsRecord {
   if (!isBrowser()) return null;
   try {
     const raw = localStorage.getItem(LS_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as { dismissedAt?: number; convertedAt?: number; version: number };
+    return JSON.parse(raw) as Exclude<LsRecord, null>;
   } catch {
     return null;
   }
@@ -23,21 +25,15 @@ function getDismissal() {
 
 function setDismissed() {
   if (!isBrowser()) return;
-  localStorage.setItem(
-    LS_KEY,
-    JSON.stringify({ dismissedAt: Date.now(), version: 1 }),
-  );
+  localStorage.setItem(LS_KEY, JSON.stringify({ dismissedAt: Date.now(), version: 1 }));
 }
 
 function setConverted() {
   if (!isBrowser()) return;
-  localStorage.setItem(
-    LS_KEY,
-    JSON.stringify({ convertedAt: Date.now(), version: 1 }),
-  );
+  localStorage.setItem(LS_KEY, JSON.stringify({ convertedAt: Date.now(), version: 1 }));
 }
 
-function isExpired(record: { dismissedAt?: number } | null) {
+function isExpired(record: LsRecord) {
   if (!record?.dismissedAt) return true;
   return Date.now() - record.dismissedAt > SHOW_AGAIN_DAYS * 24 * 60 * 60 * 1000;
 }
@@ -66,14 +62,12 @@ export function LeadMagnetPopup() {
   const shownRef = useRef(false);
   const exitShownRef = useRef(false);
 
-  // Determine whether the popup should be suppressed
   const record = getDismissal();
   const suppressed = record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record));
 
-  // Scroll-based trigger
+  // Scroll trigger (45%)
   useEffect(() => {
     if (suppressed || shownRef.current) return;
-
     const handleScroll = () => {
       if (shownRef.current) return;
       const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
@@ -82,15 +76,12 @@ export function LeadMagnetPopup() {
         setVisible(true);
       }
     };
-
-    // Time-based fallback after 40 seconds if scroll never triggers
     const timer = setTimeout(() => {
       if (!shownRef.current) {
         shownRef.current = true;
         setVisible(true);
       }
     }, 40_000);
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -101,20 +92,16 @@ export function LeadMagnetPopup() {
   // Exit-intent trigger
   useEffect(() => {
     if (suppressed || exitShownRef.current) return;
-
     const handleMouseLeave = (e: MouseEvent) => {
       if (exitShownRef.current) return;
-      // Only trigger when cursor moves to the top of viewport
       if (e.clientY <= 0) {
         exitShownRef.current = true;
-        // Don't override if already showing via scroll/time
         if (!shownRef.current) {
           shownRef.current = true;
           setVisible(true);
         }
       }
     };
-
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, [suppressed]);
@@ -139,23 +126,28 @@ export function LeadMagnetPopup() {
       });
       setCaptured(true);
       setConverted();
-    } catch {
-      setError("Something went wrong. Try again or email contact@clockout.us.");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "";
+      if (message.includes("already exists") || message.includes("duplicate")) {
+        setCaptured(true);
+        setConverted();
+      } else {
+        setError("Something went wrong. Try again or email contact@clockout.us.");
+      }
     } finally {
       setCapturing(false);
     }
   };
 
-  // Don't render anything if suppressed by localStorage
   if (suppressed) return null;
 
   return (
     <AnimatePresence>
       {visible && (
         <>
-          {/* Backdrop — clickable to dismiss */}
+          {/* Backdrop */}
           <motion.div
-            key="popup-backdrop"
+            key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -165,9 +157,9 @@ export function LeadMagnetPopup() {
             aria-hidden="true"
           />
 
-          {/* Slide-in from bottom-right on desktop, full-width at bottom on mobile */}
+          {/* Slide-in panel */}
           <motion.div
-            key="popup"
+            key="panel"
             initial={{ opacity: 0, y: 32, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
@@ -197,28 +189,19 @@ export function LeadMagnetPopup() {
                     Five strategies to recover a full day a week in your service business.
                   </p>
 
-                  {/* Strategy preview */}
                   <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Catch every call — and catch it within 60 seconds
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Stop quoting into the void (recover 20–35% of unsigned quotes)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Automate the booking &amp; dispatch loop
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Let past customers do your marketing
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      Stop financing your customers
-                    </li>
+                    {[
+                      "Catch every call — and catch it within 60 seconds",
+                      "Stop quoting into the void (recover 20–35% of unsigned quotes)",
+                      "Automate the booking & dispatch loop",
+                      "Let past customers do your marketing",
+                      "Stop financing your customers",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
 
                   {!showForm ? (
@@ -259,7 +242,9 @@ export function LeadMagnetPopup() {
                           </option>
                         ))}
                       </select>
+
                       {error && <p className="text-xs text-destructive">{error}</p>}
+
                       <button
                         type="submit"
                         disabled={capturing}
@@ -287,9 +272,7 @@ export function LeadMagnetPopup() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Guide sent!
-                  </h3>
+                  <h3 className="text-lg font-semibold text-foreground">Guide sent!</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Check your inbox. Want the full leak assessment?
                   </p>

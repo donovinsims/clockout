@@ -44,3 +44,4 @@ dist-ssr
 
 # MCP config (contains API keys)
 .mcp.json
+naitive.work.*
