@@ -122,12 +122,12 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="z-[60] w-[88vw] max-w-sm">
+            <SheetContent side="right" className="z-[60] w-[88vw] max-w-sm flex flex-col">
               <SheetHeader>
                 <SheetTitle className="sr-only">Menu</SheetTitle>
                 <SheetDescription className="sr-only">Site navigation</SheetDescription>
               </SheetHeader>
-              <div className="mt-6 flex flex-col gap-1">
+              <div className="flex flex-1 flex-col gap-1 overflow-y-auto pb-6">
                 <div className="px-3 pb-2 text-xs uppercase tracking-wider text-muted-foreground">Industries</div>
                 {industries.map((i) => (
                   <Link
