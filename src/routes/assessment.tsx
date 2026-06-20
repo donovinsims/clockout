@@ -206,6 +206,25 @@ function TallyForm() {
     document.body.appendChild(s);
   }, [mount]);
 
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeHeight, setIframeHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!mount) return;
+    const handler = (e: MessageEvent) => {
+      if (
+        e.origin === "https://tally.so" &&
+        typeof e.data === "object" &&
+        e.data?.type === "tally-height" &&
+        typeof e.data?.height === "number"
+      ) {
+        setIframeHeight(e.data.height);
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, [mount]);
+
   return (
     <div ref={wrapRef} className="min-h-[600px]">
       {tallyFailed ? (
@@ -220,6 +239,7 @@ function TallyForm() {
         </div>
       ) : mount ? (
         <iframe
+          ref={iframeRef}
           data-tally-src="https://tally.so/embed/RGVJ1J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
           loading="lazy"
           width="100%"
@@ -228,7 +248,8 @@ function TallyForm() {
           marginWidth={0}
           scrolling="no"
           title="Clockout Revenue-Leak Assessment"
-          className="w-full min-h-[300px]"
+          className="w-full"
+          style={{ height: iframeHeight ? `${iframeHeight}px` : "auto", minHeight: iframeHeight ? 0 : "450px" }}
         />
       ) : (
         <div className="grid min-h-[600px] place-items-center text-sm text-muted-foreground">
