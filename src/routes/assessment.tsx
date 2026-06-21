@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+
+declare const Tally: { loadEmbeds: () => void };
 import { SiteShell } from "@/components/site/SiteShell";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { BetaSpots } from "@/components/site/BetaSpots";
@@ -26,17 +28,27 @@ const leakCategories = [
 ];
 
 function AssessmentPage() {
-  // Listen for Tally's dynamic-height postMessage to resize the iframe
+  // Load Tally's embed.js for dynamic height and form-events forwarding
   useEffect(() => {
-    const handler = (e: MessageEvent) => {
-      if (e.origin !== "https://tally.so") return;
-      if (e.data?.type === "tally-height" && typeof e.data?.height === "number") {
-        const iframe = document.querySelector<HTMLIFrameElement>("#form iframe");
-        if (iframe) iframe.style.height = `${e.data.height}px`;
+    const w = "https://tally.so/widgets/embed.js";
+    const load = () => {
+      if (typeof Tally !== "undefined") {
+        Tally.loadEmbeds();
+      } else {
+        document.querySelectorAll<HTMLIFrameElement>("iframe[data-tally-src]:not([src])").forEach(
+          (e) => { e.src = e.dataset.tallySrc || ""; },
+        );
       }
     };
-    window.addEventListener("message", handler);
-    return () => window.removeEventListener("message", handler);
+    if (typeof Tally !== "undefined") {
+      load();
+    } else if (!document.querySelector('script[src="' + w + '"]')) {
+      const s = document.createElement("script");
+      s.src = w;
+      s.onload = load;
+      s.onerror = load;
+      document.body.appendChild(s);
+    }
   }, []);
 
   return (
@@ -111,16 +123,14 @@ function AssessmentPage() {
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
             <iframe
-              src="https://tally.so/embed/RGVJ1J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              data-tally-src="https://tally.so/embed/RGVJ1J?hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
               loading="lazy"
               width="100%"
+              height={181}
               frameBorder={0}
               marginHeight={0}
               marginWidth={0}
-              scrolling="no"
-              title="Clockout Revenue-Leak Assessment"
-              className="w-full"
-              style={{ minHeight: 400 }}
+              title="Book Your Free Assessment — 7 Quick Questions"
             />
           </div>
           <p className="mt-4 text-center text-xs text-dim">
