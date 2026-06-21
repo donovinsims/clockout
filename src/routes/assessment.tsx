@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { BetaSpots } from "@/components/site/BetaSpots";
@@ -26,13 +26,17 @@ const leakCategories = [
 ];
 
 function AssessmentPage() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
+  // Listen for Tally's dynamic-height postMessage to resize the iframe
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handler = () => setFormSubmitted(true);
-    document.addEventListener("tally-form-submitted", handler);
-    return () => document.removeEventListener("tally-form-submitted", handler);
+    const handler = (e: MessageEvent) => {
+      if (e.origin !== "https://tally.so") return;
+      if (e.data?.type === "tally-height" && typeof e.data?.height === "number") {
+        const iframe = document.querySelector<HTMLIFrameElement>("#form iframe");
+        if (iframe) iframe.style.height = `${e.data.height}px`;
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
   }, []);
 
   return (
@@ -105,25 +109,20 @@ function AssessmentPage() {
           <p className="mt-5 max-w-2xl text-foreground/80">
             7 quick questions. I'll email you your Money-Leak Map inside 48 hours. If it doesn't show $10K in fixable leaks, you pay $0. That's the guarantee.
           </p>
-          {formSubmitted ? (
-            <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface p-9 text-center">
-              <h3 className="text-2xl md:text-3xl">Thanks for filling that out!</h3>
-              <p className="mx-auto mt-4 max-w-lg text-foreground/80">
-                I'll build your Money-Leak Map and email you within 48 hours. Check your inbox (and spam).
-              </p>
-              <p className="mt-4 font-semibold">— Donovin</p>
-              <p className="mt-2 text-sm text-dim">
-                Follow-up:{" "}
-                <a href="mailto:contact@clockout.us" className="text-amber hover:underline">
-                  contact@clockout.us
-                </a>
-              </p>
-            </div>
-          ) : (
-            <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
-              <TallyForm />
-            </div>
-          )}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
+            <iframe
+              src="https://tally.so/embed/RGVJ1J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              frameBorder={0}
+              marginHeight={0}
+              marginWidth={0}
+              scrolling="no"
+              title="Clockout Revenue-Leak Assessment"
+              className="w-full"
+              style={{ minHeight: 400 }}
+            />
+          </div>
           <p className="mt-4 text-center text-xs text-dim">
             No spam. No newsletter. I email back personally at <a className="text-amber hover:underline" href="mailto:contact@clockout.us">contact@clockout.us</a>.
           </p>
@@ -143,99 +142,5 @@ function AssessmentPage() {
         </div>
       </div>
     </SiteShell>
-  );
-}
-
-/**
- * Lazy-loaded, dynamic-height Tally embed.
- * - The iframe is mounted only after the user scrolls near it (IntersectionObserver).
- * - Tally's embeds.js handles dynamic resize so the form never has scroll bars.
- */
-function TallyForm() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [mount, setMount] = useState(false);
-  const [tallyFailed, setTallyFailed] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const el = wrapRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            setMount(true);
-            io.disconnect();
-            break;
-          }
-        }
-      },
-      { rootMargin: "400px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!mount) return;
-    const timer = setTimeout(() => {
-      // @ts-expect-error global injected by Tally
-      if (typeof window.Tally === "undefined") {
-        setTallyFailed(true);
-      }
-    }, 10_000);
-    return () => clearTimeout(timer);
-  }, [mount]);
-
-  useEffect(() => {
-    if (!mount || typeof window === "undefined") return;
-    const SRC = "https://tally.so/widgets/embed.js";
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);
-    const load = () => {
-      // @ts-expect-error global injected by Tally
-      if (typeof window.Tally !== "undefined") window.Tally.loadEmbeds();
-    };
-    if (existing) {
-      load();
-      return;
-    }
-    const s = document.createElement("script");
-    s.src = SRC;
-    s.async = true;
-    s.onload = load;
-    document.body.appendChild(s);
-  }, [mount]);
-
-  return (
-    <div ref={wrapRef} className="min-h-[600px]">
-      {tallyFailed ? (
-        <div className="flex min-h-[600px] items-center justify-center px-6 text-center">
-          <p className="text-foreground/80">
-            Form temporarily unavailable —{" "}
-            <a href="mailto:contact@clockout.us" className="text-amber hover:underline">
-              email contact@clockout.us
-            </a>{" "}
-            directly
-          </p>
-        </div>
-      ) : mount ? (
-        <iframe
-          data-tally-src="https://tally.so/embed/RGVJ1J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          loading="lazy"
-          width="100%"
-          height="804"
-          frameBorder={0}
-          marginHeight={0}
-          marginWidth={0}
-          scrolling="no"
-          title="Clockout Revenue-Leak Assessment"
-          className="w-full"
-        />
-      ) : (
-        <div className="grid min-h-[600px] place-items-center text-sm text-muted-foreground">
-          Loading the form…
-        </div>
-      )}
-    </div>
   );
 }
