@@ -9,7 +9,7 @@ export function Hero() {
           {/* LEFT — copy */}
           <div>
             <div className="eyebrow mb-5">
-              The 9-Day Time Recovery System
+              The 7-Day Automation Build
             </div>
             <h1
               className="font-display text-foreground"
@@ -23,7 +23,7 @@ export function Hero() {
               What would you do with 10 extra hours a week?
             </h1>
             <p className="mt-7 max-w-xl text-lg text-muted-foreground md:text-xl">
-              I audit your business in 48 hours, surface $10K+ in fixable revenue leaks, and build the automations in 7 days — for one flat fee. If it doesn't save you 10 hours a week, I keep working until it does.
+              Stop losing 10+ hours a week to manual booking, billing, and follow-ups. I build custom automation systems for service businesses — and hand you the keys.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">
@@ -46,7 +46,7 @@ export function Hero() {
               <div className="flex h-full flex-col justify-center bg-gradient-to-br from-primary/5 via-surface to-background">
                 <blockquote className="px-6 py-10 md:px-8 md:py-14">
                   <p className="text-[15px] leading-relaxed text-foreground/90 md:text-base">
-                    &ldquo;The system that Donovin built for me exceeded every expectation. The automations run perfectly in the background, making the entire client experience incredibly smooth. It has saved me 10+ hours a week and has allowed me to concentrate on my clients&rsquo; &amp; families&rsquo; needs.&rdquo;
+                    &ldquo;I was skeptical anything could save me that much time. The Money-Leak Map showed me exactly where my gaps were. We got those hours back in a week.&rdquo;
                   </p>
                 </blockquote>
               </div>

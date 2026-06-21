@@ -12,10 +12,10 @@ const STANDARD = offer.standardPrice;
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: `Pricing — Clockout · $${BETA} beta · No subscription, ever` },
-      { name: "description", content: `$${BETA} all-in beta pricing. Audit + full automation build. No retainer, no subscription. You own everything. Standard price after beta: $${STANDARD}.` },
+      { title: `Pricing — Clockout · $${BETA} beta · No contracts.` },
+      { name: "description", content: `$${BETA} beta. Full automation build. No contracts. Cancel anytime. You own everything. Standard price after beta: $${STANDARD}.` },
       { property: "og:title", content: `Clockout pricing — $${BETA} beta · You own it` },
-      { property: "og:description", content: "Flat-fee automation builds. No monthly software fees. Beta capped at 15 shops." },
+      { property: "og:description", content: "Flat-fee automation builds. No contracts. Cancel anytime. Beta capped at 8 shops." },
     ],
   }),
   component: PricingPage,
@@ -23,13 +23,13 @@ export const Route = createFileRoute("/pricing")({
 
 const compareRows: { label: string; them: string; us: string }[] = [
   { label: "Pricing model", them: "$500–$5,000 / month forever", us: `$${BETA} once. Done.` },
-  { label: "Contract length", them: "12-month lock-in", us: "No contract" },
+  { label: "Contract length", them: "12-month lock-in", us: "No contract. Cancel anytime." },
   { label: "Who owns the system", them: "They do. You rent.", us: "You do. Outright." },
   { label: "Time to install", them: "2–6 weeks setup", us: "7 days end to end" },
   { label: "Built for your trade", them: "Generic CRM, you configure", us: "Vertical-specific, configured for you" },
   { label: "Login proliferation", them: "Yet another dashboard", us: "Lives inside your existing stack" },
   { label: "If they go out of business", them: "Your system dies with them", us: "Yours keeps running" },
-  { label: "Guarantee", them: "60-day refund (small print)", us: "10 hrs/week back in 30 days or free" },
+  { label: "Guarantee", them: "60-day refund (small print)", us: "Money-Back Guarantee — full refund or free until it works" },
 ];
 
 function PricingPage() {
@@ -42,7 +42,7 @@ function PricingPage() {
             ${BETA}. One time. You own it.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-foreground/80">
-            No retainer. No subscription. No &ldquo;starter plan&rdquo; upsell at month three. One flat fee &mdash; you own the whole system. If it doesn't save you 10 hours a week within 30 days, I keep working until it does. That's on me.
+            No contracts. Cancel anytime. You own everything. One flat fee &mdash; you own the whole system. If it doesn't save you 10 hours a week within 30 days, I keep working until it does. That's on me.
           </p>
           <div className="mt-8 max-w-xl rounded-xl border border-line bg-surface/40 px-5 py-4 text-sm text-muted-foreground">
             &ldquo;The automations run perfectly in the background, making the entire client experience incredibly smooth.&rdquo; &mdash; Shea S., Trading Community
@@ -60,7 +60,7 @@ function PricingPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">Compare</div>
           <h2 className="max-w-3xl text-4xl md:text-5xl">
-            What $4,000/month looks like vs. a one-time ${BETA} build.
+            What $4,000/month looks like vs. one flat build fee.
           </h2>
           <div className="mt-10 overflow-x-auto rounded-2xl border border-line">
             <div className="min-w-[600px]">
@@ -84,24 +84,24 @@ function PricingPage() {
       {/* Objection mini-cards */}
       <section className="border-b border-line py-16 md:py-20">
         <div className="container-x">
-          <div className="eyebrow mb-3">Three things people ask before buying</div>
+          <div className="eyebrow mb-3">Three things people ask before signing up</div>
           <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
             <div className="bg-background p-6">
               <h3 className="text-lg font-semibold text-foreground">What if it doesn&rsquo;t work?</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                I guarantee the outcome: 10 hours/week back in 30 days or I keep building until it works. Not a refund &mdash; a commitment to the result.
+                Money-Back Guarantee: if the Money-Leak Map doesn't identify $10K/year in recoverable leaks, you don't pay a dime. Not a refund &mdash; a commitment to the result.
               </p>
             </div>
             <div className="bg-background p-6">
               <h3 className="text-lg font-semibold text-foreground">Why is it so affordable?</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Beta pricing for the first 15 clients in exchange for letting me study your operation. Same build I&rsquo;ll charge ${STANDARD} for after launch.
+                Beta pricing for the first 8 clients in exchange for letting me study your operation. Same build I&rsquo;ll charge ${STANDARD} for after launch. 3 spots left.
               </p>
             </div>
             <div className="bg-background p-6">
               <h3 className="text-lg font-semibold text-foreground">I already tried automation.</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                You tried a template. I build custom to your exact workflow, inside the tools you already use. If I can&rsquo;t find $10K in leaks during the audit, you pay nothing and walk away.
+                You tried a template. I build custom to your exact workflow, inside the tools you already use. If I can&rsquo;t find $10K in leaks during the Money-Leak Map, you pay nothing and walk away.
               </p>
             </div>
           </div>

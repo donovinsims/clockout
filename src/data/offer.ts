@@ -1,14 +1,13 @@
 export const GUARANTEE =
-  "Your automation build is guaranteed to work — or we keep working until it does, free of charge.";
+  "Money-Back Guarantee: If your Money-Leak Map doesn't identify at least 10 hours/week in recoverable time and the resulting leak is less than $10K/year, you don't pay a dime. Full refund, no questions.";
 
 export const offer = {
   betaPrice: 497,
   standardPrice: 1494,
-  spotsTotal: 15,
+  spotsTotal: 8,
   spotsRemaining: 3,
-  auditHours: 48,
   buildDays: 7,
-  ownership: "You own it outright. All logins. All docs. No subscription. No lock-in.",
+  ownership: "No contracts. Cancel anytime. You own everything.",
   ctaPrimary: "Reserve Beta Access",
   ctaSecondary: "See my revenue leaks",
   assessmentPath: "/assessment",
@@ -16,7 +15,7 @@ export const offer = {
 
 export const includes = [
   "Full lead-to-cash workflow mapping",
-  "48-hour written revenue leak report (every leak quantified in dollars)",
+  "Money-Leak Map — a written report quantifying every revenue and time leak in dollars",
   "Custom automation build for your top leaks, installed in 7 days",
   "Lives inside the tools you already use — no new logins for your team",
   "Full handover: demo, documentation, training",

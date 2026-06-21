@@ -1,50 +1,50 @@
 export const faqs = [
   {
-    q: "What does the 48-hour audit actually include?",
-    a: "I trace one real job through your business — phone, CRM, dispatch, invoice — and write up exactly where money is leaking. Missed calls, slow quotes, dropped follow-up, churned customers. Every leak gets a dollar number next to it. You get a PDF inside 48 hours.",
+    q: "How is this different from hiring an employee or a VA?",
+    a: "An employee costs $40K–$60K/year before taxes and management overhead. A VA costs $500–$1K/month but requires you to document every step. Clockout is a one-time build fee, you own everything, and you never pay a monthly subscription. I do the discovery, build the systems, hand you the keys, and you never pay again.",
   },
   {
-    q: "What's the guarantee, in plain words?",
-    a: "Two things. First: if the audit doesn't surface at least $10K in fixable revenue leaks, you don't pay for the audit. Second: after the build, if the system doesn't give you 10 hours a week back inside 30 days, I keep working until it does. Free.",
+    q: "What exactly do I get for the build fee?",
+    a: "A complete, documented automation system built specifically for your business. You get automated client intake (text-to-book), smart scheduling with reminders, payment collection and follow-up, review generation sequences, and a custom operations dashboard. Every flow is built in Make and integrated with your existing tools. You own the Make account, the templates, the documentation — everything.",
   },
   {
-    q: "I already use ServiceTitan / HousecallPro / GHL. Does this replace it?",
-    a: "No. The build installs inside the tools you already pay for. Your team doesn't get a new login. The automations live on top of what you already have so nothing migrates and nothing breaks.",
+    q: "What trades do you work with?",
+    a: "HVAC, plumbing, electrical, roofing, landscaping, pest control, cleaning, and home services. If you run a local service business where technicians go to customer locations, I can build for you.",
   },
   {
-    q: "What does 'you own it' actually mean?",
-    a: "Every login, every API key, every line of code, every doc — yours. If I disappeared tomorrow, the system keeps running. There is no Clockout subscription. There is no monthly fee. There never will be.",
+    q: "How long does the Build process take?",
+    a: "The Beta Build takes 7 days from kickoff to handoff. The Standard Build takes 14 days. Concierge starts at a 12-week minimum and includes ongoing optimization. Either way, you start seeing automated workflows within days, not months.",
   },
   {
-    q: "Is there ongoing support after the handover?",
-    a: "Optional. After delivery you can keep me on a quarterly retainer for new automations and tuning (planned around $497/quarter), or you can take the keys and run it yourself. Most of the build is set-and-forget.",
+    q: "What if something breaks or needs to change?",
+    a: "You own everything — the Make scenarios, the templates, the integration config. If something breaks, you can fix it yourself, hire any Make expert, or ask me. There's no lock-in, no recurring obligation.",
   },
   {
-    q: "How is this $497 when an agency quoted me $4K/month?",
-    a: "Beta pricing. I'm building the first 15 case studies. Once I have them, the price goes to $1,494, and after that, up. In exchange for the discount, beta clients agree to a before/after case study and one short testimonial. That's the trade.",
+    q: "What if I'm not technical at all?",
+    a: "That's the point. I do all the technical work. You tell me how your business runs, I build the automation, and I hand you a working system with documentation. If you can send a text message, you can manage what we build.",
   },
   {
-    q: "Why can't I just hire a virtual assistant for this?",
-    a: "You can. Most owners I talk to have tried. The problem isn't a person — it's a process. A VA still needs to be told what to do, when to do it, and what to do when the customer doesn't reply. The system handles that part. A VA on top of a system works. A VA without one quits in 90 days.",
+    q: "Do you offer refunds?",
+    a: "The Money-Back Guarantee covers what the Money-Leak Map promises. If the build doesn't deliver the mapped savings, you get a full refund. I'm that confident in the process.",
   },
   {
-    q: "How long until I see results?",
-    a: "The missed-call rescue and front-desk usually start producing inside the first week. Quote follow-up and reactivation flows show up in revenue around days 14–30. The full 10 hrs/week back kicks in by day 30, which is what the guarantee is anchored to.",
+    q: "What about ongoing support?",
+    a: "All builds include a 30-day post-launch check-in to make sure everything is running smoothly. After that, you own the system. If you want ongoing management, that's what Concierge is for.",
   },
   {
-    q: "What if I'm not in Northern Illinois or Wisconsin?",
-    a: "The work is delivered remotely so geography isn't a blocker. The local focus is a feature, not a fence — I'm happy to take builds from anywhere in the US during the beta.",
+    q: "Can I see examples of what you've built?",
+    a: "Yes — I'll show you case studies and examples during our assessment call. Every system is custom-built, so what you see gives you a clear picture of what yours will look like.",
   },
   {
-    q: "What if I decide not to move forward after the audit?",
-    a: "Then you got a free $497 audit. Keep the report. Fix whatever you want with it. There's no contract and no obligation to do the build.",
+    q: "How do payments work?",
+    a: "Build is a one-time fee — 50% to start, 50% at handoff. Concierge is month-to-month at $750/mo with a 12-week minimum.",
   },
   {
-    q: "Who is actually doing the work?",
-    a: "Me. Donovin. I ran product operations at Uber (live events with 50,000+ attendees, real-time dispatch) and shipped digital products at Walgreens before this. Single operator on the build. Means quality is consistent and there's nobody to hand you off to.",
+    q: "What tools do you use?",
+    a: "Make.com for automations, GoHighLevel for client management, Google Calendar/Calendly for scheduling, Stripe/Square for payments, and Twilio for SMS. I integrate everything into your existing stack — no forced platform swaps.",
   },
   {
-    q: "Is my data safe?",
-    a: "Yes. I work inside your existing systems with credentials you control. You can revoke access at any time. I never resell or share data, and I'll sign whatever you need me to sign before we start.",
+    q: "Do you work with agencies or multi-location businesses?",
+    a: "For single-location and small multi-location shops, Build or Concierge is the right fit. For enterprise operations with 10+ locations, reach out — I'll scope a custom engagement.",
   },
 ];

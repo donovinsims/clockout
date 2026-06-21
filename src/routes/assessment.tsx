@@ -7,10 +7,10 @@ import { BetaSpots } from "@/components/site/BetaSpots";
 export const Route = createFileRoute("/assessment")({
   head: () => ({
     meta: [
-      { title: "Free 10-Hour Recovery Assessment — Clockout · 20 min form, 48 hr report" },
-      { name: "description", content: "20 minutes to fill the form. 48 hours later you get a written report quantifying every revenue and time leak — in dollars. If we don't find $10K in fixable leaks, it's free." },
+      { title: "Free Money-Leak Map — Clockout · 20 min form" },
+      { name: "description", content: "20 minutes to fill the form. I'll hand you a Money-Leak Map quantifying every revenue and time leak — in dollars. If we don't find $10K in fixable leaks, it's free." },
       { property: "og:title", content: "Clockout — Find your 10 hours back" },
-      { property: "og:description", content: "20 minutes to fill the form. 48 hours later you get a written report with every revenue and time leak priced in dollars. If we don't find $10K in fixable leaks, it's free." },
+      { property: "og:description", content: "20 minutes to fill the form. I'll hand you a Money-Leak Map that shows every revenue and time leak in dollars. If we don't find $10K in fixable leaks, it's free." },
       { property: "og:url", content: "https://clockout.us/assessment" },
     ],
     links: [{ rel: "canonical", href: "/assessment" }],
@@ -45,7 +45,7 @@ function AssessmentPage() {
             Find your 10 hours back. It takes 20 minutes.
           </h1>
           <p className="mt-7 max-w-2xl text-lg text-foreground/80">
-            Fill the short form. Inside 48 hours I send you a written report that traces one real job through your business — every revenue and time leak priced in dollars. If I can't find $10K in fixable leaks, the audit is free and you keep the report.
+            Fill the short form. I'll build you a Money-Leak Map that traces one real job through your business — every revenue and time leak priced in dollars. If I can't find $10K in fixable leaks, it's free and you keep the map.
           </p>
         </div>
       </section>
@@ -53,7 +53,7 @@ function AssessmentPage() {
       {/* 2. What the audit surfaces */}
       <section className="border-b border-line py-20 md:py-28">
         <div className="container-x">
-          <div className="eyebrow mb-3">What the audit surfaces</div>
+          <div className="eyebrow mb-3">What the Money-Leak Map surfaces</div>
           <h2 className="max-w-3xl text-4xl md:text-5xl">
             Four leak categories. Every one written next to a real dollar figure.
           </h2>
@@ -74,12 +74,12 @@ function AssessmentPage() {
       <section className="border-b border-line py-20 md:py-28">
         <div className="container-x">
           <div className="eyebrow mb-3">The process</div>
-          <h2 className="max-w-3xl text-4xl md:text-5xl">A spec sheet, not a sales funnel.</h2>
+          <h2 className="max-w-3xl text-4xl md:text-5xl">Three steps to your Money-Leak Map.</h2>
           <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
             {[
               { n: "01", time: "15 seconds", t: "Fill the form below", b: "Tell me about your shop, what's leaking the worst, and how to reach you." },
-              { n: "02", time: "48 hours", t: "I run the audit", b: "I trace one real job through your phone, CRM, dispatch, and invoice. Every gap gets a dollar figure." },
-              { n: "03", time: "Day 2", t: "Written leak report", b: "PDF in your inbox. Yours to keep whether you move forward or not. If we don't surface $10K in fixable leaks, it's free." },
+              { n: "02", time: "~48 hours", t: "I build your map", b: "I trace one real job through your phone, CRM, dispatch, and invoice. Every gap gets a dollar figure." },
+              { n: "03", time: "48 hours", t: "Money-Leak Map delivered", b: "PDF in your inbox. Yours to keep whether you move forward or not. If we don't surface $10K in fixable leaks, it's free." },
             ].map((s) => (
               <li key={s.n} className="bg-background p-7">
                 <div className="flex items-center justify-between">
@@ -103,13 +103,13 @@ function AssessmentPage() {
           <div className="eyebrow mb-3">The form</div>
           <h2 className="max-w-3xl text-4xl md:text-5xl">Tell me about your shop.</h2>
           <p className="mt-5 max-w-2xl text-foreground/80">
-            7 quick questions. No phone tag. I'll email you back inside 48 hours. If the report doesn't show $10K in fixable leaks, you pay $0. That's the guarantee.
+            7 quick questions. I'll email you your Money-Leak Map inside 48 hours. If it doesn't show $10K in fixable leaks, you pay $0. That's the guarantee.
           </p>
           {formSubmitted ? (
             <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface p-9 text-center">
               <h3 className="text-2xl md:text-3xl">Thanks for filling that out!</h3>
               <p className="mx-auto mt-4 max-w-lg text-foreground/80">
-                I'll review your assessment and email you within 48 hours. Check your inbox (and spam).
+                I'll build your Money-Leak Map and email you within 48 hours. Check your inbox (and spam).
               </p>
               <p className="mt-4 font-semibold">— Donovin</p>
               <p className="mt-2 text-sm text-dim">

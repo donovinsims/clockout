@@ -20,7 +20,7 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
           <BetaSpots />
           <div className="eyebrow mt-5">Revenue Leak Audit + Full Build</div>
           <h3 className="mt-3 text-3xl md:text-4xl">
-            One price. You own the system. No subscription, ever.
+            One price. You own the system. No contracts. Cancel anytime. You own everything.
           </h3>
           <div className="mt-7 flex items-baseline gap-4">
             <span className="mono-num font-semibold text-foreground" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: 1 }}>
@@ -30,15 +30,15 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
             <span className="text-sm text-muted-foreground">all-in</span>
           </div>
           <p className="mt-5 max-w-md text-muted-foreground">
-            48-hour audit. 7-day build. Day 9 handover. You keep every login, every doc, every line of code.
+             Money-Leak Map delivered in 20 minutes. Full build in 7 days. You keep every login, every doc, every line of code.
           </p>
           <div className="mt-7">
             <CTA to="/assessment" size="lg">
-              Book the 48-hour audit →
+              Find the Money I'm Losing →
             </CTA>
             {!compact && (
               <p className="mt-3 text-xs text-muted-foreground">
-                Early beta — limited to 15 shops. <span className="font-medium text-foreground">{offer.spotsRemaining}</span> spots remain.
+                8 founding spots, <span className="font-medium text-foreground">{offer.spotsRemaining}</span> left
               </p>
             )}
           </div>

@@ -127,10 +127,26 @@ export function LeadMagnetPopup() {
       setCaptured(true);
       setConverted();
     } catch (err) {
-      const message = err instanceof Error ? err.message : "";
-      if (message.includes("already exists") || message.includes("duplicate")) {
+      const raw = err instanceof Error ? err.message : "";
+      try {
+        const parsed = JSON.parse(raw);
+        if (parsed?.error?.includes("already exists") || parsed?.error?.includes("duplicate")) {
+          setCaptured(true);
+          setConverted();
+          return;
+        }
+        if (parsed?.error?.includes("Invalid domain") || parsed?.error?.includes("cannot receive email")) {
+          setError("That email address can't receive messages — double-check it and try again.");
+          return;
+        }
+      } catch {
+        /* not JSON — fall through */
+      }
+      if (raw.includes("already exists") || raw.includes("duplicate")) {
         setCaptured(true);
         setConverted();
+      } else if (raw.includes("SEQUENZY_API_KEY not configured")) {
+        setError("Service temporarily unavailable. Email contact@clockout.us and we'll send it right over.");
       } else {
         setError("Something went wrong. Try again or email contact@clockout.us.");
       }
@@ -281,7 +297,7 @@ export function LeadMagnetPopup() {
                     onClick={handleDismiss}
                     className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-2 hover:text-primary/80"
                   >
-                    Book the 48-hour audit →
+                    Find the Money I'm Losing →
                   </a>
                 </div>
               )}

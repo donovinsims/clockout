@@ -98,7 +98,7 @@ function AboutPage() {
 
               <h2 className="pt-6 text-3xl">How it works</h2>
               <p>
-                I don't sell subscriptions. I come in, spend 48 hours mapping every dollar leaking out of your business, build the system that stops it, hand it over, and leave. You own everything. No retainer. No monthly fee.
+                No contracts. Cancel anytime. You own everything. I come in, map every dollar leaking out of your business via the Money-Leak Map, build the system that stops it, and hand you the keys. You own it. No lock-in. No recurring bill.
               </p>
               <p>
                 Three missed calls a week at $450 average ticket is $5,400 gone every month. That's what we're fixing.
@@ -107,7 +107,7 @@ function AboutPage() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <CTA to="/assessment" size="lg">
-                Book a free 20-minute assessment →
+                Find the Money I'm Losing →
               </CTA>
               <Link to="/faq" className="text-sm text-foreground/80 hover:text-amber">
                 Read the FAQ →

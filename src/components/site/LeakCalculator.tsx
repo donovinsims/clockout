@@ -217,7 +217,7 @@ export function LeakCalculator() {
               <p className="mt-1 text-xs text-muted-foreground">
                 Want the full audit?{" "}
                 <a href="/assessment" className="underline underline-offset-2 hover:text-primary">
-                  Book your 48-hour leak assessment →
+                  Get your Money-Leak Map →
                 </a>
               </p>
             </div>

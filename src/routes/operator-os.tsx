@@ -86,7 +86,7 @@ function OperatorPage() {
             <CTA to="/services" variant="outline" size="lg">See the business builds</CTA>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            Currently piloting with a small founding cohort. Early-access pricing locks in for life.
+            Currently piloting with a small founding cohort. 8 founding spots, 3 left.
           </p>
         </div>
       </section>
@@ -194,9 +194,9 @@ function OperatorPage() {
               Delivered as a 9-day Clockout build. We map your workflow, install the automations inside your existing stack, and hand you every credential.
             </p>
             <ul className="mt-6 space-y-2 text-foreground/80">
-              <li>· 48-hour audit, 7-day build</li>
+              <li>· Money-Leak Map delivered in 20 minutes. Full build in 7 days.</li>
               <li>· Lives in the tools you already pay for</li>
-              <li>· You own it outright. Flat fee.</li>
+              <li>· No contracts. Cancel anytime. You own everything.</li>
             </ul>
             <div className="mt-8">
               <CTA to="/pricing" size="md">See pricing →</CTA>
@@ -214,7 +214,7 @@ function OperatorPage() {
               <li>· A weekly surface session with you and your data</li>
             </ul>
             <div className="mt-8">
-              <CTA to="/assessment" size="md">Join the early list →</CTA>
+              <CTA to="/assessment" size="md">Find the Money I'm Losing →</CTA>
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@ function OperatorPage() {
 
       <FinalCta
         headline="Stop running the day on memory."
-        sub="Whether it's your shop or your week, Capture → Route → Surface ends the fire-drill cycle. Start with a 20-minute assessment."
+        sub="Whether it's your shop or your week, Capture → Route → Surface ends the fire-drill cycle. Start with a Money-Leak Map."
       />
     </SiteShell>
   );

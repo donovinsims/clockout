@@ -1,8 +1,8 @@
 import { CTA } from "./CTA";
 
 export function FinalCta({
-  headline = "Stop guessing what the leak is. Get the number.",
-  sub = "Twenty minutes to tell me about your shop. 48 hours to send back exactly where you're losing money — in dollars, not adjectives.",
+  headline = "Stop guessing what the leak is",
+  sub = "Spend 20 minutes with me. I'll hand you a Money-Leak Map that shows exactly where you're losing time and money.",
 }: {
   headline?: string;
   sub?: string;
@@ -14,14 +14,14 @@ export function FinalCta({
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">{sub}</p>
         <div className="mt-9 flex justify-center">
           <CTA to="/assessment" size="lg">
-            Book the 48-hour audit →
+            Find the Money I'm Losing →
           </CTA>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
           Or text <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">AUDIT to (608) 713-1651</a>
         </p>
         <p className="mt-2 text-xs text-muted-foreground">
-          $497 beta · normally $1,494 · 10 hrs/week back in 30 days or the build is free
+          No contracts. Cancel anytime. You own everything.
         </p>
       </div>
     </section>

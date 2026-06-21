@@ -63,7 +63,7 @@ const steps = [
     time: "Day 9",
     title: "You get every login, every doc, and the keys.",
     body:
-      "Full demo. Full documentation. Full training. You own the system outright. If I disappeared tomorrow, it keeps running. No subscription. No retainer. No lock-in.",
+      "Full demo. Full documentation. Full training. You own the system outright. If I disappeared tomorrow, it keeps running. No contracts. Cancel anytime. You own everything.",
     icon: Key,
     artifact: (
       <div className="rounded-[12px] border border-line bg-surface p-5">

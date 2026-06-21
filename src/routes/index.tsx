@@ -16,10 +16,10 @@ const homeFaqs = faqs.slice(0, 8);
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clockout — 9-day automation builds for local service businesses" },
-      { name: "description", content: "What would you do with 10 extra hours a week? 48-hour audit, 7-day build, you own it outright. Flat fee. No subscription." },
-      { property: "og:title", content: "Clockout — What would you do with 10 extra hours a week?" },
-      { property: "og:description", content: "I audit your business in 48 hours, surface $10K+ in fixable revenue leaks, and build the automations in 7 days — for one flat fee. 10 hrs/week back in 30 days or free." },
+      { title: "Clockout — 7-Day Automation Builds for Local Service Businesses" },
+      { name: "description", content: "What would you do with 10 extra hours a week? Money-Leak Map delivered in 20 minutes. Full build in 7 days. You own everything. No contracts." },
+      { property: "og:title", content: "Clockout — 10 Hours Back. You Own the System." },
+      { property: "og:description", content: "I hand you a Money-Leak Map that shows exactly where you're losing time and money. Then I build the automations in 7 days — for one flat fee. 10 hrs/week back in 30 days or free." },
       { property: "og:url", content: "https://clockout.us/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -79,7 +79,7 @@ function Index() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            One flat price. No retainer. No subscription. Ever.
+            One flat price. No contracts. Cancel anytime. You own everything.
           </h2>
           <OfferCard />
         </div>

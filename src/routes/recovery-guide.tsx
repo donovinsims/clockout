@@ -6,7 +6,7 @@ export const Route = createFileRoute("/recovery-guide")({
   head: () => ({
     meta: [
       { title: "10-Hour Recovery Guide — Clockout" },
-      { name: "description", content: "Five strategies to recover 10 hours a week in your service business — without hiring, without software subscriptions, without burning out." },
+      { name: "description", content: "Five strategies to recover 10 hours a week in your service business — without hiring, without lock-in contracts, without burning out." },
       { property: "og:title", content: "10-Hour Recovery Guide — Clockout" },
       { property: "og:description", content: "Five strategies to recover 10 hours a week in your service business. Free download." },
     ],
@@ -69,7 +69,7 @@ function RecoveryGuide() {
             The 10-Hour Recovery Guide
           </h1>
           <p className="mt-6 text-xl text-muted-foreground">
-            Five strategies to take back a full day a week in your service business. No software subscriptions. No hiring. No fluff.
+            Five strategies to take back a full day a week in your service business. No contracts. No hiring. No fluff.
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
             10 minutes to read. Start implementing Monday.
@@ -91,7 +91,7 @@ function RecoveryGuide() {
           </p>
           <p className="mt-6 rounded-lg border border-line bg-surface/40 p-4 text-sm text-muted-foreground">
             <strong className="text-foreground">One caveat:</strong> These are strategies, not software recommendations. The tools don't matter. The system does. If you want the full audit with dollar figures specific to your shop,{" "}
-            <a href="/assessment" className="underline underline-offset-2 hover:text-primary">book the 48-hour assessment</a>.
+            <a href="/assessment" className="underline underline-offset-2 hover:text-primary">book your Money-Leak Map</a>.
           </p>
         </div>
       </section>
@@ -142,7 +142,7 @@ function RecoveryGuide() {
             <div className="bg-background p-6">
               <div className="mono-num text-2xl text-primary">$0/mo</div>
               <p className="mt-2 text-sm text-muted-foreground">
-                Ongoing software fees. Automation built inside tools you already use. You own it outright.
+                No contracts. Automation built inside tools you already use. You own everything.
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@ function RecoveryGuide() {
         </div>
       </section>
 
-      <FinalCta headline="Want me to find your specific leaks? 48 hours. Flat fee." />
+      <FinalCta headline="Want me to find your specific leaks? Money-Leak Map. Flat fee." />
     </SiteShell>
   );
 }

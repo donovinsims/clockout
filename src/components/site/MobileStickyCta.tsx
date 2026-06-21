@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Calendar } from "lucide-react";
 
 /**
  * Minimal mobile floating CTA.
@@ -46,13 +45,13 @@ export function MobileStickyCta() {
   return (
     <Link
       to="/assessment"
-      aria-label="Book the free 48-hour audit"
-      className={`md:hidden fixed right-3 z-40 grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg ring-1 ring-black/5 transition-all duration-200 active:scale-95 ${
+      aria-label="Find the Money I'm Losing"
+      className={`md:hidden fixed right-3 z-40 flex h-11 items-center gap-1.5 rounded-full bg-primary px-3 text-xs font-medium text-primary-foreground shadow-lg ring-1 ring-black/5 transition-all duration-200 active:scale-95 whitespace-nowrap ${
         show ? "opacity-100 translate-y-0" : "pointer-events-none opacity-0 translate-y-3"
       }`}
       style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)" }}
     >
-      <Calendar className="h-5 w-5" aria-hidden />
+      Find $ Leaks
     </Link>
   );
 }

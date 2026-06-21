@@ -28,8 +28,8 @@ export const Route = createFileRoute("/services/$slug")({
         ],
       };
     }
-    const title = `${i.name} Automation in ${i.town}, IL — Clockout · 9-Day Builds, You Own It`;
-    const description = `${i.painHeadline} Flat-fee, one-time automation builds for ${i.name.toLowerCase()} shops in ${i.town} and across the Rockford–Roscoe–Beloit corridor. $497 beta. You own the system. No subscription.`;
+    const title = `${i.name} Automation in ${i.town}, IL — Clockout · 7-Day Builds, You Own the System`;
+    const description = `Flat-fee automation builds for ${i.name.toLowerCase()} shops in ${i.town} and across the Rockford–Roscoe–Beloit corridor. $497 beta. Money-Leak Map included. No contracts.`;
     const url = `https://clockout.us/services/${params.slug}`;
     return {
       meta: [
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/services/$slug")({
               "@type": "Offer",
               price: 497,
               priceCurrency: "USD",
-              description: "Beta pricing — 48-hour audit + 7-day automation build, one-time flat fee.",
+              description: "Beta pricing — Money-Leak Map + 7-day automation build, one-time flat fee.",
             },
           }),
         },
@@ -123,7 +123,7 @@ function IndustryPage() {
               {i.heroSub(i.town)}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <CTA to="/assessment" size="lg">Book the 48-hour audit →</CTA>
+              <CTA to="/assessment" size="lg">Find the Money I'm Losing →</CTA>
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
               <BetaSpots />
@@ -148,9 +148,9 @@ function IndustryPage() {
                   <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-foreground">48hr Audit</div>
+                  <div className="text-sm font-semibold text-foreground">Money-Leak Map</div>
                   <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    One real job tracked through your business
+                    Every revenue leak priced in dollars
                   </div>
                 </div>
               </motion.div>
@@ -206,7 +206,7 @@ function IndustryPage() {
                 <div>
                   <div className="text-sm font-semibold text-foreground">Day 9 Handover</div>
                   <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Every credential — you own it, no subscription
+                    Every credential — you own everything, no contracts
                   </div>
                 </div>
               </motion.div>
@@ -274,7 +274,7 @@ function IndustryPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            $497, all-in. You own everything. 10 hrs/week back in 30 days or the build is free.
+            $497, all-in. You own the system. Money-Leak Map included. 10 hrs/week back in 30 days or free.
           </h2>
           <OfferCard />
         </div>
@@ -285,7 +285,7 @@ function IndustryPage() {
 
       {/* 8. FinalCta */}
       <FinalCta
-        headline={`Tell me about your ${i.name.toLowerCase()} shop. I'll show you the leak in 48 hours.`}
+        headline={`${i.name.toLowerCase()} shop. I'll hand you a Money-Leak Map.`}
       />
     </SiteShell>
   );
