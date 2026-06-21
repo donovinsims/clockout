@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { createSubscriber } from "@/lib/api/sequenzy.functions";
 
 const LS_KEY = "clockout_lead_magnet";
@@ -38,6 +39,13 @@ function isExpired(record: LsRecord) {
   return Date.now() - record.dismissedAt > SHOW_AGAIN_DAYS * 24 * 60 * 60 * 1000;
 }
 
+function maskEmail(email: string) {
+  const [name, domain] = email.split("@");
+  if (!domain) return email;
+  const visible = name.length > 2 ? name.slice(0, 2) : name.slice(0, 1);
+  return `${visible}***@${domain}`;
+}
+
 const INDUSTRIES = [
   { value: "hvac", label: "HVAC" },
   { value: "plumbing", label: "Plumbing" },
@@ -58,9 +66,13 @@ export function LeadMagnetPopup() {
   const [industry, setIndustry] = useState("");
   const [capturing, setCapturing] = useState(false);
   const [captured, setCaptured] = useState(false);
+  const [wasSubscriberAlready, setWasSubscriberAlready] = useState(false);
   const [error, setError] = useState("");
   const shownRef = useRef(false);
+  const successRef = useRef<HTMLDivElement>(null);
   const exitShownRef = useRef(false);
+  const prefersReducedMotion =
+    isBrowser() && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const record = getDismissal();
   const suppressed = record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record));
@@ -106,7 +118,15 @@ export function LeadMagnetPopup() {
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, [suppressed]);
 
+  // Focus success panel on conversion for a11y
+  useEffect(() => {
+    if (captured && successRef.current) {
+      successRef.current.focus();
+    }
+  }, [captured]);
+
   const handleDismiss = () => {
+    if (captured) return;
     setVisible(false);
     setDismissed();
   };
@@ -132,6 +152,7 @@ export function LeadMagnetPopup() {
         const parsed = JSON.parse(raw);
         if (parsed?.error?.includes("already exists") || parsed?.error?.includes("duplicate")) {
           setCaptured(true);
+          setWasSubscriberAlready(true);
           setConverted();
           return;
         }
@@ -144,6 +165,7 @@ export function LeadMagnetPopup() {
       }
       if (raw.includes("already exists") || raw.includes("duplicate")) {
         setCaptured(true);
+        setWasSubscriberAlready(true);
         setConverted();
       } else if (raw.includes("SEQUENZY_API_KEY not configured")) {
         setError("Service temporarily unavailable. Email contact@clockout.us and we'll send it right over.");
@@ -282,24 +304,78 @@ export function LeadMagnetPopup() {
                   </button>
                 </>
               ) : (
-                <div className="py-4 text-center">
-                  <div className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-primary/15 text-primary">
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground">Guide sent!</h3>
+                <motion.div
+                  key="captured"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  ref={successRef}
+                  role="status"
+                  aria-live="polite"
+                  tabIndex={-1}
+                  className="py-4 text-center outline-none"
+                >
+                  {/* Animated checkmark */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={
+                      prefersReducedMotion
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 300, damping: 18 }
+                    }
+                    className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-primary/15"
+                  >
+                    <motion.svg
+                      className="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0 }
+                          : { duration: 0.4, delay: 0.15, ease: "easeOut" }
+                      }
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </motion.svg>
+                  </motion.div>
+
+                  <h3 className="text-lg font-semibold text-foreground">
+                    You're in, {name}!
+                  </h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Check your inbox. Want the full leak assessment?
+                    {wasSubscriberAlready
+                      ? "You're already subscribed — no duplicates, you just saved me the trouble."
+                      : `Sent to ${maskEmail(email)}. Check your inbox!`}
                   </p>
-                  <a
-                    href="/assessment"
+
+                  <Link
+                    to="/assessment"
                     onClick={handleDismiss}
-                    className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+                    className="mt-4 block w-full rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
                   >
                     Find the Money I'm Losing →
-                  </a>
-                </div>
+                  </Link>
+
+                  <button
+                    onClick={() => {
+                      setVisible(false);
+                      setDismissed();
+                    }}
+                    className="mt-2 w-full text-center text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+                  >
+                    No thanks, I'll do the math myself
+                  </button>
+                </motion.div>
               )}
             </div>
           </motion.div>
