@@ -8,6 +8,7 @@ import { FinalCta } from "@/components/site/FinalCta";
 import { CTA } from "@/components/site/CTA";
 import { BetaSpots } from "@/components/site/BetaSpots";
 import { getIndustry } from "@/data/industries";
+import { getHeroSub } from "@/lib/heroSub";
 import { towns as allServiceTowns } from "@/data/serviceArea";
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
@@ -120,7 +121,7 @@ function IndustryPage() {
               {i.heroHeadline}
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              {i.heroSub(i.town)}
+              {getHeroSub(i.slug, i.town)}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">Find the Money I'm Losing →</CTA>

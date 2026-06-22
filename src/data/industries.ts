@@ -4,7 +4,6 @@ export type Industry = {
   short: string;
   painHeadline: string;
   heroHeadline: string;
-  heroSub: (town: string) => string;
   proof: { label: string; stat: string }[];
   pains: string[];
   built: string[];
@@ -18,7 +17,6 @@ export const industries: Industry[] = [
     short: "Heating & cooling shops",
     painHeadline: "Missed calls walking next door to your competitor.",
     heroHeadline: "Three missed calls today. Two of them just hired someone else.",
-    heroSub: (t) => `For HVAC shops in ${t} and across Northern Illinois. 62% of calls to home service businesses go unanswered. At a $450 ticket, that's a new truck payment leaking out every month.`,
     proof: [
       { stat: "62%", label: "of calls to home service businesses go unanswered (ServiceTitan, 2025)" },
       { stat: "86%", label: "of callers who hit voicemail never leave a message" },
@@ -46,7 +44,6 @@ export const industries: Industry[] = [
     short: "Residential & commercial plumbing",
     painHeadline: "Emergencies answered after your competitor already rolled a truck.",
     heroHeadline: "The pipe burst at 9pm. They called three plumbers. You were the third to call back.",
-    heroSub: (t) => `For plumbing crews in ${t} and the Rockford corridor. A 550K technician shortfall is coming by 2027 — the shops that automate intake and dispatch are the ones still standing.`,
     proof: [
       { stat: "550K", label: "projected plumbing technician shortfall by 2027 (PMI)" },
       { stat: "1 hr", label: "average time a lead stays warm after an unanswered call" },
@@ -74,7 +71,6 @@ export const industries: Industry[] = [
     short: "Storm chasers & retail roofing",
     painHeadline: "Storm leads cold by the time you follow up.",
     heroHeadline: "The hail hit Tuesday. By Friday, half your leads signed with someone else.",
-    heroSub: (t) => `For roofers in ${t} and Northern Illinois storm territory. Speed-to-lead is the whole game after a hail event. Two-day follow-up is how you lose the season.`,
     proof: [
       { stat: "80%", label: "drop in conversion when first response takes >5 minutes" },
       { stat: "3 hrs", label: "average tech wastes per day on paperwork and admin" },
@@ -102,7 +98,6 @@ export const industries: Industry[] = [
     short: "Residential & commercial electrical",
     painHeadline: "Disorganized schedules, late invoices, and code paperwork eating evenings.",
     heroHeadline: "You're a master electrician. You spent Sunday night doing data entry.",
-    heroSub: (t) => `For electrical contractors in ${t} and across the Rockford corridor. The license is in your name. The paperwork shouldn't be in your evenings.`,
     proof: [
       { stat: "78%", label: "of contractor shops employ fewer than 10 people (ACCA)" },
       { stat: "2 hrs/day", label: "techs lose to admin noise — 25% of productive time" },
@@ -130,7 +125,6 @@ export const industries: Industry[] = [
     short: "Lawn, design, & maintenance",
     painHeadline: "Recurring revenue that isn't actually recurring.",
     heroHeadline: "Your best customers from last year. Half of them didn't sign back up.",
-    heroSub: (t) => `For lawn and landscape crews in ${t} and Northern Illinois. The route is your asset. Letting it churn every winter is how a good year turns into a flat year.`,
     proof: [
       { stat: "20–35%", label: "of unsigned quotes recovered when follow-up is automated" },
       { stat: "5×", label: "the cost to win a new customer vs. keep an existing one" },
@@ -158,7 +152,6 @@ export const industries: Industry[] = [
     short: "Residential & commercial cleaning",
     painHeadline: "No-shows, churn, and reviews you never asked for.",
     heroHeadline: "Three cancellations this week. Two customers ghosted. You're driving anyway.",
-    heroSub: (t) => `For cleaning companies in ${t} and across the region. The schedule is your inventory. Empty slots are inventory that already expired.`,
     proof: [
       { stat: "30%", label: "of recurring cleaning customers churn in the first 6 months" },
       { stat: "60%", label: "of no-shows are recovered by an automated reminder 24 hours out" },
@@ -186,7 +179,6 @@ export const industries: Industry[] = [
     short: "Residential & commercial PMs",
     painHeadline: "Maintenance requests dropped. Owners chasing you for updates.",
     heroHeadline: "Tenant texted on Saturday. You forwarded it. It's Tuesday. Nothing happened.",
-    heroSub: (t) => `For property managers in ${t} and Northern Illinois. The owners pay you to handle it. Handling it shouldn't require you reading every email.`,
     proof: [
       { stat: "52%", label: "of field service work still runs on manual or paper processes" },
       { stat: "24 hrs", label: "is the new tenant-expectation window for a maintenance response" },
@@ -214,7 +206,6 @@ export const industries: Industry[] = [
     short: "Producing agents & small teams",
     painHeadline: "Leads that never get a second call.",
     heroHeadline: "Open house pulled in 14 names. You called 6. The rest forgot you exist.",
-    heroSub: (t) => `For producing agents and small teams in ${t} and across the region. Speed-to-lead and follow-up cadence are the whole game. Both are fixable in a week.`,
     proof: [
       { stat: "8×", label: "more likely to convert a lead contacted in <5 min vs. >30 min" },
       { stat: "12 touches", label: "average it takes to close a buyer. Most agents make 2." },
