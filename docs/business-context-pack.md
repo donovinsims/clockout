@@ -1,4 +1,4 @@
-# Clockout — Business Context Pack
+# Business Context Pack
 
 Reusable context for Donovin and for any AI agent working on Clockout. Everything here reflects the **current, post-pivot state** of the business (as of June 2026).
 

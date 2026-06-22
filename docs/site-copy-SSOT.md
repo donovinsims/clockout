@@ -1,4 +1,4 @@
-# Clockout — Site Copy: Single Source of Truth (Master Spec)
+# Site Copy: Single Source of Truth (Master Spec)
 
 **This one file is the complete, current spec for the clockout.us copy update.** It contains the offer model, every global rule, the component/data changes, the full ready-to-paste copy for every page, and the verification checklist. You should not need any other document.
 

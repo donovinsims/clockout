@@ -1,4 +1,4 @@
-# Clockout — Offer & Pricing
+# Offer & Pricing
 
 Purpose: the canonical offer ladder, prices, anchors, guarantees, and rules — reusable business context for the founder and AI agents. Anchor to these facts; never contradict them, never invent numbers.
 

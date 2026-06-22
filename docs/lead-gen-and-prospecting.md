@@ -1,4 +1,4 @@
-# Clockout — Lead-Gen & Prospecting
+# Lead-Gen & Prospecting
 
 A repeatable playbook for finding, scoring, and enriching owner-operated local-trade leads — re-runnable for batch 2 by the founder or an AI agent.
 

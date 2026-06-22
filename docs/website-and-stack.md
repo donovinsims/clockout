@@ -1,4 +1,4 @@
-# Clockout — Website & Stack
+# Website & Stack
 
 Reusable context on how clockout.us is built, where copy lives, and how the funnel is wired — for the founder and any AI coding agent working on the site.
 

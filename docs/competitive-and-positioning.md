@@ -1,4 +1,4 @@
-# Clockout — Competitive & Positioning
+# Competitive & Positioning
 
 Internal/agent reference for how Clockout is positioned against the alternatives, the wedge that makes it a category-of-one, and how to talk about competitors honestly. Anchor to this; do not contradict or invent numbers.
 

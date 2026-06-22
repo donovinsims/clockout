@@ -1,4 +1,4 @@
-# Clockout — ICP & Market
+# ICP & Market
 
 *Who Clockout is for, who it isn't, and what the market will actually pay. Reusable business context for the founder and AI agents.*
 

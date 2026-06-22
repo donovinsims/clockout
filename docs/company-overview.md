@@ -1,4 +1,4 @@
-# Clockout — Company Overview
+# Company Overview
 
 > Reusable business context for the founder and AI agents. Internal reference — accurate and structured, not marketing copy.
 

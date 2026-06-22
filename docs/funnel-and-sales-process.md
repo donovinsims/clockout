@@ -1,4 +1,4 @@
-# Clockout — Funnel & Sales Process
+# Funnel & Sales Process
 
 Internal reference for how a stranger becomes a paying client at Clockout — the end-to-end funnel, the audit-call talk track, the objection library, the follow-up emails, and where the funnel leaks. Reuse as context for the founder (Donovin) and AI agents. Plain founder voice; reuse the term **"Money-Leak Map"** everywhere.
 

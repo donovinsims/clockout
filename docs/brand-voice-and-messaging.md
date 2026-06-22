@@ -1,4 +1,4 @@
-# Clockout — Brand Voice & Messaging
+# Brand Voice & Messaging
 
 Reusable context so anyone — the founder or any AI agent — writing for Clockout stays on-voice. Internal use.
 
