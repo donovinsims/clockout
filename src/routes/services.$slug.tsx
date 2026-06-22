@@ -274,7 +274,12 @@ function IndustryPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            $497, all-in. You own the system. Money-Leak Map included. 10 hrs/week back in 30 days or free.
+            Start free. A 20-minute call where I show you exactly where your{" "}
+            {i.name.toLowerCase()} shop is leaking money — plus a written plan
+            you keep. Want it fixed? The build's $497 (beta, reg. $1,494) and
+            you own everything — 10 hrs a week back in 30 days or I keep
+            working. Keep me on as your concierge after if you want — $750/mo,
+            month to month, cancel anytime.
           </h2>
           <OfferCard />
         </div>
@@ -285,7 +290,7 @@ function IndustryPage() {
 
       {/* 8. FinalCta */}
       <FinalCta
-        headline={`${i.name.toLowerCase()} shop. I'll hand you a Money-Leak Map.`}
+        headline={`Tell me about your ${i.name.toLowerCase()} shop. I'll show you the leaks — free, in a 20-minute call.`}
       />
     </SiteShell>
   );

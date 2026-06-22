@@ -1,8 +1,8 @@
 import { CTA } from "./CTA";
 
 export function FinalCta({
-  headline = "Stop guessing what the leak is",
-  sub = "Spend 20 minutes with me. I'll hand you a Money-Leak Map that shows exactly where you're losing time and money.",
+  headline = "Find out what your phone's been costing you.",
+  sub = "Free 20-minute call. Your Money-Leak Map to keep.",
 }: {
   headline?: string;
   sub?: string;

@@ -98,10 +98,7 @@ function AboutPage() {
 
               <h2 className="pt-6 text-3xl">How it works</h2>
               <p>
-                No contracts. Cancel anytime. You own everything. I come in, map every dollar leaking out of your business via the Money-Leak Map, build the system that stops it, and hand you the keys. You own it. No lock-in. No recurring bill.
-              </p>
-              <p>
-                Three missed calls a week at $450 average ticket is $5,400 gone every month. That's what we're fixing.
+                I don't lock you into anything. It starts with a free 20-minute call where I show you exactly where your business is leaking money. Want it fixed? I build it right inside your tools and hand you every login \u2014 you own it outright, no contract, no monthly fee required. Three missed calls a week at a $450 ticket is $5,400 gone every month. That's what we're fixing. And if you'd rather keep me in your corner after \u2014 building something new every couple of weeks \u2014 you can. Month to month, cancel anytime. Your call, never a condition.
               </p>
             </div>
 

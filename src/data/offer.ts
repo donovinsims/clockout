@@ -1,5 +1,5 @@
 export const GUARANTEE =
-  "Money-Back Guarantee: If your Money-Leak Map doesn't identify at least 10 hours/week in recoverable time and the resulting leak is less than $10K/year, you don't pay a dime. Full refund, no questions.";
+  "The 10-Hour Guarantee: if the Build doesn't give you back 10 hours a week within 30 days, I keep working \u2014 free \u2014 until it does.";
 
 export const offer = {
   betaPrice: 497,
@@ -8,16 +8,17 @@ export const offer = {
   spotsRemaining: 3,
   buildDays: 7,
   ownership: "No contracts. Cancel anytime. You own everything.",
-  ctaPrimary: "Reserve Beta Access",
-  ctaSecondary: "See my revenue leaks",
+  ctaPrimary: "Find the Money I'm Losing \u2192",
+  ctaSecondary: "",
   assessmentPath: "/assessment",
 } as const;
 
 export const includes = [
   "Full lead-to-cash workflow mapping",
-  "Money-Leak Map — a written report quantifying every revenue and time leak in dollars",
-  "Custom automation build for your top leaks, installed in 7 days",
-  "Lives inside the tools you already use — no new logins for your team",
+  "Money-Leak Map \u2014 a written report quantifying every revenue and time leak in dollars",
+  "Custom automation build for your top leaks, installed in days",
+  "Lives inside the tools you already use \u2014 no new logins for your team",
   "Full handover: demo, documentation, training",
   "You keep every login, every doc, every line of code",
+  "30 days of tuning after handover",
 ];

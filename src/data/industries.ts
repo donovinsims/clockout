@@ -106,7 +106,7 @@ export const industries: Industry[] = [
     proof: [
       { stat: "78%", label: "of contractor shops employ fewer than 10 people (ACCA)" },
       { stat: "2 hrs/day", label: "techs lose to admin noise — 25% of productive time" },
-      { stat: "$0", label: "monthly software fees once Clockout is installed. You own it." },
+      { stat: "1 fee", label: "One flat build fee. You own the system. No monthly bills." },
     ],
     pains: [
       "Schedule changes texted to the wrong tech. He shows up. Job's not ready. Day lost.",

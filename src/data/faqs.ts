@@ -1,50 +1,58 @@
 export const faqs = [
   {
-    q: "How is this different from hiring an employee or a VA?",
-    a: "An employee costs $40K–$60K/year before taxes and management overhead. A VA costs $500–$1K/month but requires you to document every step. Clockout is a one-time build fee, you own everything, and you never pay a monthly subscription. I do the discovery, build the systems, hand you the keys, and you never pay again.",
+    q: "What does the free audit actually include?",
+    a: "It starts with a 20-minute call. Before we talk, I dig into your business; on the call I walk you through exactly where you're losing jobs and money — missed calls, cold quotes, dead follow-ups. A day later you get it in writing: your biggest leaks, ranked, and what I'd fix first. Yours to keep, whether you hire me or not.",
   },
   {
-    q: "What exactly do I get for the build fee?",
-    a: "A complete, documented automation system built specifically for your business. You get automated client intake (text-to-book), smart scheduling with reminders, payment collection and follow-up, review generation sequences, and a custom operations dashboard. Every flow is built in Make and integrated with your existing tools. You own the Make account, the templates, the documentation — everything.",
+    q: "What's the guarantee, in plain words?",
+    a: "The audit's free — nothing to lose there. And the build is guaranteed: if it doesn't give you back 10 hours a week within 30 days, I keep working until it does, free.",
   },
   {
-    q: "What trades do you work with?",
-    a: "HVAC, plumbing, electrical, roofing, landscaping, pest control, cleaning, and home services. If you run a local service business where technicians go to customer locations, I can build for you.",
+    q: "I already use ServiceTitan / Housecall Pro / GHL. Does this replace it?",
+    a: "No — it installs on top of what you already use. I build the automations inside your existing tools with Make.com, so nothing changes for your team. No new logins, no forced platform swaps.",
   },
   {
-    q: "How long does the Build process take?",
-    a: "The Beta Build takes 7 days from kickoff to handoff. The Standard Build takes 14 days. Concierge starts at a 12-week minimum and includes ongoing optimization. Either way, you start seeing automated workflows within days, not months.",
+    q: "What does \"you own it\" actually mean?",
+    a: "Everything I build is yours — every login, API key, line of code, and doc. No contract, no required monthly fee. If you want to keep me on as your concierge afterward, you can — but that's a choice you make month to month and cancel anytime, never a lock-in. Stop any time and you keep everything I built.",
   },
   {
-    q: "What if something breaks or needs to change?",
-    a: "You own everything — the Make scenarios, the templates, the integration config. If something breaks, you can fix it yourself, hire any Make expert, or ask me. There's no lock-in, no recurring obligation.",
+    q: "Is there ongoing support after the build?",
+    a: "Optional. If you'd rather keep a pro building with you, that's the Operator OS Concierge — a new automation every couple of weeks plus on-call help between, for $750/mo (founding rate, cancel anytime). Most owners start with just the build and add it later, if at all.",
   },
   {
-    q: "What if I'm not technical at all?",
-    a: "That's the point. I do all the technical work. You tell me how your business runs, I build the automation, and I hand you a working system with documentation. If you can send a text message, you can manage what we build.",
+    q: "How is this $497 when an agency quoted me $4K/month?",
+    a: "Beta pricing. I'm building for the first 8 clients at $497 in exchange for a documented before/after case study — I get the proof, you get the deal. After launch the same build is $1,494.",
   },
   {
-    q: "Do you offer refunds?",
-    a: "The Money-Back Guarantee covers what the Money-Leak Map promises. If the build doesn't deliver the mapped savings, you get a full refund. I'm that confident in the process.",
+    q: "Why can't I just hire a VA for this?",
+    a: "A VA costs $500–$1K/month and requires you to document every step and manage them. I build the whole system end-to-end — I do the discovery, build the automations, and hand you the keys. One flat fee. You own it. No monthly management.",
   },
   {
-    q: "What about ongoing support?",
-    a: "All builds include a 30-day post-launch check-in to make sure everything is running smoothly. After that, you own the system. If you want ongoing management, that's what Concierge is for.",
+    q: "How long until I see results?",
+    a: "Missed-call rescue goes live in week 1. Quote follow-up and reactivation sequences are running by days 14–30. You're saving a full 10 hours a week by day 30.",
   },
   {
-    q: "Can I see examples of what you've built?",
-    a: "Yes — I'll show you case studies and examples during our assessment call. Every system is custom-built, so what you see gives you a clear picture of what yours will look like.",
+    q: "What if I'm not in Northern Illinois or Wisconsin?",
+    a: "During the beta I'm working with shops nationwide. Everything's delivered remotely — no location requirement.",
   },
   {
-    q: "How do payments work?",
-    a: "Build is a one-time fee — 50% to start, 50% at handoff. Concierge is month-to-month at $750/mo with a 12-week minimum.",
+    q: "What if I decide not to move forward after the audit?",
+    a: "Then you keep the written plan and fix whatever you want with it yourself. The audit's free either way — no pitch, no pressure.",
   },
   {
-    q: "What tools do you use?",
-    a: "Make.com for automations, GoHighLevel for client management, Google Calendar/Calendly for scheduling, Stripe/Square for payments, and Twilio for SMS. I integrate everything into your existing stack — no forced platform swaps.",
+    q: "Who's actually doing the work?",
+    a: "Me — Donovin. I run the audit, build every automation, and handle your handoff personally. No junior devs, no offshore team.",
   },
   {
-    q: "Do you work with agencies or multi-location businesses?",
-    a: "For single-location and small multi-location shops, Build or Concierge is the right fit. For enterprise operations with 10+ locations, reach out — I'll scope a custom engagement.",
+    q: "Is my data safe?",
+    a: "I build automations inside the tools you already trust — your own Make account, your own CRM, your own calendar. I never store or touch your customer data directly. Everything runs through your existing accounts with your existing security.",
+  },
+  {
+    q: "Do I have to sign up for the monthly concierge?",
+    a: "No. The build is a one-time thing you own outright. The concierge is there only if you want to keep me building — month to month, cancel anytime. You decide after you've seen the work.",
+  },
+  {
+    q: "Is the call just a sales pitch?",
+    a: "No — it's the audit. You'll leave knowing exactly where you're losing money, with a plan in writing, even if we never work together.",
   },
 ];

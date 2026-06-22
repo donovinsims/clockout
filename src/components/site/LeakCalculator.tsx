@@ -123,7 +123,7 @@ export function LeakCalculator() {
 
           <div className="mt-6 flex justify-center">
             <CTA to="/assessment" size="md">
-              Get the real number in 48 hours →
+              Get your Money-Leak Map →
             </CTA>
           </div>
 
