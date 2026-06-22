@@ -51,7 +51,7 @@ export function MobileStickyCta() {
       }`}
       style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)" }}
     >
-      Find $ Leaks
+      Find $ Leaks →
     </Link>
   );
 }

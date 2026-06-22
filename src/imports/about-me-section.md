@@ -24,7 +24,7 @@ I know that playbook. I'm bringing it home, applied to one shop at a time, at a 
 
 I take one job and trace it through your business — phone tree, CRM, dispatch, invoice. I find where money is leaking. I quantify it in dollars, not in adjectives. Then I build the fix inside the tools you already use and hand you every login when it's done.
 
-No retainer. No subscription. You own it.
+No contracts. Cancel anytime. You own everything.
 
 If it doesn't give you back ten hours a week inside thirty days, I keep working until it does. Free.
 

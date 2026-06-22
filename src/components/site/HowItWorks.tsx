@@ -3,11 +3,11 @@ import { FileText, MessageSquare, Key } from "lucide-react";
 const steps = [
   {
     n: "01",
-    label: "Audit",
-    time: "48 hours",
-    title: "I trace one real job through your business.",
+    label: "Call",
+    time: "20 min",
+    title: "We trace one real job together \u2014 for free.",
     body:
-      "Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking — missed calls, slow quotes, dropped follow-ups, churned customers. You get a written report with every leak quantified in dollars.",
+      "20-minute call. Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking \u2014 missed calls, slow quotes, dropped follow-ups, churned customers. Every leak priced in dollars. You keep the report either way.",
     icon: FileText,
     artifact: (
       <div className="rounded-[12px] border border-line bg-surface p-5">
@@ -38,10 +38,10 @@ const steps = [
   {
     n: "02",
     label: "Build",
-    time: "7 days",
+    time: "installed in days",
     title: "I build the fix inside the tools you already pay for.",
     body:
-      "24/7 front desk, missed-call rescue, quote follow-up, review pipeline, reactivation flows. Installed in your stack. Your team gets zero new logins.",
+      "24/7 front desk, missed-call rescue, quote follow-up, review pipeline, reactivation flows. Installed in your stack. Your team gets zero new logins. You own every login and line of code.",
     icon: MessageSquare,
     artifact: (
       <div className="mx-auto w-full max-w-xs rounded-[20px] border-4 border-foreground/10 bg-background p-3 shadow-card">
@@ -59,11 +59,11 @@ const steps = [
   },
   {
     n: "03",
-    label: "Handover",
-    time: "Day 9",
-    title: "You get every login, every doc, and the keys.",
+    label: "You own it",
+    time: "no contract",
+    title: "Keep me on as your concierge, or don\u2019t.",
     body:
-      "Full demo. Full documentation. Full training. You own the system outright. If I disappeared tomorrow, it keeps running. No contracts. Cancel anytime. You own everything.",
+      "Month to month, your call. I keep building new automations every couple of weeks and stay on call between. Or run it solo forever \u2014 you own every login and line of code either way. No contract, cancel anytime.",
     icon: Key,
     artifact: (
       <div className="rounded-[12px] border border-line bg-surface p-5">
@@ -94,7 +94,7 @@ export function HowItWorks() {
       <div className="container-x">
         <div className="eyebrow mb-3">The process</div>
         <h2 className="max-w-3xl text-4xl md:text-5xl">
-          Three steps. Nine days. Then it runs without you.
+          Free to start. Built in days. Yours to keep.
         </h2>
 
         <div className="mt-14 space-y-20">
