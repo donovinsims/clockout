@@ -31,7 +31,7 @@ function useCountUp(target: number, trigger: boolean, duration = 0.8) {
 
 export function LeakCalculator() {
   const [missed, setMissed] = useState(5);
-  const [ticket, setTicket] = useState(650);
+  const [ticket, setTicket] = useState(450);
   const annual = missed * ticket * 52;
   const weekly = missed * ticket;
   const monthly = weekly * 4;
@@ -117,8 +117,12 @@ export function LeakCalculator() {
               <span><span className="mono-num text-foreground">${fmt(monthly)}</span>/mo</span>
             </div>
             <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
-              <span className="mono-num">${fmt(annual)}/yr</span> → recovered by build week 2
+              <span className="mono-num">${fmt(annual)}/yr</span> → leaking out the door, every year
             </div>
+          </div>
+
+          <div className="mt-3 text-center text-xs text-muted-foreground">
+            Not every missed call is a job — plenty are spam or price-shoppers. The Build recovers the real ones, typically 20–35% of missed calls and cold quotes.
           </div>
 
           <div className="mt-6 flex justify-center">

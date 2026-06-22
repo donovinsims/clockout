@@ -138,8 +138,7 @@ function OperatorOsPage() {
             Shea S., Founder
           </blockquote>
           <p className="mt-6 text-sm italic text-dim">
-            [Add an in-trade concierge client story as soon as you have one —
-            this page needs it most.]
+            No trades testimonial yet — that's what these founding spots are for.
           </p>
         </div>
       </section>

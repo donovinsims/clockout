@@ -9,7 +9,7 @@ export function Hero() {
           {/* LEFT — copy */}
           <div>
             <div className="eyebrow mb-5">
-              The 7-Day Automation Build
+              Built in days. Yours to keep.
             </div>
             <h1
               className="font-display text-foreground"
@@ -20,10 +20,10 @@ export function Hero() {
                 fontWeight: 600,
               }}
             >
-              What would you do with 10 extra hours a week?
+              You're losing jobs you never even hear about.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-muted-foreground md:text-xl">
-              Stop losing 10+ hours a week to manual booking, billing, and follow-ups. I build custom automation systems for service businesses — and hand you the keys.
+              The phone rings while you're on a roof, under a sink, up a ladder — and whoever calls back first books the work. I find exactly where your money's leaking, then build the fix inside the tools you already pay for. You own it.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">
