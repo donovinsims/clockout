@@ -108,7 +108,9 @@ export function HowItWorks({ slug }: { slug?: string }) {
       <div className="container-x">
         <div className="eyebrow mb-3">The process</div>
         <h2 className="max-w-3xl text-4xl md:text-5xl">
-          Free to start. Built in days. Yours to keep.
+          Free to start. Built in days.
+          <br />
+          Yours to keep.
         </h2>
 
         <div className="mt-14 space-y-20">
