@@ -62,7 +62,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 160);
 
-  --primary: oklch(0.40 0.13 160);
+  --primary: oklch(0.4 0.13 160);
   --primary-foreground: oklch(0.98 0.005 150);
   --primary-hover: oklch(0.34 0.14 160);
 
@@ -74,7 +74,7 @@
   --secondary-foreground: oklch(0.18 0.02 160);
   --muted: oklch(0.96 0.008 150);
   --muted-foreground: oklch(0.46 0.015 160);
-  --accent: oklch(0.40 0.13 160);
+  --accent: oklch(0.4 0.13 160);
   --accent-foreground: oklch(0.98 0.005 150);
   --destructive: oklch(0.58 0.21 27);
   --destructive-foreground: oklch(0.98 0 0);
@@ -82,7 +82,7 @@
   --border: oklch(0.88 0.008 150);
   --line: oklch(0.92 0.006 150);
   --input: oklch(0.88 0.008 150);
-  --ring: oklch(0.40 0.13 160);
+  --ring: oklch(0.4 0.13 160);
 }
 
 .dark {
@@ -108,7 +108,10 @@
     background: var(--color-primary);
     color: var(--color-primary-foreground);
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
     font-weight: 600;
@@ -206,6 +209,10 @@
 }
 
 @utility torch {
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, oklch(0.40 0.13 160 / 0.03) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    oklch(0.4 0.13 160 / 0.03) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }

@@ -8,7 +8,8 @@ import { FinalCta } from "@/components/site/FinalCta";
 import { CTA } from "@/components/site/CTA";
 import { BetaSpots } from "@/components/site/BetaSpots";
 import { getIndustry } from "@/data/industries";
-import { getHeroSub } from "@/lib/heroSub";
+import { offer } from "@/data/offer";
+import { getHeroSub } from "@/lib/hero-subtitles";
 import { towns as allServiceTowns } from "@/data/serviceArea";
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
@@ -23,14 +24,11 @@ export const Route = createFileRoute("/services/$slug")({
     const i = loaderData?.industry;
     if (!i) {
       return {
-        meta: [
-          { title: "Industry not found — Clockout" },
-          { name: "robots", content: "noindex" },
-        ],
+        meta: [{ title: "Industry not found — Clockout" }, { name: "robots", content: "noindex" }],
       };
     }
     const title = `${i.name} Automation in ${i.town}, IL — Clockout · Built in Days, You Own the System`;
-    const description = `Flat-fee automation builds for ${i.name.toLowerCase()} shops in ${i.town} and across the Rockford–Roscoe–Beloit corridor. $497 beta. Money-Leak Map included. No contracts.`;
+    const description = `Flat-fee automation builds for ${i.name.toLowerCase()} shops in ${i.town} and across the Rockford–Roscoe–Beloit corridor. $${offer.betaPrice} beta. Money-Leak Map included. No contracts.`;
     const url = `https://clockout.us/services/${params.slug}`;
     return {
       meta: [
@@ -55,14 +53,27 @@ export const Route = createFileRoute("/services/$slug")({
             provider: {
               "@type": "LocalBusiness",
               name: "Clockout",
-              address: { "@type": "PostalAddress", addressLocality: "Roscoe", addressRegion: "IL", addressCountry: "US" },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Roscoe",
+                addressRegion: "IL",
+                addressCountry: "US",
+              },
               email: "contact@clockout.us",
               telephone: "+1-608-713-1651",
             },
-            areaServed: [i.town, "Rockford, IL", "Loves Park, IL", "Machesney Park, IL", "Roscoe, IL", "Beloit, WI", "Janesville, WI"],
+            areaServed: [
+              i.town,
+              "Rockford, IL",
+              "Loves Park, IL",
+              "Machesney Park, IL",
+              "Roscoe, IL",
+              "Beloit, WI",
+              "Janesville, WI",
+            ],
             offers: {
               "@type": "Offer",
-              price: 497,
+              price: offer.betaPrice,
               priceCurrency: "USD",
               description: "Beta pricing — Money-Leak Map + built in days, one-time flat fee.",
             },
@@ -75,11 +86,16 @@ export const Route = createFileRoute("/services/$slug")({
   notFoundComponent: () => (
     <SiteShell>
       <div className="container-x py-32 text-center">
-        <div className="mono-num text-xs uppercase tracking-wider text-amber">404 / industry not found</div>
+        <div className="mono-num text-xs uppercase tracking-wider text-amber">
+          404 / industry not found
+        </div>
         <h1 className="mt-4 text-4xl md:text-5xl">That trade page doesn't exist.</h1>
         <p className="mt-4 text-muted-foreground">Pick a trade from the menu, or head home.</p>
         <div className="mt-7 flex justify-center gap-3">
-          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90"
+          >
             Go home →
           </Link>
         </div>
@@ -116,7 +132,12 @@ function IndustryPage() {
             </div>
             <h1
               className="font-display"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 3.75rem)", lineHeight: 1.05, letterSpacing: "-0.02em", fontWeight: 600 }}
+              style={{
+                fontSize: "clamp(2.2rem, 5vw, 3.75rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                fontWeight: 600,
+              }}
             >
               {i.heroHeadline}
             </h1>
@@ -124,7 +145,9 @@ function IndustryPage() {
               {getHeroSub(i.slug, i.town)}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <CTA to="/assessment" size="lg">Find the Money I'm Losing →</CTA>
+              <CTA to="/assessment" size="lg">
+                Find the Money I'm Losing →
+              </CTA>
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
               <BetaSpots />
@@ -224,16 +247,17 @@ function IndustryPage() {
         <div className="container-x grid gap-14 md:grid-cols-[1fr_1.3fr]">
           <div>
             <div className="eyebrow mb-3">Where it hurts</div>
-            <h2 className="text-4xl md:text-5xl">
-              {i.painHeadline}
-            </h2>
+            <h2 className="text-4xl md:text-5xl">{i.painHeadline}</h2>
             <p className="mt-5 text-muted-foreground">
               You already know what this list says. Reading it out loud just makes it real.
             </p>
           </div>
           <ul className="space-y-5">
             {i.pains.map((p: string, idx: number) => (
-              <li key={p} className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5">
+              <li
+                key={p}
+                className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5"
+              >
                 <span className="mono-num text-primary">{String(idx + 1).padStart(2, "0")}</span>
                 <span className="text-[17px] text-foreground/90">{p}</span>
               </li>
@@ -262,7 +286,8 @@ function IndustryPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-muted-foreground">
-            Built right inside {i.toolName} — the system you already run. Your team gets zero new logins. You keep every credential.
+            Built right inside {i.toolName} — the system you already run. Your team gets zero new
+            logins. You keep every credential.
           </p>
         </div>
       </section>
@@ -275,12 +300,11 @@ function IndustryPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            Start free. A 20-minute call where I show you exactly where your{" "}
-            {i.name.toLowerCase()} shop is leaking money — plus a written plan
-            you keep. Want it fixed? The build's $497 (beta, reg. $1,494) and
-            you own everything — 10 hrs a week back in 30 days or I keep
-            working. Keep me on as your concierge after if you want — $750/mo,
-            month to month, cancel anytime.
+            Start free. A 20-minute call where I show you exactly where your {i.name.toLowerCase()}{" "}
+            shop is leaking money — plus a written plan you keep. Want it fixed? The build's $
+            {offer.betaPrice} (beta, reg. ${offer.standardPrice.toLocaleString()}) and you own
+            everything — 10 hrs a week back in 30 days or I keep working. Keep me on as your
+            concierge after if you want — $750/mo, month to month, cancel anytime.
           </h2>
           <OfferCard />
         </div>

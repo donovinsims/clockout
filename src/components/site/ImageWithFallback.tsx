@@ -9,7 +9,14 @@ type Props = {
   className?: string;
 };
 
-export function ImageWithFallback({ src, alt, width = 400, height = 500, label, className = "" }: Props) {
+export function ImageWithFallback({
+  src,
+  alt,
+  width = 400,
+  height = 500,
+  label,
+  className = "",
+}: Props) {
   const [errored, setErrored] = useState(false);
   // If no source or image failed to load, don't render anything.
   if (!src || errored) return null;

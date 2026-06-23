@@ -20,7 +20,10 @@ export const industries: Industry[] = [
     painHeadline: "Missed calls walking next door to your competitor.",
     heroHeadline: "Three missed calls today. Two of them just hired someone else.",
     proof: [
-      { stat: "62%", label: "of calls to home service businesses go unanswered (ServiceTitan, 2025)" },
+      {
+        stat: "62%",
+        label: "of calls to home service businesses go unanswered (ServiceTitan, 2025)",
+      },
       { stat: "86%", label: "of callers who hit voicemail never leave a message" },
       { stat: "<60s", label: "response time wins the job. Five minutes loses it." },
     ],
@@ -38,7 +41,8 @@ export const industries: Industry[] = [
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: calls answered, quotes recovered, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Northside HVAC — sorry I missed you. Want me to grab your address and book a tech first thing tomorrow?",
+    demoText:
+      "Hey, this is Donovin with Northside HVAC — sorry I missed you. Want me to grab your address and book a tech first thing tomorrow?",
     toolName: "Housecall Pro",
     town: "Loves Park",
   },
@@ -47,7 +51,8 @@ export const industries: Industry[] = [
     name: "Plumbing",
     short: "Residential & commercial plumbing",
     painHeadline: "Emergencies answered after your competitor already rolled a truck.",
-    heroHeadline: "The pipe burst at 9pm. They called three plumbers. You were the third to call back.",
+    heroHeadline:
+      "The pipe burst at 9pm. They called three plumbers. You were the third to call back.",
     proof: [
       { stat: "550K", label: "projected plumbing technician shortfall by 2027 (PMI)" },
       { stat: "1 hr", label: "average time a lead stays warm after an unanswered call" },
@@ -67,7 +72,8 @@ export const industries: Industry[] = [
       "Review and repeat-customer flows so the people who already love you actually come back",
       "Weekly performance snapshot: emergencies triaged, invoices collected, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Ajax Plumbing — sorry I missed you. Got a burst pipe or a leak? Text me your address and I'll get someone out tonight.",
+    demoText:
+      "Hey, this is Donovin with Ajax Plumbing — sorry I missed you. Got a burst pipe or a leak? Text me your address and I'll get someone out tonight.",
     toolName: "Housecall Pro",
     town: "Rockford",
   },
@@ -96,7 +102,8 @@ export const industries: Industry[] = [
       "Quote-to-contract follow-up so the signature actually gets chased",
       "Weekly performance snapshot: storm leads captured, claims tracked, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with American Roofing — sorry I missed you. Need a storm-damage inspection or a repair estimate? Text me your address and I'll get a guy out this week.",
+    demoText:
+      "Hey, this is Donovin with American Roofing — sorry I missed you. Need a storm-damage inspection or a repair estimate? Text me your address and I'll get a guy out this week.",
     toolName: "JobNimbus",
     town: "Belvidere",
   },
@@ -125,7 +132,8 @@ export const industries: Industry[] = [
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: service calls dispatched, quotes followed up, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with All-City Electric — sorry I missed you. Need a panel upgrade, service call, or a quote for new construction? Text me and I'll get you on the schedule.",
+    demoText:
+      "Hey, this is Donovin with All-City Electric — sorry I missed you. Need a panel upgrade, service call, or a quote for new construction? Text me and I'll get you on the schedule.",
     toolName: "ServiceTitan",
     town: "Machesney Park",
   },
@@ -138,7 +146,10 @@ export const industries: Industry[] = [
     proof: [
       { stat: "20–35%", label: "of unsigned quotes recovered when follow-up is automated" },
       { stat: "5×", label: "the cost to win a new customer vs. keep an existing one" },
-      { stat: "60s", label: "callback time on missed calls. The lead doesn't know you were on a mower." },
+      {
+        stat: "60s",
+        label: "callback time on missed calls. The lead doesn't know you were on a mower.",
+      },
     ],
     pains: [
       "Spring renewal season hits and you're calling last year's list by hand. Half don't pick up.",
@@ -154,7 +165,8 @@ export const industries: Industry[] = [
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: renewals triggered, quotes won, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with GreenScape — sorry I missed you. Need a spring cleanup estimate or want to lock in your mowing schedule? Text me your address.",
+    demoText:
+      "Hey, this is Donovin with GreenScape — sorry I missed you. Need a spring cleanup estimate or want to lock in your mowing schedule? Text me your address.",
     toolName: "Jobber",
     town: "Roscoe",
   },
@@ -167,7 +179,10 @@ export const industries: Industry[] = [
     proof: [
       { stat: "30%", label: "of recurring cleaning customers churn in the first 6 months" },
       { stat: "60%", label: "of no-shows are recovered by an automated reminder 24 hours out" },
-      { stat: "5-star", label: "review rates triple when the ask is automated, not asked verbally" },
+      {
+        stat: "5-star",
+        label: "review rates triple when the ask is automated, not asked verbally",
+      },
     ],
     pains: [
       "Customer books online, you confirm, they ghost. No reminder, no recovery, slot lost.",
@@ -183,7 +198,8 @@ export const industries: Industry[] = [
       "Front-desk AI that handles reschedules and new bookings 24/7",
       "Weekly performance snapshot: no-shows recovered, churn caught, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Sparkle Clean — sorry I missed you. Want to book a recurring clean or reschedule your next appointment? Text me and I'll get you set.",
+    demoText:
+      "Hey, this is Donovin with Sparkle Clean — sorry I missed you. Want to book a recurring clean or reschedule your next appointment? Text me and I'll get you set.",
     toolName: "Jobber",
     town: "Beloit",
   },
@@ -212,7 +228,8 @@ export const industries: Industry[] = [
       "Tenant communication AI for the routine questions that eat your evenings",
       "Weekly performance snapshot: maintenance routed, owners updated, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with your property management team — sorry I missed you. Need to report a maintenance issue or check on a repair status? Text me your address and what's going on.",
+    demoText:
+      "Hey, this is Donovin with your property management team — sorry I missed you. Need to report a maintenance issue or check on a repair status? Text me your address and what's going on.",
     toolName: "AppFolio",
     town: "Rockford",
   },
@@ -241,7 +258,8 @@ export const industries: Industry[] = [
       "Transaction milestone communication so buyers stop calling you for updates",
       "Weekly performance snapshot: inquiries captured, listings running, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with your real estate team — sorry I missed you. Want to schedule a showing or get the latest updates on that listing? Just text me back.",
+    demoText:
+      "Hey, this is Donovin with your real estate team — sorry I missed you. Want to schedule a showing or get the latest updates on that listing? Just text me back.",
     toolName: "Follow Up Boss",
     town: "Roscoe",
   },

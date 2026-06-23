@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "tools": {
+    "playwright_*": false,
+    "tally-so_*": false,
+  },
+  "agent": {
+    "playwright": {
+      "description": "playwright operations",
+      "mode": "subagent",
+      "tools": {
+        "playwright_*": true,
+      },
+    },
+    "tally-so": {
+      "description": "tally-so operations",
+      "mode": "subagent",
+      "tools": {
+        "tally-so_*": true,
+      },
+    },
+  },
+}

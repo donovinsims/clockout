@@ -11,9 +11,17 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Donovin Sims — Founder of Clockout · Roscoe, IL" },
-      { name: "description", content: "Roscoe-raised. Hononegah baseball, NIU pitcher, ex-Uber Product Ops and ex-Walgreens. Donovin built Clockout to install the enterprise revenue-leak playbook into Northern Illinois trade shops at a flat one-time price." },
+      {
+        name: "description",
+        content:
+          "Roscoe-raised. Hononegah baseball, NIU pitcher, ex-Uber Product Ops and ex-Walgreens. Donovin built Clockout to install the enterprise revenue-leak playbook into Northern Illinois trade shops at a flat one-time price.",
+      },
       { property: "og:title", content: "About Donovin Sims — Founder of Clockout" },
-      { property: "og:description", content: "Operator. Roscoe local. Ex-Uber, ex-Walgreens. Bringing the enterprise revenue-leak playbook to Main Street trades." },
+      {
+        property: "og:description",
+        content:
+          "Operator. Roscoe local. Ex-Uber, ex-Walgreens. Bringing the enterprise revenue-leak playbook to Main Street trades.",
+      },
       { property: "og:url", content: "https://clockout.us/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
@@ -54,13 +62,26 @@ function AboutPage() {
             />
             <div className="mt-6 space-y-2 text-sm">
               <div className="eyebrow">Connect</div>
-              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="https://www.facebook.com/profile.php?id=61590861503566" target="_blank" rel="noreferrer">
+              <a
+                className="flex items-center gap-2 text-foreground/85 hover:text-amber"
+                href="https://www.facebook.com/profile.php?id=61590861503566"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FacebookIcon /> Clockout on Facebook
               </a>
-              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="https://www.facebook.com/donovinsims/" target="_blank" rel="noreferrer">
+              <a
+                className="flex items-center gap-2 text-foreground/85 hover:text-amber"
+                href="https://www.facebook.com/donovinsims/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FacebookIcon /> Donovin on Facebook
               </a>
-              <a className="flex items-center gap-2 text-foreground/85 hover:text-amber" href="mailto:contact@clockout.us">
+              <a
+                className="flex items-center gap-2 text-foreground/85 hover:text-amber"
+                href="mailto:contact@clockout.us"
+              >
                 <Mail className="h-4 w-4" /> contact@clockout.us
               </a>
             </div>
@@ -74,18 +95,26 @@ function AboutPage() {
 
             <div className="prose-spaced mt-10 space-y-6 text-[17px] leading-relaxed text-foreground/85">
               <p>
-                I grew up in Roscoe, played baseball at Hononegah, and got ranked by Perfect Game before pitching for Northern Illinois. Spent my college summers with the Winnebago County Highway Department. I know what this area looks like at 5am and what it feels like to be in a job where showing up is the whole job.
+                I grew up in Roscoe, played baseball at Hononegah, and got ranked by Perfect Game
+                before pitching for Northern Illinois. Spent my college summers with the Winnebago
+                County Highway Department. I know what this area looks like at 5am and what it feels
+                like to be in a job where showing up is the whole job.
               </p>
               <p>
-                After NIU I went into operations. Product Operations at Uber. Live events across the US and Canada, venues with 50,000+ people, real-time dispatch, and no margin for a missed handoff. Then Walgreens, building and shipping digital products at national retail scale.
+                After NIU I went into operations. Product Operations at Uber. Live events across the
+                US and Canada, venues with 50,000+ people, real-time dispatch, and no margin for a
+                missed handoff. Then Walgreens, building and shipping digital products at national
+                retail scale.
               </p>
-              <p>
-                Six-plus years in rooms where a broken system bleeds money by the minute.
-              </p>
+              <p>Six-plus years in rooms where a broken system bleeds money by the minute.</p>
 
               <h2 className="pt-6 text-3xl">What those years taught me</h2>
               <p>
-                The leaks are predictable. A missed call, a quote that goes cold, a customer who hasn't heard from you since their last service. These aren't random. They're the same seven revenue drains, showing up in every service business, every time. Enterprise companies figured this out years ago. Local contractors haven't had access to the same playbook.
+                The leaks are predictable. A missed call, a quote that goes cold, a customer who
+                hasn't heard from you since their last service. These aren't random. They're the
+                same seven revenue drains, showing up in every service business, every time.
+                Enterprise companies figured this out years ago. Local contractors haven't had
+                access to the same playbook.
               </p>
               <p>
                 Clockout is that playbook, installed in your business, at a flat price you pay once.
@@ -93,12 +122,21 @@ function AboutPage() {
 
               <h2 className="pt-6 text-3xl">Why I came back</h2>
               <p>
-                I moved back to Northern Illinois to build this because this is my market. Rockford, Roscoe, Beloit. I know these businesses. I've sat across from the owners. I've seen the same missed call, the same unsigned quote sitting in an inbox, the same customer who called the next guy because nobody texted them back in time.
+                I moved back to Northern Illinois to build this because this is my market. Rockford,
+                Roscoe, Beloit. I know these businesses. I've sat across from the owners. I've seen
+                the same missed call, the same unsigned quote sitting in an inbox, the same customer
+                who called the next guy because nobody texted them back in time.
               </p>
 
               <h2 className="pt-6 text-3xl">How it works</h2>
               <p>
-                I don't lock you into anything. It starts with a free 20-minute call where I show you exactly where your business is leaking money. Want it fixed? I build it right inside your tools and hand you every login \u2014 you own it outright, no contract, no monthly fee required. Three missed calls a week at a $450 ticket is $5,400 gone every month. That's what we're fixing. And if you'd rather keep me in your corner after \u2014 building something new every couple of weeks \u2014 you can. Month to month, cancel anytime. Your call, never a condition.
+                I don't lock you into anything. It starts with a free 20-minute call where I show
+                you exactly where your business is leaking money. Want it fixed? I build it right
+                inside your tools and hand you every login \u2014 you own it outright, no contract,
+                no monthly fee required. Three missed calls a week at a $450 ticket is $5,400 gone
+                every month. That's what we're fixing. And if you'd rather keep me in your corner
+                after \u2014 building something new every couple of weeks \u2014 you can. Month to
+                month, cancel anytime. Your call, never a condition.
               </p>
             </div>
 
@@ -110,9 +148,7 @@ function AboutPage() {
                 Read the FAQ →
               </Link>
             </div>
-            <p className="mt-3 text-sm text-dim">
-              {GUARANTEE}
-            </p>
+            <p className="mt-3 text-sm text-dim">{GUARANTEE}</p>
           </article>
         </div>
       </section>

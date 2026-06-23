@@ -1,21 +1,21 @@
 # ICP & Market
 
-*Who Clockout is for, who it isn't, and what the market will actually pay. Reusable business context for the founder and AI agents.*
+_Who Clockout is for, who it isn't, and what the market will actually pay. Reusable business context for the founder and AI agents._
 
 ## The ICP in one line
 
-Owner-operated local-service businesses, **1–10 employees**, **~$500K–$5M revenue**, where the owner is hands-on, slammed, and can *name* their leaks (missed calls, slow quotes, cold follow-ups) but has no time to fix them.
+Owner-operated local-service businesses, **1–10 employees**, **~$500K–$5M revenue**, where the owner is hands-on, slammed, and can _name_ their leaks (missed calls, slow quotes, cold follow-ups) but has no time to fix them.
 
 ## Firmographics
 
-| Attribute | Fit |
-|---|---|
-| Ownership | Owner-operated, independent (owner is in the business daily) |
-| Headcount | 1–10 employees |
-| Revenue | ~$500K–$5M |
-| Primary trades | HVAC, plumbing, roofing, electrical, real estate, property management |
-| Secondary trades | Landscaping, cleaning |
-| Already spends | $500–$2,000/mo on recurring tools (FSM software, Angi, Google LSA) |
+| Attribute        | Fit                                                                   |
+| ---------------- | --------------------------------------------------------------------- |
+| Ownership        | Owner-operated, independent (owner is in the business daily)          |
+| Headcount        | 1–10 employees                                                        |
+| Revenue          | ~$500K–$5M                                                            |
+| Primary trades   | HVAC, plumbing, roofing, electrical, real estate, property management |
+| Secondary trades | Landscaping, cleaning                                                 |
+| Already spends   | $500–$2,000/mo on recurring tools (FSM software, Angi, Google LSA)    |
 
 ## The owner's mindset (psychographics)
 
@@ -57,15 +57,15 @@ Segmentation happens at **outreach**, not on the website. Both segments climb th
 
 ## Willingness to pay (Rockford market, sourced)
 
-These owners **already tolerate $500–$2,000/mo recurring** — monthly fees aren't foreign to them; *invisible* monthly value is the enemy.
+These owners **already tolerate $500–$2,000/mo recurring** — monthly fees aren't foreign to them; _invisible_ monthly value is the enemy.
 
-| Comparable spend | Monthly range |
-|---|---|
-| FSM software — Housecall Pro | $149–614 |
+| Comparable spend                      | Monthly range |
+| ------------------------------------- | ------------- |
+| FSM software — Housecall Pro          | $149–614      |
 | FSM software — ServiceTitan (5 techs) | ~$1,225–1,990 |
-| Angi | $600–2,500 |
-| Google Local Services Ads (LSA) | $500–2,000 |
-| Automation / GHL agency retainers | $297–2,500 |
+| Angi                                  | $600–2,500    |
+| Google Local Services Ads (LSA)       | $500–2,000    |
+| Automation / GHL agency retainers     | $297–2,500    |
 
 So **$750–$1,500/mo is mid-market**, even below specialized agencies. Clockout's $750/mo Operator OS sits comfortably inside what this owner already pays.
 
