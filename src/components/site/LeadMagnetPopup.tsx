@@ -2,10 +2,20 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { createSubscriber } from "@/lib/api/sequenzy.functions";
+import { useScrollTrigger } from "@/hooks/use-scroll-trigger";
+import { useExitIntent } from "@/hooks/use-exit-intent";
+import EmailCaptureForm from "./EmailCaptureForm";
+import type { EmailCaptureFormSuccessData } from "./EmailCaptureForm";
 
-const LS_KEY = "clockout_lead_magnet";
+const STORAGE_KEY = "clockout_lead_magnet";
 const SHOW_AGAIN_DAYS = 30;
+const SCROLL_TRIGGER_THRESHOLD = 0.45;
+const FALLBACK_TIMER_MS = 40_000;
+const REDUCED_MOTION_DURATION_ZERO = 0;
+const SPRING_STIFFNESS = 300;
+const SPRING_DAMPING = 18;
+const CHECKMARK_PATH_DURATION = 0.4;
+const CHECKMARK_PATH_DELAY = 0.15;
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof localStorage !== "undefined";
@@ -16,7 +26,7 @@ type LsRecord = { dismissedAt?: number; convertedAt?: number; version: number } 
 function getDismissal(): LsRecord {
   if (!isBrowser()) return null;
   try {
-    const raw = localStorage.getItem(LS_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     return JSON.parse(raw) as Exclude<LsRecord, null>;
   } catch {
@@ -26,12 +36,12 @@ function getDismissal(): LsRecord {
 
 function setDismissed() {
   if (!isBrowser()) return;
-  localStorage.setItem(LS_KEY, JSON.stringify({ dismissedAt: Date.now(), version: 1 }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissedAt: Date.now(), version: 1 }));
 }
 
 function setConverted() {
   if (!isBrowser()) return;
-  localStorage.setItem(LS_KEY, JSON.stringify({ convertedAt: Date.now(), version: 1 }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ convertedAt: Date.now(), version: 1 }));
 }
 
 function isExpired(record: LsRecord) {
@@ -46,137 +56,56 @@ function maskEmail(email: string) {
   return `${visible}***@${domain}`;
 }
 
-const INDUSTRIES = [
-  { value: "hvac", label: "HVAC" },
-  { value: "plumbing", label: "Plumbing" },
-  { value: "roofing", label: "Roofing" },
-  { value: "electrical", label: "Electrical" },
-  { value: "landscaping", label: "Landscaping / Lawn Care" },
-  { value: "cleaning", label: "Cleaning / Janitorial" },
-  { value: "property-management", label: "Property Management" },
-  { value: "real-estate", label: "Real Estate" },
-  { value: "other", label: "Other trade" },
-];
-
 export function LeadMagnetPopup() {
   const [visible, setVisible] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [capturing, setCapturing] = useState(false);
-  const [captured, setCaptured] = useState(false);
-  const [wasSubscriberAlready, setWasSubscriberAlready] = useState(false);
-  const [error, setError] = useState("");
   const shownRef = useRef(false);
   const successRef = useRef<HTMLDivElement>(null);
-  const exitShownRef = useRef(false);
   const prefersReducedMotion =
     isBrowser() && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const [suppressed] = useState(() => {
     const record = getDismissal();
-    return record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record));
+    return (
+      record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record))
+    );
   });
 
-  // Scroll trigger (45%)
-  useEffect(() => {
-    if (suppressed || shownRef.current) return;
-    const handleScroll = () => {
-      if (shownRef.current) return;
-      const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      if (scrollPct > 0.45) {
-        shownRef.current = true;
-        setVisible(true);
-      }
-    };
-    const timer = setTimeout(() => {
-      if (!shownRef.current) {
-        shownRef.current = true;
-        setVisible(true);
-      }
-    }, 40_000);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
-    };
-  }, [suppressed]);
+  const scroll = useScrollTrigger({
+    disabled: suppressed,
+    threshold: SCROLL_TRIGGER_THRESHOLD,
+    fallbackDelay: FALLBACK_TIMER_MS,
+  });
 
-  // Exit-intent trigger
+  const exit = useExitIntent({ disabled: suppressed });
+
+  const [successData, setSuccessData] = useState<EmailCaptureFormSuccessData | null>(null);
+
+  // Combined trigger — show popup when scroll or exit-intent fires
   useEffect(() => {
-    if (suppressed || exitShownRef.current) return;
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (exitShownRef.current) return;
-      if (e.clientY <= 0) {
-        exitShownRef.current = true;
-        if (!shownRef.current) {
-          shownRef.current = true;
-          setVisible(true);
-        }
-      }
-    };
-    document.addEventListener("mouseleave", handleMouseLeave);
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
-  }, [suppressed]);
+    if (shownRef.current) return;
+    if (scroll.triggered || exit.triggered) {
+      shownRef.current = true;
+      setVisible(true);
+    }
+  }, [scroll.triggered, exit.triggered]);
 
   // Focus success panel on conversion for a11y
   useEffect(() => {
-    if (captured && successRef.current) {
+    if (successData && successRef.current) {
       successRef.current.focus();
     }
-  }, [captured]);
+  }, [successData]);
 
   const handleDismiss = () => {
-    if (captured) return;
+    if (successData) return;
     setVisible(false);
     setDismissed();
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim() || !industry) return;
-    setCapturing(true);
-    setError("");
-    try {
-      await createSubscriber({
-        data: {
-          email: email.trim(),
-          firstName: name.trim(),
-          tag: `industry-${industry}`,
-        },
-      });
-      setCaptured(true);
-      setConverted();
-    } catch (err) {
-      const raw = err instanceof Error ? err.message : "";
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed?.error?.includes("already exists") || parsed?.error?.includes("duplicate")) {
-          setCaptured(true);
-          setWasSubscriberAlready(true);
-          setConverted();
-          return;
-        }
-        if (parsed?.error?.includes("Invalid domain") || parsed?.error?.includes("cannot receive email")) {
-          setError("That email address can't receive messages — double-check it and try again.");
-          return;
-        }
-      } catch {
-        /* not JSON — fall through */
-      }
-      if (raw.includes("already exists") || raw.includes("duplicate")) {
-        setCaptured(true);
-        setWasSubscriberAlready(true);
-        setConverted();
-      } else if (raw.includes("SEQUENZY_API_KEY not configured")) {
-        setError("Service temporarily unavailable. Email contact@clockout.us and we'll send it right over.");
-      } else {
-        setError("Something went wrong. Try again or email contact@clockout.us.");
-      }
-    } finally {
-      setCapturing(false);
-    }
+  const handleCaptureSuccess = (data: EmailCaptureFormSuccessData) => {
+    setSuccessData(data);
+    setConverted();
   };
 
   if (suppressed) return null;
@@ -219,7 +148,7 @@ export function LeadMagnetPopup() {
                 <X className="h-4 w-4" />
               </button>
 
-              {!captured ? (
+              {!successData ? (
                 <>
                   <div className="eyebrow mb-2 pr-6">Free guide</div>
                   <h3 className="text-xl font-semibold text-foreground">
@@ -252,50 +181,7 @@ export function LeadMagnetPopup() {
                       Send me the free guide →
                     </button>
                   ) : (
-                    <form onSubmit={handleSubmit} className="mt-4 space-y-3">
-                      <input
-                        type="text"
-                        placeholder="First name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                      <select
-                        value={industry}
-                        onChange={(e) => setIndustry(e.target.value)}
-                        required
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      >
-                        <option value="">Your trade</option>
-                        {INDUSTRIES.map((ind) => (
-                          <option key={ind.value} value={ind.value}>
-                            {ind.label}
-                          </option>
-                        ))}
-                      </select>
-
-                      {error && <p className="text-xs text-destructive">{error}</p>}
-
-                      <button
-                        type="submit"
-                        disabled={capturing}
-                        className="w-full rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
-                      >
-                        {capturing ? "Sending..." : "Send me the free guide →"}
-                      </button>
-                      <p className="text-center text-xs text-muted-foreground">
-                        No spam. Unsubscribe anytime.
-                      </p>
-                    </form>
+                    <EmailCaptureForm onSuccess={handleCaptureSuccess} compact />
                   )}
 
                   <button
@@ -324,8 +210,12 @@ export function LeadMagnetPopup() {
                     animate={{ scale: 1 }}
                     transition={
                       prefersReducedMotion
-                        ? { duration: 0 }
-                        : { type: "spring", stiffness: 300, damping: 18 }
+                        ? { duration: REDUCED_MOTION_DURATION_ZERO }
+                        : {
+                            type: "spring",
+                            stiffness: SPRING_STIFFNESS,
+                            damping: SPRING_DAMPING,
+                          }
                     }
                     className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-primary/15"
                   >
@@ -339,25 +229,25 @@ export function LeadMagnetPopup() {
                       animate={{ pathLength: 1 }}
                       transition={
                         prefersReducedMotion
-                          ? { duration: 0 }
-                          : { duration: 0.4, delay: 0.15, ease: "easeOut" }
+                          ? { duration: REDUCED_MOTION_DURATION_ZERO }
+                          : {
+                              duration: CHECKMARK_PATH_DURATION,
+                              delay: CHECKMARK_PATH_DELAY,
+                              ease: "easeOut",
+                            }
                       }
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </motion.svg>
                   </motion.div>
 
                   <h3 className="text-lg font-semibold text-foreground">
-                    You're in, {name}!
+                    You're in, {successData!.name}!
                   </h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {wasSubscriberAlready
+                    {successData!.wasSubscriberAlready
                       ? "You're already subscribed — no duplicates, you just saved me the trouble."
-                      : `Sent to ${maskEmail(email)}. Check your inbox!`}
+                      : `Sent to ${maskEmail(successData!.email)}. Check your inbox!`}
                   </p>
 
                   <Link

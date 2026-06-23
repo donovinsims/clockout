@@ -1,6 +1,5 @@
 const heroSubTexts: Record<string, string> = {
-  hvac:
-    "For HVAC shops in {{town}} and across Northern Illinois. 62% of calls to home service businesses go unanswered. At a $450 ticket, that's a new truck payment leaking out every month.",
+  hvac: "For HVAC shops in {{town}} and across Northern Illinois. 62% of calls to home service businesses go unanswered. At a $450 ticket, that's a new truck payment leaking out every month.",
   plumbing:
     "For plumbing crews in {{town}} and the Rockford corridor. A 550K technician shortfall is coming by 2027 — the shops that automate intake and dispatch are the ones still standing.",
   roofing:
