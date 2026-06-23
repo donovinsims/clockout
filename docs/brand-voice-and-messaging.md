@@ -41,7 +41,7 @@ Never use: **game-changing, revolutionary, disruptive, next-level, 10x, secret, 
 - **Never fabricate** testimonials, ratings, "$X value," or scarcity.
 - Only use "$X value" or "you'd pay $X elsewhere" with a real, named, defensible comparable (e.g., "a GoHighLevel or agency charges $797–$1,497/mo to run this same stack").
 - **Scarcity is real:** solo capacity — 8 founding spots, 3 left. State it true; don't inflate.
-- **One real testimonial:** Shea S. — "saved me 10+ hours a week" — from a client-portal/community build in a *different* industry. Use it honestly under a "works across industries" frame. Never disguise it as a trades client.
+- **One real testimonial:** Shea S. — "saved me 10+ hours a week" — from a client-portal/community build in a _different_ industry. Use it honestly under a "works across industries" frame. Never disguise it as a trades client.
 - **Open gaps:** a Google rating and an in-trade testimonial. Mark these as placeholders. Never invent them.
 
 ## Core messages & value props
@@ -62,17 +62,17 @@ Never use: **game-changing, revolutionary, disruptive, next-level, 10x, secret, 
 ## CTA standard
 
 - **Default button** (everywhere linking to the audit): **"Find the Money I'm Losing →"**
-- **Subtext beneath it:** *"Free 20-minute leak audit. Pick a time — I'll show you exactly where you're losing money."*
+- **Subtext beneath it:** _"Free 20-minute leak audit. Pick a time — I'll show you exactly where you're losing money."_
 - **Homepage hero exception only:** the hero keeps **"Get Your 10 Hours Back →"**
 
 Don't invent new CTA copy. One button, one subtext, sitewide.
 
 ## On-voice vs. off-voice
 
-| Off-voice (don't) | On-voice (do) |
-|---|---|
-| "Revolutionize your business with our game-changing, AI-powered platform!" | "You miss calls when you're on a job. This catches them — and chases the quote until they book." |
-| "Unlock seamless growth and supercharge your revenue today." | "Three missed calls a week is $5,400 a month. The fix is a one-time $497. You own it." |
-| "Trusted by countless happy customers!" | "One client cut 10+ hours a week off his plate. He's not in the trades — but the leaks are the same everywhere." |
+| Off-voice (don't)                                                          | On-voice (do)                                                                                                    |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| "Revolutionize your business with our game-changing, AI-powered platform!" | "You miss calls when you're on a job. This catches them — and chases the quote until they book."                 |
+| "Unlock seamless growth and supercharge your revenue today."               | "Three missed calls a week is $5,400 a month. The fix is a one-time $497. You own it."                           |
+| "Trusted by countless happy customers!"                                    | "One client cut 10+ hours a week off his plate. He's not in the trades — but the leaks are the same everywhere." |
 
 When in doubt: shorter, plainer, more specific. If a skeptical contractor would roll his eyes, rewrite it.

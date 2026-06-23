@@ -8,9 +8,7 @@ export function Hero() {
         <div className="grid items-center gap-12 md:grid-cols-[1.4fr_1fr] md:gap-16">
           {/* LEFT — copy */}
           <div>
-            <div className="eyebrow mb-5">
-              Built in days. Yours to keep.
-            </div>
+            <div className="eyebrow mb-5">Built in days. Yours to keep.</div>
             <h1
               className="font-display text-foreground"
               style={{
@@ -23,7 +21,9 @@ export function Hero() {
               You're losing jobs you never even hear about.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-muted-foreground md:text-xl">
-              The phone rings while you're on a roof, under a sink, up a ladder — and whoever calls back first books the work. I find exactly where your money's leaking, then build the fix inside the tools you already pay for. You own it.
+              The phone rings while you're on a roof, under a sink, up a ladder — and whoever calls
+              back first books the work. I find exactly where your money's leaking, then build the
+              fix inside the tools you already pay for. You own it.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">
@@ -31,7 +31,13 @@ export function Hero() {
               </CTA>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Or text <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">AUDIT to (608) 713-1651</a>
+              Or text{" "}
+              <a
+                className="font-medium text-foreground underline underline-offset-4"
+                href="sms:+16087131651?body=AUDIT"
+              >
+                AUDIT to (608) 713-1651
+              </a>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
               <BetaSpots />
@@ -46,7 +52,8 @@ export function Hero() {
               <div className="flex h-full flex-col justify-center bg-gradient-to-br from-primary/5 via-surface to-background">
                 <blockquote className="px-6 py-10 md:px-8 md:py-14">
                   <p className="text-[15px] leading-relaxed text-foreground/90 md:text-base">
-                    &ldquo;I was skeptical anything could save me that much time. The Money-Leak Map showed me exactly where my gaps were. We got those hours back in a week.&rdquo;
+                    &ldquo;I was skeptical anything could save me that much time. The Money-Leak Map
+                    showed me exactly where my gaps were. We got those hours back in a week.&rdquo;
                   </p>
                 </blockquote>
               </div>
@@ -63,4 +70,3 @@ export function Hero() {
     </section>
   );
 }
-

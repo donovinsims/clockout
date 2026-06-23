@@ -12,9 +12,7 @@ export function FAQ({ items = faqs.slice(0, 8) }: { items?: { q: string; a: stri
       <div className="container-x grid gap-12 md:grid-cols-[1fr_1.5fr]">
         <div>
           <div className="eyebrow mb-3">Questions</div>
-          <h2 className="text-4xl md:text-5xl">
-            The things owners actually ask before they book.
-          </h2>
+          <h2 className="text-4xl md:text-5xl">The things owners actually ask before they book.</h2>
           <p className="mt-5 max-w-sm text-muted-foreground">
             If yours isn't here, text it to{" "}
             <a className="text-foreground underline underline-offset-4" href="tel:+16087131651">

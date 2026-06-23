@@ -11,19 +11,19 @@ Reusable context on how clockout.us is built, where copy lives, and how the funn
 
 ## Site map (routes live)
 
-| Route | File | Notes |
-|---|---|---|
-| `/` | `src/routes/index.tsx` | Home |
-| `/pricing` | `src/routes/pricing.tsx` | 3-rung offer ladder |
-| `/about` | `src/routes/about.tsx` | Founder story / voice |
-| `/faq` | `src/routes/faq.tsx` | Renders `src/data/faqs.ts` |
-| `/assessment` | `src/routes/assessment.tsx` | Tally form → cal.com funnel entry |
-| `/operator-os` | `src/routes/operator-os.tsx` | Concierge ($750/mo) home |
-| `/services` | `src/routes/services.tsx` | Services index |
+| Route              | File                            | Notes                                  |
+| ------------------ | ------------------------------- | -------------------------------------- |
+| `/`                | `src/routes/index.tsx`          | Home                                   |
+| `/pricing`         | `src/routes/pricing.tsx`        | 3-rung offer ladder                    |
+| `/about`           | `src/routes/about.tsx`          | Founder story / voice                  |
+| `/faq`             | `src/routes/faq.tsx`            | Renders `src/data/faqs.ts`             |
+| `/assessment`      | `src/routes/assessment.tsx`     | Tally form → cal.com funnel entry      |
+| `/operator-os`     | `src/routes/operator-os.tsx`    | Concierge ($750/mo) home               |
+| `/services`        | `src/routes/services.tsx`       | Services index                         |
 | `/services/{slug}` | `src/routes/services.$slug.tsx` | **ONE template for all 8 trade pages** |
-| `/contact` | `src/routes/contact.tsx` | |
-| `/privacy` | `src/routes/privacy.tsx` | Do not delete |
-| `/terms` | `src/routes/terms.tsx` | Do not delete |
+| `/contact`         | `src/routes/contact.tsx`        |                                        |
+| `/privacy`         | `src/routes/privacy.tsx`        | Do not delete                          |
+| `/terms`           | `src/routes/terms.tsx`          | Do not delete                          |
 
 The 8 service slugs: `hvac`, `plumbing`, `roofing`, `electrical`, `landscaping`, `cleaning`, `property-management`, `real-estate`.
 
@@ -34,12 +34,14 @@ The 8 service slugs: `hvac`, `plumbing`, `roofing`, `electrical`, `landscaping`,
 There is no CMS — make shared changes in components/data **once**; make per-page changes in the route file.
 
 **Data files** (`src/data/`):
+
 - `faqs.ts` — FAQ array (drives `/faq`)
 - `industries.ts` — per-trade content for the 8 service pages
 - `offer.ts` — offer + pricing values/strings (Build $497 beta / $1,494 standard; Concierge $750/mo founding)
 - `serviceArea.ts` — service-area content
 
 **Shared components** (`src/components/`):
+
 - `site/CTA.tsx`, `site/FinalCta.tsx`, `site/MobileStickyCta.tsx` — the CTA surfaces
 - `site/Hero.tsx`, `site/PageHero.tsx` — hero blocks
 - `site/OfferCard.tsx`, `site/FAQ.tsx`, `site/Footer.tsx`
@@ -57,7 +59,7 @@ There is no CMS — make shared changes in components/data **once**; make per-pa
 ## CTA standard + hero exception
 
 - **Sitewide CTA** (every button linking to `/assessment`): **"Find the Money I'm Losing →"**
-  - Subtext: *"Free 20-minute leak audit. Pick a time — I'll show you exactly where you're losing money."*
+  - Subtext: _"Free 20-minute leak audit. Pick a time — I'll show you exactly where you're losing money."_
   - Set in `CTA.tsx`, `FinalCta.tsx`, `MobileStickyCta.tsx`.
 - **EXCEPTION — homepage hero** (`Hero.tsx` / `index.tsx`) keeps its bespoke CTA: **"Get Your 10 Hours Back →"**.
 - **Deliverable name:** always "audit" = the free call + the written plan. Never promise a no-call report.

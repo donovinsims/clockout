@@ -12,7 +12,7 @@ export const faqs = [
     a: "No — it installs on top of what you already use. I build the automations inside your existing tools with Make.com, so nothing changes for your team. No new logins, no forced platform swaps.",
   },
   {
-    q: "What does \"you own it\" actually mean?",
+    q: 'What does "you own it" actually mean?',
     a: "Everything I build is yours — every login, API key, line of code, and doc. No contract, no required monthly fee. If you want to keep me on as your concierge afterward, you can — but that's a choice you make month to month and cancel anytime, never a lock-in. Stop any time and you keep everything I built.",
   },
   {

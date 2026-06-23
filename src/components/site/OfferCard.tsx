@@ -23,10 +23,15 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
             Start free. Own what I build. Keep me on only if you want.
           </h3>
           <p className="mt-5 max-w-md text-muted-foreground">
-            First, the free audit — a 20-minute call where I show you where you&rsquo;re leaking money, plus your Money-Leak Map to keep whether you hire me or not. Want it fixed? I build it with you and hand you the keys — no contract, you own everything.
+            First, the free audit — a 20-minute call where I show you where you&rsquo;re leaking
+            money, plus your Money-Leak Map to keep whether you hire me or not. Want it fixed? I
+            build it with you and hand you the keys — no contract, you own everything.
           </p>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            A GoHighLevel agency charges $797–$1,497 a month to run this stack, and you never own it. The Build is ${offer.betaPrice}, once — you own all of it. Three missed calls a week at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real audit.
+            A GoHighLevel agency charges $797–$1,497 a month to run this stack, and you never own
+            it. The Build is ${offer.betaPrice}, once — you own all of it. Three missed calls a week
+            at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real
+            audit.
           </p>
           <div className="mt-7 flex items-baseline gap-4">
             <span
@@ -50,10 +55,7 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
             {!compact && (
               <p className="mt-3 text-xs text-muted-foreground">
                 8 founding spots,{" "}
-                <span className="font-medium text-foreground">
-                  {offer.spotsRemaining}
-                </span>{" "}
-                left
+                <span className="font-medium text-foreground">{offer.spotsRemaining}</span> left
               </p>
             )}
           </div>
@@ -77,7 +79,8 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
       <div className="flex items-start gap-3 border-t border-line bg-surface px-7 py-5 md:px-10">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
         <p className="text-sm text-foreground">
-          <span className="font-semibold">The 10-Hour Guarantee:</span> if the Build doesn&rsquo;t give you 10 hours a week back within 30 days, I keep working — free — until it does.
+          <span className="font-semibold">The 10-Hour Guarantee:</span> if the Build doesn&rsquo;t
+          give you 10 hours a week back within 30 days, I keep working — free — until it does.
         </p>
       </div>
     </div>
