@@ -1,3 +1,4 @@
+import { PHONE_DISPLAY, SMS_HREF } from "@/data/phone";
 import { CTA } from "./CTA";
 
 export function FinalCta({
@@ -18,7 +19,7 @@ export function FinalCta({
           </CTA>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
-          Or text <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">AUDIT to (608) 713-1651</a>
+          Or text <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>AUDIT to {PHONE_DISPLAY}</a>
         </p>
         <p className="mt-2 text-xs text-muted-foreground">
           No contracts. Cancel anytime. You own everything.

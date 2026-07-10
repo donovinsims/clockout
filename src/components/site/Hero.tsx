@@ -1,5 +1,6 @@
 import { CTA } from "./CTA";
 import { BetaSpots } from "./BetaSpots";
+import { PHONE_DISPLAY, SMS_HREF } from "@/data/phone";
 
 export function Hero() {
   return (
@@ -31,7 +32,7 @@ export function Hero() {
               </CTA>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Or text <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">AUDIT to (608) 713-1651</a>
+              Or text <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>AUDIT to {PHONE_DISPLAY}</a>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
               <BetaSpots />

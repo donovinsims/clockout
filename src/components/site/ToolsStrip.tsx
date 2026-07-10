@@ -1,12 +1,4 @@
-const TOOLS = [
-  "Jobber",
-  "Housecall Pro",
-  "ServiceTitan",
-  "Twilio",
-  "Make",
-  "OpenAI",
-  "GoHighLevel",
-];
+import { tools as TOOLS } from "@/data/tools";
 
 export function ToolsStrip() {
   return (

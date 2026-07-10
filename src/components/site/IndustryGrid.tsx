@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import { PHONE_DISPLAY, SMS_HREF } from "@/data/phone";
 import { industries } from "@/data/industries";
 
 export function IndustryGrid({ heading = true }: { heading?: boolean }) {
@@ -67,9 +68,9 @@ export function IndustryGrid({ heading = true }: { heading?: boolean }) {
           </ul>
           <p className="mt-4 text-sm text-muted-foreground">
             Don't see yours? Text{" "}
-            <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">
-              AUDIT to (608) 713-1651
-            </a>{" "}
+<a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>
+                AUDIT to {PHONE_DISPLAY}
+              </a>{" "}
             — it probably still works.
           </p>
         </nav>

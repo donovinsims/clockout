@@ -1,7 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
-
-declare const Tally: { loadEmbeds: () => void };
 import { SiteShell } from "@/components/site/SiteShell";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { BetaSpots } from "@/components/site/BetaSpots";
@@ -28,29 +25,6 @@ const leakCategories = [
 ];
 
 function AssessmentPage() {
-  // Load Tally's embed.js for dynamic height and form-events forwarding
-  useEffect(() => {
-    const w = "https://tally.so/widgets/embed.js";
-    const load = () => {
-      if (typeof Tally !== "undefined") {
-        Tally.loadEmbeds();
-      } else {
-        document.querySelectorAll<HTMLIFrameElement>("iframe[data-tally-src]:not([src])").forEach(
-          (e) => { e.src = e.dataset.tallySrc || ""; },
-        );
-      }
-    };
-    if (typeof Tally !== "undefined") {
-      load();
-    } else if (!document.querySelector('script[src="' + w + '"]')) {
-      const s = document.createElement("script");
-      s.src = w;
-      s.onload = load;
-      s.onerror = load;
-      document.body.appendChild(s);
-    }
-  }, []);
-
   return (
     <SiteShell stickyCta={false} leadMagnet={false}>
       {/* 1. Hero */}
@@ -163,21 +137,9 @@ function AssessmentPage() {
       <section id="form" className="border-b border-line py-20 md:py-28">
         <div className="container-x">
           <h2 className="text-2xl md:text-3xl">Start here — takes about 60 seconds</h2>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-line bg-surface">
-            <iframe
-              data-tally-src="https://tally.so/embed/RGVJ1J?hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
-              loading="lazy"
-              width="100%"
-              height={181}
-              frameBorder={0}
-              marginHeight={0}
-              marginWidth={0}
-              title="Start here — takes about 60 seconds"
-            />
+          <div className="mt-8 overflow-hidden rounded-2xl border border-line bg-surface p-8 text-center text-dim">
+            [placeholder — new embed goes here]
           </div>
-          <p className="mt-4 text-center text-xs text-dim">
-            You'll go straight to my calendar to pick a time. I'll never share your info — no spam, ever.
-          </p>
         </div>
       </section>
 

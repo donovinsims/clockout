@@ -1,6 +1,5 @@
 import { Wrench } from "lucide-react";
-
-const TOOLS = ["Jobber", "Housecall Pro", "ServiceTitan", "Twilio", "Make", "OpenAI", "GoHighLevel"];
+import { tools as TOOLS } from "@/data/tools";
 
 export function FounderProof() {
   return (

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { industryOptions as INDUSTRIES } from "@/data/industries";
 import { createSubscriber } from "@/lib/api/sequenzy.functions";
 
 const LS_KEY = "clockout_lead_magnet";
@@ -45,18 +46,6 @@ function maskEmail(email: string) {
   const visible = name.length > 2 ? name.slice(0, 2) : name.slice(0, 1);
   return `${visible}***@${domain}`;
 }
-
-const INDUSTRIES = [
-  { value: "hvac", label: "HVAC" },
-  { value: "plumbing", label: "Plumbing" },
-  { value: "roofing", label: "Roofing" },
-  { value: "electrical", label: "Electrical" },
-  { value: "landscaping", label: "Landscaping / Lawn Care" },
-  { value: "cleaning", label: "Cleaning / Janitorial" },
-  { value: "property-management", label: "Property Management" },
-  { value: "real-estate", label: "Real Estate" },
-  { value: "other", label: "Other trade" },
-];
 
 export function LeadMagnetPopup() {
   const [visible, setVisible] = useState(false);

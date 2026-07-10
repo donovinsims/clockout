@@ -10,6 +10,7 @@ import {
 import { type ReactNode, useEffect } from "react";
 import { Toaster } from "sonner";
 
+import { PHONE_SCHEMA } from "@/data/phone";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -88,8 +89,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "dns-prefetch", href: "https://tally.so" },
-      { rel: "preconnect", href: "https://tally.so" },
     ],
     scripts: [
       {
@@ -99,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "LocalBusiness",
           name: "Clockout",
           description: "Done-for-you automation for owner-operated trade and local service businesses in Northern Illinois & Southern Wisconsin.",
-          telephone: "+1-608-713-1651",
+          telephone: PHONE_SCHEMA,
           email: "contact@clockout.us",
           address: {
             "@type": "PostalAddress",

@@ -1,19 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate } from "motion/react";
 import { CTA } from "./CTA";
+import { industryOptions as INDUSTRIES } from "@/data/industries";
 import { createSubscriber } from "@/lib/api/sequenzy.functions";
-
-const INDUSTRIES = [
-  { value: "hvac", label: "HVAC" },
-  { value: "plumbing", label: "Plumbing" },
-  { value: "roofing", label: "Roofing" },
-  { value: "electrical", label: "Electrical" },
-  { value: "landscaping", label: "Landscaping / Lawn Care" },
-  { value: "cleaning", label: "Cleaning / Janitorial" },
-  { value: "property-management", label: "Property Management" },
-  { value: "real-estate", label: "Real Estate" },
-  { value: "other", label: "Other trade" },
-];
 
 function useCountUp(target: number, trigger: boolean, duration = 0.8) {
   const [val, setVal] = useState(0);

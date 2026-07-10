@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { CTA } from "@/components/site/CTA";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { FinalCta } from "@/components/site/FinalCta";
 import { offer } from "@/data/offer";
+import { PHONE_DISPLAY, SMS_HREF } from "@/data/phone";
 import { faqs } from "@/data/faqs";
 
 const BETA = offer.betaPrice;
@@ -85,12 +87,9 @@ function PricingPage() {
                   A 20-minute call where I show you exactly where you're leaking jobs and dollars, plus your Money-Leak Map &mdash; your biggest leaks ranked, with the first one I'd fix. Yours to keep, hire me or not.
                 </li>
               </ul>
-              <Link
-                to="/assessment"
-                className="mt-8 inline-flex h-11 items-center justify-center rounded-[12px] border border-border bg-transparent px-5 text-[15px] font-medium tracking-tight text-foreground transition-all duration-150 hover:bg-surface active:scale-[.98]"
-              >
+              <CTA to="/assessment" variant="outline" size="md" className="mt-8">
                 Find the Money I'm Losing &rarr;
-              </Link>
+              </CTA>
             </div>
 
             {/* Rung 2 — The Build */}
@@ -113,12 +112,9 @@ function PricingPage() {
               <p className="mt-4 text-xs text-foreground/70 leading-relaxed">
                 A GoHighLevel or marketing agency charges $797&ndash;$1,497 every month to run this same stack &mdash; and you never own it. The Build is ${BETA}, once. You own all of it, and it keeps running the day you stop paying. Three missed calls a week at a $450 ticket is $5,400 walking out the door every month &mdash; the kind of number I turn up in a real audit. The fix is a one-time ${BETA}.
               </p>
-              <Link
-                to="/assessment"
-                className="mt-8 inline-flex h-11 items-center justify-center rounded-[12px] bg-primary px-5 text-[15px] font-medium tracking-tight text-primary-foreground shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--color-primary)_60%,transparent)] transition-all duration-150 hover:bg-[var(--primary-hover)] active:scale-[.98]"
-              >
+              <CTA to="/assessment" variant="primary" size="md" className="mt-8">
                 Find the Money I'm Losing &rarr;
-              </Link>
+              </CTA>
             </div>
 
             {/* Rung 3 — Operator OS Concierge */}
@@ -146,12 +142,9 @@ function PricingPage() {
               <p className="mt-2 text-xs text-foreground/50 italic">
                 Note: You only get here after the build &mdash; never a forced upsell. You decide once you've seen the work.
               </p>
-              <Link
-                to="/assessment"
-                className="mt-6 inline-flex h-11 items-center justify-center rounded-[12px] border border-border bg-transparent px-5 text-[15px] font-medium tracking-tight text-foreground transition-all duration-150 hover:bg-surface active:scale-[.98]"
-              >
+              <CTA to="/assessment" variant="outline" size="md" className="mt-6">
                 Find the Money I'm Losing &rarr;
-              </Link>
+              </CTA>
             </div>
           </div>
         </div>
@@ -238,15 +231,12 @@ function PricingPage() {
             Only 8 founding spots &mdash; 3 left. Founding pricing locks for life while there's room.
           </p>
           <div className="mt-9 flex justify-center">
-            <Link
-              to="/assessment"
-              className="inline-flex h-12 items-center justify-center rounded-[12px] bg-primary px-6 text-base font-medium tracking-tight text-primary-foreground shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--color-primary)_60%,transparent)] transition-all duration-150 hover:bg-[var(--primary-hover)] active:scale-[.98]"
-            >
+            <CTA to="/assessment" variant="primary" size="lg">
               Find the Money I'm Losing &rarr;
-            </Link>
+            </CTA>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            Or text <a className="font-medium text-foreground underline underline-offset-4" href="sms:+16087131651?body=AUDIT">AUDIT to (608) 713-1651</a>
+            Or text <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>AUDIT to {PHONE_DISPLAY}</a>
           </p>
           <p className="mt-2 text-xs text-muted-foreground">
             No contracts. Cancel anytime. You own everything.

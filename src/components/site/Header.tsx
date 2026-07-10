@@ -19,9 +19,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { industries } from "@/data/industries";
-
-const PHONE_DISPLAY = "(608) 713-1651";
-const PHONE_HREF = "tel:+16087131651";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/data/phone";
 
 const nav = [
   { to: "/pricing", label: "Pricing" },

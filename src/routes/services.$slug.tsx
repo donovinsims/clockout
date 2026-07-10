@@ -7,9 +7,11 @@ import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { FinalCta } from "@/components/site/FinalCta";
 import { CTA } from "@/components/site/CTA";
 import { BetaSpots } from "@/components/site/BetaSpots";
+import { PHONE_SCHEMA } from "@/data/phone";
 import { getIndustry } from "@/data/industries";
 import { getHeroSub } from "@/lib/heroSub";
 import { towns as allServiceTowns } from "@/data/serviceArea";
+import { Fragment } from "react";
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
 
@@ -57,7 +59,7 @@ export const Route = createFileRoute("/services/$slug")({
               name: "Clockout",
               address: { "@type": "PostalAddress", addressLocality: "Roscoe", addressRegion: "IL", addressCountry: "US" },
               email: "contact@clockout.us",
-              telephone: "+1-608-713-1651",
+              telephone: PHONE_SCHEMA,
             },
             areaServed: [i.town, "Rockford, IL", "Loves Park, IL", "Machesney Park, IL", "Roscoe, IL", "Beloit, WI", "Janesville, WI"],
             offers: {
@@ -138,79 +140,38 @@ function IndustryPage() {
             </div>
 
             <div className="flex-1 flex flex-col px-6 pb-6 md:px-7 md:pb-7">
-              {/* Phase 1 — Audit */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Money-Leak Map</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Every revenue leak priced in dollars
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Connector */}
-              <motion.div
-                className="flex flex-1 justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-              >
-                <div className="w-px bg-line" />
-              </motion.div>
-
-              {/* Phase 2 — Build */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Built in days</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Automation built inside your existing tools
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Connector */}
-              <motion.div
-                className="flex flex-1 justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.45 }}
-              >
-                <div className="w-px bg-line" />
-              </motion.div>
-
-              {/* Phase 3 — You own it */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">You own it</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Every credential — you own everything, no contracts
-                  </div>
-                </div>
-              </motion.div>
+              {[
+                { delay: 0.1, title: "Money-Leak Map", desc: "Every revenue leak priced in dollars" },
+                { delay: 0.25, title: "Built in days", desc: "Automation built inside your existing tools" },
+                { delay: 0.4, title: "You own it", desc: "Every credential — you own everything, no contracts" },
+              ].map((phase, i) => (
+                <Fragment key={phase.title}>
+                  {i > 0 && (
+                    <motion.div
+                      className="flex flex-1 justify-center overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3, delay: phase.delay + 0.2 }}
+                    >
+                      <div className="w-px bg-line" />
+                    </motion.div>
+                  )}
+                  <motion.div
+                    className="flex gap-4 items-start"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: phase.delay, ease: "easeOut" }}
+                  >
+                    <div className="flex flex-col items-center">
+                      <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-foreground">{phase.title}</div>
+                      <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{phase.desc}</div>
+                    </div>
+                  </motion.div>
+                </Fragment>
+              ))}
             </div>
           </aside>
         </div>

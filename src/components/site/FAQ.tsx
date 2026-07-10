@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/data/phone";
 import { faqs } from "@/data/faqs";
 
 export function FAQ({ items = faqs.slice(0, 8) }: { items?: { q: string; a: string }[] }) {
@@ -17,9 +18,9 @@ export function FAQ({ items = faqs.slice(0, 8) }: { items?: { q: string; a: stri
           </h2>
           <p className="mt-5 max-w-sm text-muted-foreground">
             If yours isn't here, text it to{" "}
-            <a className="text-foreground underline underline-offset-4" href="tel:+16087131651">
-              (608) 713-1651
-            </a>{" "}
+             <a className="text-foreground underline underline-offset-4" href={PHONE_HREF}>
+                {PHONE_DISPLAY}
+              </a>{" "}
             and you'll get a real answer.
           </p>
         </div>

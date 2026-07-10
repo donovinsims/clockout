@@ -4,6 +4,33 @@ import { getServerConfig } from "../config.server";
 
 const SEQUENZY_API = "https://api.sequenzy.com/api/v1";
 
+async function sequenzyFetch(
+  path: string,
+  body: Record<string, unknown>,
+  label: string,
+): Promise<Response> {
+  const config = getServerConfig();
+  const apiKey = config.sequenzyApiKey;
+  if (!apiKey) throw new Error("SEQUENZY_API_KEY not configured");
+
+  const res = await fetch(`${SEQUENZY_API}${path}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const errBody = await res.text();
+    console.error(`[sequenzy] ${label} failed:`, res.status, errBody);
+    throw new Error(errBody);
+  }
+
+  return res;
+}
+
 export const createSubscriber = createServerFn({ method: "POST" })
   .validator(
     z.object({
@@ -13,35 +40,17 @@ export const createSubscriber = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const config = getServerConfig();
-    const apiKey = config.sequenzyApiKey;
-    if (!apiKey) {
-      throw new Error("SEQUENZY_API_KEY not configured");
-    }
-
-    const body: Record<string, unknown> = {
-      email: data.email,
-      firstName: data.firstName,
-      duplicateStrategy: "merge",
-      tags: data.tag ? [data.tag] : [],
-    };
-
-    const res = await fetch(`${SEQUENZY_API}/subscribers`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
+    const json = await sequenzyFetch(
+      "/subscribers",
+      {
+        email: data.email,
+        firstName: data.firstName,
+        duplicateStrategy: "merge",
+        tags: data.tag ? [data.tag] : [],
       },
-      body: JSON.stringify(body),
-    });
+      "createSubscriber",
+    ).then((r) => r.json());
 
-    if (!res.ok) {
-      const errBody = await res.text();
-      console.error("[sequenzy] createSubscriber failed:", res.status, errBody);
-      throw new Error(errBody);
-    }
-
-    const json = await res.json();
     return {
       success: true as const,
       subscriberId: json.subscriber?.id ?? null,
@@ -57,31 +66,12 @@ export const addTag = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const config = getServerConfig();
-    const apiKey = config.sequenzyApiKey;
-    if (!apiKey) {
-      throw new Error("SEQUENZY_API_KEY not configured");
-    }
+    const json = await sequenzyFetch(
+      "/subscribers/tags",
+      { email: data.email, tag: data.tag },
+      "addTag",
+    ).then((r) => r.json());
 
-    const res = await fetch(`${SEQUENZY_API}/subscribers/tags`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data.email,
-        tag: data.tag,
-      }),
-    });
-
-    if (!res.ok) {
-      const errBody = await res.text();
-      console.error("[sequenzy] addTag failed:", res.status, errBody);
-      throw new Error(errBody);
-    }
-
-    const json = await res.json();
     return {
       success: true as const,
       subscriberCreated: json.subscriber?.created ?? false,

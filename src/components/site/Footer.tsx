@@ -1,19 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { industries } from "@/data/industries";
-
-const PHONE_DISPLAY = "(608) 713-1651";
-const PHONE_HREF = "tel:+16087131651";
-
-const SERVICE_AREA = [
-  "Roscoe, IL",
-  "Rockford, IL",
-  "Loves Park, IL",
-  "Machesney Park, IL",
-  "South Beloit, IL",
-  "Beloit, WI",
-  "Janesville, WI",
-];
+import { towns as SERVICE_AREA } from "@/data/serviceArea";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/data/phone";
 
 export function Footer() {
   return (

@@ -28,6 +28,8 @@ const schema = z.object({
 });
 type V = z.infer<typeof schema>;
 
+const inp = "w-full rounded-md border border-line bg-background px-4 py-3 text-foreground placeholder:text-dim focus:border-amber focus:outline-none focus:ring-2 focus:ring-amber/30";
+
 function ContactPage() {
   const [done, setDone] = useState(false);
   const [mailtoFailed, setMailtoFailed] = useState(false);
@@ -119,5 +121,3 @@ function ContactPage() {
     </SiteShell>
   );
 }
-
-const inp = "w-full rounded-md border border-line bg-background px-4 py-3 text-foreground placeholder:text-dim focus:border-amber focus:outline-none focus:ring-2 focus:ring-amber/30";
