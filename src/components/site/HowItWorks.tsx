@@ -25,8 +25,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "Call",
       time: "20 min",
       title: "We trace one real job together \u2014 for free.",
-      body:
-        "20-minute call. Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking \u2014 missed calls, slow quotes, dropped follow-ups, churned customers. Every leak priced in dollars. You keep the report either way.",
+      body: "20-minute call. Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking \u2014 missed calls, slow quotes, dropped follow-ups, churned customers. Every leak priced in dollars. You keep the report either way.",
       artifact: (
         <div className="rounded-[12px] border border-line bg-surface p-5">
           <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground">
@@ -38,7 +37,10 @@ export function HowItWorks({ slug }: { slug?: string }) {
           </p>
           <div className="space-y-2.5">
             {leakMap.map((item) => (
-              <div key={item.label} className="flex items-center justify-between border-b border-line/60 pb-2 text-sm last:border-0">
+              <div
+                key={item.label}
+                className="flex items-center justify-between border-b border-line/60 pb-2 text-sm last:border-0"
+              >
                 <span className="text-foreground">{item.label}</span>
                 <span className="mono-num font-medium text-primary">{item.amount}</span>
               </div>
@@ -46,10 +48,14 @@ export function HowItWorks({ slug }: { slug?: string }) {
             <div className="flex items-center justify-between pt-2">
               <span className="text-sm font-semibold">Total leak</span>
               <span className="mono-num text-xl font-semibold text-foreground">
-                ${leakMap.reduce((sum, item) => {
-                  const n = parseInt(item.amount.replace(/[^0-9]/g, ""), 10) || 0;
-                  return sum + n;
-                }, 0).toLocaleString()}/mo
+                $
+                {leakMap
+                  .reduce((sum, item) => {
+                    const n = parseInt(item.amount.replace(/[^0-9]/g, ""), 10) || 0;
+                    return sum + n;
+                  }, 0)
+                  .toLocaleString()}
+                /mo
               </span>
             </div>
           </div>
@@ -62,8 +68,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "Build",
       time: "installed in days",
       title: "I build the fix inside the tools you already pay for.",
-      body:
-        "On a system you own. Works with what you're already running — nothing to switch.",
+      body: "On a system you own. Works with what you're already running — nothing to switch.",
       artifact: (
         <div className="mx-auto w-full max-w-xs rounded-[20px] border-4 border-foreground/10 bg-background p-3 shadow-card">
           <div className="rounded-[16px] bg-surface p-4">
@@ -72,7 +77,9 @@ export function HowItWorks({ slug }: { slug?: string }) {
             <div className="mt-4 rounded-[12px] bg-primary/10 p-3 text-sm text-foreground">
               {getDemoText(industry)}
             </div>
-            <div className="mt-2 text-right text-xs text-muted-foreground mono-num">7:42pm · auto-sent in 28s</div>
+            <div className="mt-2 text-right text-xs text-muted-foreground mono-num">
+              7:42pm · auto-sent in 28s
+            </div>
           </div>
         </div>
       ),
@@ -83,8 +90,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "You own it",
       time: "no contract",
       title: "Keep me on as your concierge, or don\u2019t.",
-      body:
-        "Month to month, your call. I keep building new automations every couple of weeks and stay on call between. Or run it solo forever \u2014 you own every login and line of code either way. No contract, cancel anytime.",
+      body: "Month to month, your call. I keep building new automations every couple of weeks and stay on call between. Or run it solo forever \u2014 you own every login and line of code either way. No contract, cancel anytime.",
       artifact: (
         <div className="rounded-[12px] border border-line bg-surface p-5">
           <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">

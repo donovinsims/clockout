@@ -19,7 +19,10 @@ export function FinalCta({
           </CTA>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
-          Or text <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>AUDIT to {PHONE_DISPLAY}</a>
+          Or text{" "}
+          <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>
+            AUDIT to {PHONE_DISPLAY}
+          </a>
         </p>
         <p className="mt-2 text-xs text-muted-foreground">
           No contracts. Cancel anytime. You own everything.

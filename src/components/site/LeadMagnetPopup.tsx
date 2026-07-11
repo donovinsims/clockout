@@ -65,7 +65,9 @@ export function LeadMagnetPopup() {
 
   const [suppressed] = useState(() => {
     const record = getDismissal();
-    return record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record));
+    return (
+      record?.convertedAt !== undefined || (record?.dismissedAt !== undefined && !isExpired(record))
+    );
   });
 
   // Scroll trigger (45%)
@@ -147,7 +149,10 @@ export function LeadMagnetPopup() {
           setConverted();
           return;
         }
-        if (parsed?.error?.includes("Invalid domain") || parsed?.error?.includes("cannot receive email")) {
+        if (
+          parsed?.error?.includes("Invalid domain") ||
+          parsed?.error?.includes("cannot receive email")
+        ) {
           setError("That email address can't receive messages — double-check it and try again.");
           return;
         }
@@ -159,7 +164,9 @@ export function LeadMagnetPopup() {
         setWasSubscriberAlready(true);
         setConverted();
       } else if (raw.includes("SEQUENZY_API_KEY not configured")) {
-        setError("Service temporarily unavailable. Email contact@clockout.us and we'll send it right over.");
+        setError(
+          "Service temporarily unavailable. Email contact@clockout.us and we'll send it right over.",
+        );
       } else {
         setError("Something went wrong. Try again or email contact@clockout.us.");
       }
@@ -332,17 +339,11 @@ export function LeadMagnetPopup() {
                           : { duration: 0.4, delay: 0.15, ease: "easeOut" }
                       }
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </motion.svg>
                   </motion.div>
 
-                  <h3 className="text-lg font-semibold text-foreground">
-                    You're in, {name}!
-                  </h3>
+                  <h3 className="text-lg font-semibold text-foreground">You're in, {name}!</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {wasSubscriberAlready
                       ? "You're already subscribed — no duplicates, you just saved me the trouble."

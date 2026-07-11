@@ -17,14 +17,21 @@ export function Footer() {
               <span className="font-semibold">Clockout</span>
             </div>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              One-time automation builds for owner-operated trade and service businesses. Flat fee. You own it.
+              One-time automation builds for owner-operated trade and service businesses. Flat fee.
+              You own it.
             </p>
             <div className="mt-5 space-y-2 text-sm">
-              <a href={PHONE_HREF} className="flex items-center gap-2 text-foreground hover:text-primary">
+              <a
+                href={PHONE_HREF}
+                className="flex items-center gap-2 text-foreground hover:text-primary"
+              >
                 <Phone className="h-4 w-4" aria-hidden />
                 <span className="mono-num">{PHONE_DISPLAY}</span>
               </a>
-              <a href="mailto:contact@clockout.us" className="flex items-center gap-2 text-foreground hover:text-primary">
+              <a
+                href="mailto:contact@clockout.us"
+                className="flex items-center gap-2 text-foreground hover:text-primary"
+              >
                 <Mail className="h-4 w-4" aria-hidden />
                 contact@clockout.us
               </a>
@@ -58,12 +65,36 @@ export function Footer() {
           <div>
             <div className="eyebrow mb-4">Clockout</div>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about" className="text-foreground hover:text-primary">About</Link></li>
-              <li><Link to="/pricing" className="text-foreground hover:text-primary">Pricing</Link></li>
-              <li><Link to="/operator-os" className="text-foreground hover:text-primary">Operator OS</Link></li>
-              <li><Link to="/assessment" className="text-foreground hover:text-primary">Book the audit</Link></li>
-              <li><Link to="/faq" className="text-foreground hover:text-primary">FAQ</Link></li>
-              <li><Link to="/contact" className="text-foreground hover:text-primary">Contact</Link></li>
+              <li>
+                <Link to="/about" className="text-foreground hover:text-primary">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-foreground hover:text-primary">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link to="/operator-os" className="text-foreground hover:text-primary">
+                  Operator OS
+                </Link>
+              </li>
+              <li>
+                <Link to="/assessment" className="text-foreground hover:text-primary">
+                  Book the audit
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-foreground hover:text-primary">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-foreground hover:text-primary">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -83,8 +114,12 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} Clockout. Built in Roscoe, IL.</p>
           <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-primary">Privacy</Link>
-            <Link to="/terms" className="hover:text-primary">Terms</Link>
+            <Link to="/privacy" className="hover:text-primary">
+              Privacy
+            </Link>
+            <Link to="/terms" className="hover:text-primary">
+              Terms
+            </Link>
           </div>
         </div>
       </div>

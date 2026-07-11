@@ -45,11 +45,10 @@ export function LeakCalculator() {
       <div className="container-x grid gap-12 md:grid-cols-[1fr_1.2fr] md:items-start">
         <div>
           <div className="eyebrow mb-3">Your number</div>
-          <h2 className="text-4xl md:text-5xl">
-            How much is the phone costing you?
-          </h2>
+          <h2 className="text-4xl md:text-5xl">How much is the phone costing you?</h2>
           <p className="mt-5 text-muted-foreground">
-            62% of calls to home service businesses never get answered. Plug in your numbers. The figure below is what's quietly walking out the door.
+            62% of calls to home service businesses never get answered. Plug in your numbers. The
+            figure below is what's quietly walking out the door.
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
             Source: ServiceTitan "Missed Connections" study of 50K monitored phone lines.
@@ -101,9 +100,13 @@ export function LeakCalculator() {
               ${fmt(displayed)}
             </motion.div>
             <div className="mt-3 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-              <span><span className="mono-num text-foreground">${fmt(weekly)}</span>/wk</span>
+              <span>
+                <span className="mono-num text-foreground">${fmt(weekly)}</span>/wk
+              </span>
               <span aria-hidden>·</span>
-              <span><span className="mono-num text-foreground">${fmt(monthly)}</span>/mo</span>
+              <span>
+                <span className="mono-num text-foreground">${fmt(monthly)}</span>/mo
+              </span>
             </div>
             <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
               <span className="mono-num">${fmt(annual)}/yr</span> → leaking out the door, every year
@@ -111,7 +114,8 @@ export function LeakCalculator() {
           </div>
 
           <div className="mt-3 text-center text-xs text-muted-foreground">
-            Not every missed call is a job — plenty are spam or price-shoppers. The Build recovers the real ones, typically 20–35% of missed calls and cold quotes.
+            Not every missed call is a job — plenty are spam or price-shoppers. The Build recovers
+            the real ones, typically 20–35% of missed calls and cold quotes.
           </div>
 
           <div className="mt-6 flex justify-center">
@@ -148,7 +152,9 @@ export function LeakCalculator() {
                       });
                       setCaptured(true);
                     } catch {
-                      setCaptureError("Something went wrong. Try again or email contact@clockout.us directly.");
+                      setCaptureError(
+                        "Something went wrong. Try again or email contact@clockout.us directly.",
+                      );
                     } finally {
                       setCapturing(false);
                     }
@@ -186,9 +192,7 @@ export function LeakCalculator() {
                       ))}
                     </select>
                   </div>
-                  {captureError && (
-                    <p className="text-xs text-destructive">{captureError}</p>
-                  )}
+                  {captureError && <p className="text-xs text-destructive">{captureError}</p>}
                   <button
                     type="submit"
                     disabled={capturing}
@@ -196,9 +200,7 @@ export function LeakCalculator() {
                   >
                     {capturing ? "Sending..." : "Send me the free guide →"}
                   </button>
-                  <p className="text-xs text-muted-foreground">
-                    No spam. Unsubscribe anytime.
-                  </p>
+                  <p className="text-xs text-muted-foreground">No spam. Unsubscribe anytime.</p>
                 </form>
               )}
             </div>
