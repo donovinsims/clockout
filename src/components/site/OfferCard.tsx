@@ -11,7 +11,7 @@ const OUTCOMES = [
   "30 days of tuning + your Money-Leak Map",
 ];
 
-export function OfferCard({ compact = false }: { compact?: boolean }) {
+export function OfferCard({ compact = false, oneLiner = false, moneyAnchor }: { compact?: boolean; oneLiner?: boolean; moneyAnchor?: string }) {
   return (
     <div className="overflow-hidden rounded-[12px] border border-border bg-background shadow-card">
       <div className="grid gap-10 p-7 md:grid-cols-[1.05fr_1fr] md:p-10">
@@ -26,7 +26,7 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
             First, the free audit — a 20-minute call where I show you where you&rsquo;re leaking money, plus your Money-Leak Map to keep whether you hire me or not. Want it fixed? I build it with you and hand you the keys — no contract, you own everything.
           </p>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            A GoHighLevel agency charges $797–$1,497 a month to run this stack, and you never own it. The Build is ${offer.betaPrice}, once — you own all of it. Three missed calls a week at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real audit.
+            A GoHighLevel agency charges $797–$1,497 a month to run this stack, and you never own it. The Build is ${offer.betaPrice}, once — you own all of it. {moneyAnchor ?? "Three missed calls a week at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real audit."}
           </p>
           <div className="mt-7 flex items-baseline gap-4">
             <span
@@ -62,14 +62,18 @@ export function OfferCard({ compact = false }: { compact?: boolean }) {
         {/* RIGHT — what the Build installs */}
         <div className="rounded-[12px] border border-line bg-surface p-6">
           <div className="eyebrow mb-4">What the Build installs</div>
-          <ul className="space-y-4">
-            {OUTCOMES.map((line) => (
-              <li key={line} className="flex gap-3 text-[15px]">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                <span className="text-foreground">{line}</span>
-              </li>
-            ))}
-          </ul>
+          {oneLiner ? (
+            <p className="text-[15px] text-foreground">Everything above, on a system you own — nothing to switch.</p>
+          ) : (
+            <ul className="space-y-4">
+              {OUTCOMES.map((line) => (
+                <li key={line} className="flex gap-3 text-[15px]">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                  <span className="text-foreground">{line}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 

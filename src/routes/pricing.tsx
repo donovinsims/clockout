@@ -212,9 +212,7 @@ function PricingPage() {
             &ldquo;It's saved me 10+ hours a week&hellip; complex operations, simplified and automated. Exactly who you want building it.&rdquo;
             <footer className="mt-4 text-sm text-dim">&mdash; Shea S., Founder</footer>
           </blockquote>
-          <p className="mt-8 text-center text-xs italic text-dim">
-            *[Add a Google rating + an in-trade client quote here as soon as you have them.]*
-          </p>
+
         </div>
       </section>
 

@@ -1,5 +1,4 @@
 import { CTA } from "./CTA";
-import { BetaSpots } from "./BetaSpots";
 import { PHONE_DISPLAY, SMS_HREF } from "@/data/phone";
 
 export function Hero() {
@@ -24,7 +23,7 @@ export function Hero() {
               You're losing jobs you never even hear about.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-muted-foreground md:text-xl">
-              The phone rings while you're on a roof, under a sink, up a ladder — and whoever calls back first books the work. I find exactly where your money's leaking, then build the fix inside the tools you already pay for. You own it.
+              The phone rings while you're on a roof, under a sink, up a ladder — and whoever calls back first books the work. I find exactly where your money's leaking, then build the fix — it works with the tools you already use. You own it.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CTA to="/assessment" size="lg">
@@ -35,8 +34,6 @@ export function Hero() {
               Or text <a className="font-medium text-foreground underline underline-offset-4" href={SMS_HREF}>AUDIT to {PHONE_DISPLAY}</a>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-              <BetaSpots />
-              <span aria-hidden>·</span>
               <span>10 hrs/week back in 30 days — or free</span>
             </div>
           </div>
