@@ -8,8 +8,16 @@ function getDemoText(industry: Industry | null) {
   return industry.demoText;
 }
 
+const fallbackLeakMap = [
+  { label: "Missed after-hours calls", amount: "$4,200/mo" },
+  { label: "Quotes never followed up", amount: "$2,850/mo" },
+  { label: "Maintenance non-renewals", amount: "$1,900/mo" },
+  { label: "Reviews not requested", amount: "$1,100/mo" },
+];
+
 export function HowItWorks({ slug }: { slug?: string }) {
   const industry = slug ? getIndustry(slug) : null;
+  const leakMap = industry?.moneyLeakMap ?? fallbackLeakMap;
   const stepArtifacts = [
     // 01 — Call
     {
@@ -29,12 +37,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
             Sample Money-Leak Map — illustrative; your real numbers come from the call.
           </p>
           <div className="space-y-2.5">
-            {(industry?.moneyLeakMap ?? [
-              { label: "Missed after-hours calls", amount: "$4,200/mo" },
-              { label: "Quotes never followed up", amount: "$2,850/mo" },
-              { label: "Maintenance non-renewals", amount: "$1,900/mo" },
-              { label: "Reviews not requested", amount: "$1,100/mo" },
-            ]).map((item) => (
+            {leakMap.map((item) => (
               <div key={item.label} className="flex items-center justify-between border-b border-line/60 pb-2 text-sm last:border-0">
                 <span className="text-foreground">{item.label}</span>
                 <span className="mono-num font-medium text-primary">{item.amount}</span>
@@ -43,7 +46,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
             <div className="flex items-center justify-between pt-2">
               <span className="text-sm font-semibold">Total leak</span>
               <span className="mono-num text-xl font-semibold text-foreground">
-                {(industry?.moneyLeakMap ?? [{ label: "", amount: "$0" }]).reduce((sum, item) => {
+                ${leakMap.reduce((sum, item) => {
                   const n = parseInt(item.amount.replace(/[^0-9]/g, ""), 10) || 0;
                   return sum + n;
                 }, 0).toLocaleString()}/mo
