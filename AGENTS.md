@@ -51,7 +51,7 @@ src/
   components/
     site/               # page-specific components (Hero, Header, Footer, etc.)
     ui/                 # shadcn components (46 files — treat as library, add new ones via shadcn CLI)
-  data/                 # static content (faqs, industries, offer, serviceArea)
+  data/                 # static content (faqs, industries, offer, serviceArea, phone, tools)
   router.tsx            # Router creation (used internally — do not import to edit routes)
   start.ts              # TanStack Start instance with error middleware
   server.ts             # SSR entrypoint (Vercel-compatible fetch handler)

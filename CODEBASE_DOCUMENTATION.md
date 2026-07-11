@@ -103,7 +103,7 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
     │   │   ├── SiteShell.tsx           #   Page shell (header + main + footer + optional sticky CTA)
     │   │   ├── Header.tsx              #   Sticky header (nav, industries dropdown, phone, CTA, mobile sheet)
     │   │   ├── Footer.tsx              #   4-column footer (brand, industries, pages, service area)
-    │   │   ├── Hero.tsx                #   Homepage hero (headline, CTA, beta spots, founder card)
+    │   │   ├── Hero.tsx                #   Homepage hero (headline, CTA, founder card)
     │   │   ├── PageHero.tsx            #   Generic page hero (eyebrow, headline, sub, CTAs)
     │   │   ├── FinalCta.tsx            #   Bottom-of-page CTA section
     │   │   ├── HowItWorks.tsx          #   3-step process section (Audit/Build/Handover)
@@ -114,7 +114,7 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
     │   │   ├── ProofBar.tsx            #   Stats row (configurable stat boxes)
     │   │   ├── FounderProof.tsx        #   Founder bio + tool list
     │   │   ├── GuaranteeBlock.tsx      #   Guarantee section with shield icon
-    │   │   ├── ToolsStrip.tsx          #   "Built inside" tool name strip
+    │   │   ├── ToolsStrip.tsx          #   "Works with the tools you already use" tool name strip
     │   │   ├── CTA.tsx                 #   Reusable CTA link/button (4 variants, 3 sizes)
     │   │   ├── BetaSpots.tsx           #   Animated scarcity pill ("X of Y beta spots remain")
     │   │   ├── ImageWithFallback.tsx   #   Image with dashed placeholder fallback
@@ -169,11 +169,13 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
     │       ├── toggle.tsx              #   Toggle button
     │       └── tooltip.tsx             #   Hover tooltip
     │
-    ├── data/                           # 4 static data files
+    ├── data/                           # 6 static data files
     │   ├── offer.ts                    # Pricing/config data ($497 beta, spots, guarantees)
     │   ├── faqs.ts                     # 12 FAQ items
-    │   ├── serviceArea.ts              # Geographic service area (6 towns + region)
-    │   └── industries.ts               # 8 industry profiles (HVAC, plumbing, etc.)
+    │   ├── serviceArea.ts              # Geographic service area (7 towns + region)
+    │   ├── industries.ts               # 8 industry profiles (HVAC, plumbing, etc.) + industryOptions
+    │   ├── phone.ts                    # Shared PHONE_DISPLAY/PHONE_HREF/SMS_HREF/PHONE_SCHEMA constants
+    │   └── tools.ts                    # Shared tools list (ToolsStrip + FounderProof)
     │
     ├── hooks/
     │   └── use-mobile.tsx              # useIsMobile() hook (768px breakpoint)
@@ -226,7 +228,7 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
 
 | Component | File | Purpose | Props |
 |-----------|------|---------|-------|
-| **Hero** | `Hero.tsx` | Homepage hero: eyebrow, heading (clamp font), description, CTA, BetaSpots, founder card | None |
+| **Hero** | `Hero.tsx` | Homepage hero: eyebrow, heading (clamp font), description, CTA, founder card | None |
 | **PageHero** | `PageHero.tsx` | Generic page hero for sub-routes | `{ eyebrow?, headline, sub, primaryCta?, secondaryCta? }` |
 | **FinalCta** | `FinalCta.tsx` | Bottom-of-page CTA with headline, subtext, audit button, SMS line | `{ headline?, sub? }` |
 
@@ -236,13 +238,13 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
 |-----------|------|---------|-------|
 | **HowItWorks** | `HowItWorks.tsx` | 3-step process (Audit/Build/Handover) with artifacts | None |
 | **LeakCalculator** | `LeakCalculator.tsx` | Interactive revenue leak calculator with motion animation | None |
-| **OfferCard** | `OfferCard.tsx` | Pricing card with beta price, outcomes checklist, guarantee | `{ compact?: boolean }` |
+| **OfferCard** | `OfferCard.tsx` | Pricing card with beta price, outcomes checklist, guarantee | `{ compact?: boolean; oneLiner?: boolean; moneyAnchor?: string }` |
 | **IndustryGrid** | `IndustryGrid.tsx` | Featured industry card + pill-link grid for all industries | `{ heading?: boolean }` |
 | **SocialProof** | `SocialProof.tsx` | Placeholder case studies (3 "Currently in build" cards) | None |
 | **ProofBar** | `ProofBar.tsx` | Stats row with configurable stat boxes | `{ stats: { stat: string; label: string }[] }` |
 | **FounderProof** | `FounderProof.tsx` | Founder bio section with ops background story and tool tags | None |
 | **GuaranteeBlock** | `GuaranteeBlock.tsx` | Guarantee section with shield icon, data-driven text | None |
-| **ToolsStrip** | `ToolsStrip.tsx` | "Built inside" tool name strip (7 tools) | None |
+| **ToolsStrip** | `ToolsStrip.tsx` | "Works with the tools you already use" tool name strip (7 tools) | None |
 | **FAQ** | `FAQ.tsx` | Accordion FAQ section using shadcn Accordion | `{ items?: { q: string; a: string }[] }` |
 
 #### Reusable Elements
@@ -276,12 +278,12 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
 | `/` | `index.tsx` | Homepage — marketing landing for Clockout's core offering | SiteShell, Hero, ToolsStrip, HowItWorks, FounderProof, LeakCalculator, OfferCard, IndustryGrid, FAQ, FinalCta | faqs (first 8) |
 | `/about` | `about.tsx` | Founder story page — Donovin Sims' background | SiteShell, ImageWithFallback, CTA, GuaranteeBlock, FacebookIcon | Static content, about-me-section.md import |
 | `/services` | `services.tsx` | Redirect only → `/services/hvac` | None | N/A |
-| `/services/$slug` | `services.$slug.tsx` | Dynamic industry landing pages (HVAC, plumbing, etc.) | SiteShell, ProofBar, HowItWorks, OfferCard, GuaranteeBlock, FinalCta, CTA, BetaSpots | industries data via `getIndustry()` loader |
+| `/services/$slug` | `services.$slug.tsx` | Dynamic industry landing pages (HVAC, plumbing, etc.) | SiteShell, ProofBar, HowItWorks, OfferCard, GuaranteeBlock, FinalCta, CTA | industries data via `getIndustry()` loader |
 | `/pricing` | `pricing.tsx` | Pricing page — $497 beta vs SAAS comparison | SiteShell, OfferCard, GuaranteeBlock, FinalCta | Static compareRows, faqs (first 6) |
 | `/faq` | `faq.tsx` | Full FAQ page — all 12 FAQs | SiteShell, FinalCta | faqs (all 12) |
 | `/blog` | `blog.tsx` | Blog index — placeholder "Coming soon" posts | SiteShell, FinalCta | Hardcoded posts array (5 placeholder) |
 | `/contact` | `contact.tsx` | Contact form — name, email, message | SiteShell, CTAButton | react-hook-form + zod (mailto: fallback) |
-| `/assessment` | `assessment.tsx` | Lead-gen page — Tally.so embed form | SiteShell, GuaranteeBlock, BetaSpots | Tally.so iframe (lazy-loaded via IntersectionObserver) |
+| `/assessment` | `assessment.tsx` | Lead-gen page — form embed placeholder (Tally.so embed removed, not yet replaced) | SiteShell, GuaranteeBlock, BetaSpots | Static content; no embedded form |
 | `/audit` | `audit.tsx` | Redirect only → `/assessment` | None | N/A |
 | `/operator-os` | `operator-os.tsx` | Product page — Operator OS productivity system | SiteShell, CTA, FinalCta | Static content arrays |
 | `/privacy` | `privacy.tsx` | Privacy policy — plain language | SiteShell | Static content |
@@ -601,7 +603,7 @@ All form components follow consistent patterns:
 | Form | Validation | Feedback | Error Handling |
 |------|-----------|----------|----------------|
 | Contact (`/contact`) | Zod schema (name, email, message) | `done` state shows success; fallback to `mailto:` | No API call; opens email client |
-| Assessment (`/assessment`) | Tally.so handles internally | N/A (embedded form) | Tally.so handles |
+| Assessment (`/assessment`) | N/A | Static placeholder text — no form is currently embedded | N/A |
 | Pricing FAQ | No form | Static accordion | N/A |
 
 ---
@@ -628,7 +630,7 @@ All form components follow consistent patterns:
 
 1. **Add `prefers-reduced-motion`** support for animations (LeakCalculator, BetaSpots pulse, scroll effects)
 2. **Improve form error UX** on contact page — current mailto: fallback loses form data
-3. **Add loading states** to lazy-loaded Tally iframe
+3. **Replace the `/assessment` form placeholder** with a real embedded form
 4. **Implement systematic keyboard navigation** for all interactive elements
 5. **Add focus trapping** to mobile Sheet (check Radix default behavior)
 6. **Increase contrast** of subtle `--line` borders against white background
@@ -639,8 +641,6 @@ All form components follow consistent patterns:
 
 | Integration | Purpose | Implementation |
 |-------------|---------|---------------|
-| **Tally.so** | Lead-gen assessment form embed | `/assessment` — lazy-loaded iframe via IntersectionObserver |
-| **Tally embed.js** | Tally form script | Dynamic script injection on scroll near form |
 | **Google Fonts** | Geist + JetBrains Mono | `<link>` preconnect + stylesheet in `__root.tsx` |
 | **Schema.org JSON-LD** | LocalBusiness, FAQPage, Service, Person | Injected in route `head()` functions |
 | **Open Graph / Twitter** | Social sharing meta | Per-route meta tags in `head()` functions |
@@ -760,7 +760,7 @@ Future keys are commented as placeholders.
 | FAQ page | ✅ Complete | `/faq` | All 12 FAQs |
 | About/founder page | ✅ Complete | `/about` | Donovin's story |
 | Contact form | ✅ Complete | `/contact` | Client-side form with mailto: |
-| Lead-gen assessment | ✅ Complete | `/assessment` | Tally.so embed |
+| Lead-gen assessment | ⚠️ Placeholder | `/assessment` | Form embed removed (was Tally.so); placeholder text pending replacement |
 | Operator OS page | ✅ Complete | `/operator-os` | Product landing |
 | Privacy/Terms | ✅ Complete | `/privacy`, `/terms` | Legal pages |
 | Blog index | ⚠️ Placeholder | `/blog` | "Coming soon" items only |
@@ -788,7 +788,6 @@ Future keys are commented as placeholders.
 
 ### Duplicate Code / Patterns
 
-- `PHONE_DISPLAY` and `PHONE_HREF` defined separately in both `Header.tsx` and `Footer.tsx` (duplicated constants)
 - Multiple pages import `faqs` from `@/data/faqs` with different slice patterns
 - `contact.tsx` form submission has no server endpoint — falls back to `mailto:` which is fragile
 
@@ -808,16 +807,15 @@ None detected — all packages use current major versions (React 19, Tailwind v4
 ## UX/UI Improvement Recommendations
 
 ### Priority Design Improvements
-1. **Add loading skeleton** to lazy-loaded Tally iframe (currently blank until iframe mounts)
+1. **Wire up a real form embed** on `/assessment` — currently a static placeholder
 2. **Improve contact form** — add server endpoint so submissions aren't lost to email client
 3. **Add `prefers-reduced-motion`** media query for animations
 4. **Consistent heading spacing** — some pages use different padding patterns
 
 ### Consistency Fixes
 1. **Standardize section padding** — some sections use `py-20 md:py-28`, others `py-16 md:py-20`
-2. **Consolidate constants** — PHONE_DISPLAY/PHONE_HREF duplicated across Header, Footer, and potentially pages
-3. **Move inline data** from `pricing.tsx` and `blog.tsx` to `/data/` directory
-4. **Unify CTA variants** — CTA component uses "amber" mapped to primary via legacy alias; should be consolidated
+2. **Move inline data** from `pricing.tsx` and `blog.tsx` to `/data/` directory
+3. **Unify CTA variants** — CTA component uses "amber" mapped to primary via legacy alias; should be consolidated
 
 ### Accessibility Enhancements
 1. **Add `prefers-reduced-motion`** query to disable automatic animations
@@ -934,11 +932,11 @@ None detected — all packages use current major versions (React 19, Tailwind v4
 | **Pages/Routes** | 13 (11 content + 2 redirects) |
 | **Site components** | 18 custom |
 | **UI components** | 49 (shadcn/ui) |
-| **Static data files** | 4 |
+| **Static data files** | 6 |
 | **Hooks** | 1 |
 | **API routes** | 0 (no backend) |
 | **Database** | None |
 | **Tests** | None |
 | **SVG icons** | 1 custom (Facebook), ~20 via Lucide |
 | **Design tokens** | 30+ CSS custom properties |
-| **External services** | Tally.so, Google Fonts, Cloudflare R2 |
+| **External services** | Google Fonts, Cloudflare R2 |
