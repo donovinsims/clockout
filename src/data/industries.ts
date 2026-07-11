@@ -10,6 +10,8 @@ export type Industry = {
   demoText: string;
   toolName: string;
   town: string;
+  moneyLeakMap?: { label: string; amount: string }[];
+  moneyAnchor?: string;
 };
 
 export const industries: Industry[] = [
@@ -20,7 +22,10 @@ export const industries: Industry[] = [
     painHeadline: "Missed calls walking next door to your competitor.",
     heroHeadline: "Three missed calls today. Two of them just hired someone else.",
     proof: [
-      { stat: "62%", label: "of calls to home service businesses go unanswered (ServiceTitan, 2025)" },
+      {
+        stat: "62%",
+        label: "of calls to home service businesses go unanswered (ServiceTitan, 2025)",
+      },
       { stat: "86%", label: "of callers who hit voicemail never leave a message" },
       { stat: "<60s", label: "response time wins the job. Five minutes loses it." },
     ],
@@ -38,16 +43,26 @@ export const industries: Industry[] = [
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: calls answered, quotes recovered, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Northside HVAC — sorry I missed you. Want me to grab your address and book a tech first thing tomorrow?",
+    demoText:
+      "Hey, this is Northside HVAC — sorry I missed you. Want me to grab your address and book a tech first thing tomorrow?",
     toolName: "Housecall Pro",
     town: "Loves Park",
+    moneyLeakMap: [
+      { label: "Missed after-hours calls", amount: "$4,200/mo" },
+      { label: "Quotes never followed up", amount: "$2,850/mo" },
+      { label: "Maintenance non-renewals", amount: "$1,900/mo" },
+      { label: "Reviews not requested", amount: "$1,100/mo" },
+    ],
+    moneyAnchor:
+      "Three missed calls a week at a $450 ticket is $5,400 walking out the door every month — the kind of number I turn up in a real audit.",
   },
   {
     slug: "plumbing",
     name: "Plumbing",
     short: "Residential & commercial plumbing",
     painHeadline: "Emergencies answered after your competitor already rolled a truck.",
-    heroHeadline: "The pipe burst at 9pm. They called three plumbers. You were the third to call back.",
+    heroHeadline:
+      "The pipe burst at 9pm. They called three plumbers. You were the third to call back.",
     proof: [
       { stat: "550K", label: "projected plumbing technician shortfall by 2027 (PMI)" },
       { stat: "1 hr", label: "average time a lead stays warm after an unanswered call" },
@@ -60,16 +75,25 @@ export const industries: Industry[] = [
       "You hired a dispatcher. They quit in 90 days. Now you're back to your wife answering the phone.",
     ],
     built: [
-      "24/7 AI dispatch that triages emergency vs. routine and routes to the right tech",
+      "24/7 text-back dispatch that triages emergency vs. routine and routes to the right tech — you approve the messages",
       "Missed-call rescue with auto-text and an emergency callback ladder",
       "Invoice and follow-up automation tied to job completion",
       "Quote follow-up sequences for the $5K+ work that needs three touches to close",
       "Review and repeat-customer flows so the people who already love you actually come back",
       "Weekly performance snapshot: emergencies triaged, invoices collected, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Ajax Plumbing — sorry I missed you. Got a burst pipe or a leak? Text me your address and I'll get someone out tonight.",
+    demoText:
+      "Hey, this is Ajax Plumbing — sorry I missed you. Got a burst pipe or a leak? Text me your address and I'll get someone out tonight.",
     toolName: "Housecall Pro",
     town: "Rockford",
+    moneyLeakMap: [
+      { label: "Missed after-hours emergency calls", amount: "$3,800/mo" },
+      { label: "Big-job ($5K+) quotes never chased", amount: "$3,200/mo" },
+      { label: "Repeat/maintenance customers not reactivated", amount: "$1,500/mo" },
+      { label: "Reviews not requested", amount: "$900/mo" },
+    ],
+    moneyAnchor:
+      "One missed emergency at 9pm is a $400 call — and the $8K repipe behind it — gone to whoever answered first.",
   },
   {
     slug: "roofing",
@@ -96,9 +120,18 @@ export const industries: Industry[] = [
       "Quote-to-contract follow-up so the signature actually gets chased",
       "Weekly performance snapshot: storm leads captured, claims tracked, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with American Roofing — sorry I missed you. Need a storm-damage inspection or a repair estimate? Text me your address and I'll get a guy out this week.",
+    demoText:
+      "Hey, this is American Roofing — sorry I missed you. Need a storm-damage inspection or a repair estimate? Text me your address and I'll get a guy out this week.",
     toolName: "JobNimbus",
     town: "Belvidere",
+    moneyLeakMap: [
+      { label: "Storm leads lost to slow callback (≈2 jobs)", amount: "$24,000/mo" },
+      { label: "Quote-to-contract never chased", amount: "$6,000/mo" },
+      { label: "Insurance-claim limbo", amount: "$3,600/mo" },
+      { label: "Reviews not requested", amount: "$1,200/mo" },
+    ],
+    moneyAnchor:
+      "Two storm jobs lost to slow callback is $24,000 gone before you've had your coffee — the kind of number I turn up in a real audit.",
   },
   {
     slug: "electrical",
@@ -109,7 +142,10 @@ export const industries: Industry[] = [
     proof: [
       { stat: "78%", label: "of contractor shops employ fewer than 10 people (ACCA)" },
       { stat: "2 hrs/day", label: "techs lose to admin noise — 25% of productive time" },
-      { stat: "1 fee", label: "One flat build fee. You own the system. No monthly bills." },
+      {
+        stat: "1 fee",
+        label: "No required monthly — the concierge is optional, after, cancel anytime.",
+      },
     ],
     pains: [
       "Schedule changes texted to the wrong tech. He shows up. Job's not ready. Day lost.",
@@ -118,16 +154,25 @@ export const industries: Industry[] = [
       "Service-call customers from last year sitting silent. They had electrical work last spring and you never followed up.",
     ],
     built: [
-      "24/7 AI front desk with trade-aware qualification (panel upgrade vs. service call vs. new construction)",
+      "A text-back in your voice that qualifies the call (panel upgrade vs. service call vs. new construction) — you approve the messages",
       "Job-stage triggers for permits, inspections, and invoices — nothing falls between cracks",
       "Quote follow-up automation for the $3K+ residential jobs",
       "Maintenance and safety-check reactivation for repeat customers",
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: service calls dispatched, quotes followed up, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with All-City Electric — sorry I missed you. Need a panel upgrade, service call, or a quote for new construction? Text me and I'll get you on the schedule.",
+    demoText:
+      "Hey, this is All-City Electric — sorry I missed you. Need a panel upgrade, service call, or a quote for new construction? Text me and I'll get you on the schedule.",
     toolName: "ServiceTitan",
     town: "Machesney Park",
+    moneyLeakMap: [
+      { label: "Missed service calls (on a ladder, no front desk)", amount: "$3,600/mo" },
+      { label: "Estimates that go out late / uninvoiced", amount: "$2,400/mo" },
+      { label: "Tech admin time — data entry & paperwork", amount: "$4,800/mo" },
+      { label: "Repeat/safety-check customers not reactivated", amount: "$1,000/mo" },
+    ],
+    moneyAnchor:
+      "Three missed service calls a month is a panel upgrade you didn't quote — the kind of number I turn up in a real audit.",
   },
   {
     slug: "landscaping",
@@ -138,7 +183,10 @@ export const industries: Industry[] = [
     proof: [
       { stat: "20–35%", label: "of unsigned quotes recovered when follow-up is automated" },
       { stat: "5×", label: "the cost to win a new customer vs. keep an existing one" },
-      { stat: "60s", label: "callback time on missed calls. The lead doesn't know you were on a mower." },
+      {
+        stat: "60s",
+        label: "callback time on missed calls. The lead doesn't know you were on a mower.",
+      },
     ],
     pains: [
       "Spring renewal season hits and you're calling last year's list by hand. Half don't pick up.",
@@ -154,9 +202,18 @@ export const industries: Industry[] = [
       "Every happy customer gets an automatic, well-timed ask for a Google review",
       "Weekly performance snapshot: renewals triggered, quotes won, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with GreenScape — sorry I missed you. Need a spring cleanup estimate or want to lock in your mowing schedule? Text me your address.",
+    demoText:
+      "Hey, this is GreenScape — sorry I missed you. Need a spring cleanup estimate or want to lock in your mowing schedule? Text me your address.",
     toolName: "Jobber",
     town: "Roscoe",
+    moneyLeakMap: [
+      { label: "Route not re-signing each spring", amount: "$4,500/mo" },
+      { label: "Design/install quotes not chased", amount: "$2,600/mo" },
+      { label: "Missed calls (on a mower)", amount: "$2,000/mo" },
+      { label: "Add-on upsells (mulch/aeration/snow) not triggered", amount: "$1,400/mo" },
+    ],
+    moneyAnchor:
+      "Half your route not re-signing each spring is your best revenue walking to a competitor.",
   },
   {
     slug: "cleaning",
@@ -167,7 +224,10 @@ export const industries: Industry[] = [
     proof: [
       { stat: "30%", label: "of recurring cleaning customers churn in the first 6 months" },
       { stat: "60%", label: "of no-shows are recovered by an automated reminder 24 hours out" },
-      { stat: "5-star", label: "review rates triple when the ask is automated, not asked verbally" },
+      {
+        stat: "5-star",
+        label: "review rates triple when the ask is automated, not asked verbally",
+      },
     ],
     pains: [
       "Customer books online, you confirm, they ghost. No reminder, no recovery, slot lost.",
@@ -180,12 +240,24 @@ export const industries: Industry[] = [
       "No-show recovery flow that re-books on a tap",
       "Churn-saver sequence the moment a recurring customer skips two cleans",
       "Every happy customer gets an automatic, well-timed ask for a Google review",
-      "Front-desk AI that handles reschedules and new bookings 24/7",
+      "A text-back in your voice that handles reschedules and new bookings 24/7 — you approve the messaging",
       "Weekly performance snapshot: no-shows recovered, churn caught, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with Sparkle Clean — sorry I missed you. Want to book a recurring clean or reschedule your next appointment? Text me and I'll get you set.",
+    demoText:
+      "Hey, this is Sparkle Clean — sorry I missed you. Want to book a recurring clean or reschedule your next appointment? Text me and I'll get you set.",
     toolName: "Jobber",
     town: "Beloit",
+    moneyLeakMap: [
+      {
+        label: "Recurring clients who quietly churn (≈2/mo, ~$4,700 lifetime each)",
+        amount: "$3,900/mo",
+      },
+      { label: "New clients who tried once, never rebooked", amount: "$2,400/mo" },
+      { label: "No-shows not recovered", amount: "$1,800/mo" },
+      { label: "Reviews not requested", amount: "$800/mo" },
+    ],
+    moneyAnchor:
+      "Two recurring clients who quietly churn each month is thousands in lifetime revenue walking out the door — the kind of number I turn up in a real audit.",
   },
   {
     slug: "property-management",
@@ -205,16 +277,25 @@ export const industries: Industry[] = [
       "Vendor coordination — plumber, electrician, HVAC — running on your text messages.",
     ],
     built: [
+      "Renewal sequences triggered 90, 60, and 30 days out before a lease ever expires",
       "Unified maintenance intake (text, email, portal) into one routed queue",
       "Owner update automation: monthly reports, status pings, renewal alerts",
-      "Renewal sequences triggered 90, 60, and 30 days out",
       "Vendor coordination tracker so a job doesn't sit waiting on your reply",
       "Tenant communication AI for the routine questions that eat your evenings",
       "Weekly performance snapshot: maintenance routed, owners updated, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with your property management team — sorry I missed you. Need to report a maintenance issue or check on a repair status? Text me your address and what's going on.",
+    demoText:
+      "Hey, this is your property management team — sorry I missed you. Need to report a maintenance issue or check on a repair status? Text me your address and what's going on.",
     toolName: "AppFolio",
     town: "Rockford",
+    moneyLeakMap: [
+      { label: "Preventable non-renewals (no 60-day follow-up)", amount: "$4,500/mo" },
+      { label: "Make-ready on avoidable turnover", amount: "$3,200/mo" },
+      { label: "Maintenance-triage hours", amount: "$1,900/mo" },
+      { label: "Slow owner reporting / owner-churn risk", amount: "$1,500/mo" },
+    ],
+    moneyAnchor:
+      "Thirty avoidable non-renewals a year is about $4,500/mo in management fees — plus roughly $3,800 every time you turn a unit.",
   },
   {
     slug: "real-estate",
@@ -234,17 +315,38 @@ export const industries: Industry[] = [
       "Past clients who would refer you all day — if they ever heard from you again.",
     ],
     built: [
-      "Lead-capture and instant SMS response on new inquiries",
-      "Long-haul nurture sequences for cold leads that warm up at month 4",
+      "Instant speed-to-lead — every web lead and open-house sign-in gets a reply in under a minute, from a system you own",
+      "Nurture that reacts to what the lead actually does — not the linear drip you're already running",
       "Listing-status automations: price drops, open houses, going pending",
       "Past-client touch program that runs without you opening the CRM",
       "Transaction milestone communication so buyers stop calling you for updates",
       "Weekly performance snapshot: inquiries captured, listings running, hours saved — in real numbers",
     ],
-    demoText: "Hey, this is Donovin with your real estate team — sorry I missed you. Want to schedule a showing or get the latest updates on that listing? Just text me back.",
+    demoText:
+      "Hey, this is your real estate team — sorry I missed you. Want to schedule a showing or get the latest updates on that listing? Just text me back.",
     toolName: "Follow Up Boss",
     town: "Roscoe",
+    moneyLeakMap: [
+      { label: "Web/open-house leads gone cold from slow follow-up", amount: "$6,000/mo" },
+      { label: "Sphere/past-client referrals never nurtured", amount: "$4,000/mo" },
+      { label: "Listing-status tasks done by hand (hours)", amount: "$1,200/mo" },
+      { label: "Reviews/testimonials not asked", amount: "$800/mo" },
+    ],
+    moneyAnchor:
+      "Three open-house leads a month lost to slow follow-up is a deal a quarter you didn't have to lose.",
   },
 ];
 
 export const getIndustry = (slug: string) => industries.find((i) => i.slug === slug);
+
+export const industryOptions = [
+  { value: "hvac", label: "HVAC" },
+  { value: "plumbing", label: "Plumbing" },
+  { value: "roofing", label: "Roofing" },
+  { value: "electrical", label: "Electrical" },
+  { value: "landscaping", label: "Landscaping / Lawn Care" },
+  { value: "cleaning", label: "Cleaning / Janitorial" },
+  { value: "property-management", label: "Property Management" },
+  { value: "real-estate", label: "Real Estate" },
+  { value: "other", label: "Other trade" },
+] as const;

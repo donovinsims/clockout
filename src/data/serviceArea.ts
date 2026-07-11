@@ -1,8 +1,9 @@
 export const towns = [
-  "Rockford, IL",
   "Roscoe, IL",
-  "Machesney Park, IL",
+  "Rockford, IL",
   "Loves Park, IL",
+  "Machesney Park, IL",
+  "South Beloit, IL",
   "Beloit, WI",
   "Janesville, WI",
 ] as const;

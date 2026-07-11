@@ -1,18 +1,23 @@
 import { FileText, MessageSquare, Key } from "lucide-react";
-import { getIndustry } from "@/data/industries";
+import { getIndustry, type Industry } from "@/data/industries";
 
-function getDemoText(slug?: string) {
-  if (!slug) {
-    return "Hey, this is Donovin with Northside HVAC — sorry I missed you. Want me to grab your address and book a tech first thing tomorrow?";
-  }
-  const industry = getIndustry(slug);
+function getDemoText(industry: Industry | null) {
   if (!industry) {
-    return "Hey, this is Donovin — sorry I missed you. Want me to grab your details and get you on the schedule?";
+    return "Hey, this is your company — sorry I missed you. Shoot me your details and I'll get you on the schedule.";
   }
   return industry.demoText;
 }
 
+const fallbackLeakMap = [
+  { label: "Missed after-hours calls", amount: "$4,200/mo" },
+  { label: "Quotes never followed up", amount: "$2,850/mo" },
+  { label: "Maintenance non-renewals", amount: "$1,900/mo" },
+  { label: "Reviews not requested", amount: "$1,100/mo" },
+];
+
 export function HowItWorks({ slug }: { slug?: string }) {
+  const industry = slug ? getIndustry(slug) : null;
+  const leakMap = industry?.moneyLeakMap ?? fallbackLeakMap;
   const stepArtifacts = [
     // 01 — Call
     {
@@ -20,8 +25,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "Call",
       time: "20 min",
       title: "We trace one real job together \u2014 for free.",
-      body:
-        "20-minute call. Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking \u2014 missed calls, slow quotes, dropped follow-ups, churned customers. Every leak priced in dollars. You keep the report either way.",
+      body: "20-minute call. Phone tree, CRM, dispatch, invoice. I find every place revenue is leaking \u2014 missed calls, slow quotes, dropped follow-ups, churned customers. Every leak priced in dollars. You keep the report either way.",
       artifact: (
         <div className="rounded-[12px] border border-line bg-surface p-5">
           <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground">
@@ -32,20 +36,27 @@ export function HowItWorks({ slug }: { slug?: string }) {
             Sample Money-Leak Map — illustrative; your real numbers come from the call.
           </p>
           <div className="space-y-2.5">
-            {[
-              ["Missed after-hours calls", "$4,200/mo"],
-              ["Quotes never followed up", "$2,850/mo"],
-              ["Maintenance non-renewals", "$1,900/mo"],
-              ["Reviews not requested", "$1,100/mo"],
-            ].map(([k, v]) => (
-              <div key={k} className="flex items-center justify-between border-b border-line/60 pb-2 text-sm last:border-0">
-                <span className="text-foreground">{k}</span>
-                <span className="mono-num font-medium text-primary">{v}</span>
+            {leakMap.map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center justify-between border-b border-line/60 pb-2 text-sm last:border-0"
+              >
+                <span className="text-foreground">{item.label}</span>
+                <span className="mono-num font-medium text-primary">{item.amount}</span>
               </div>
             ))}
             <div className="flex items-center justify-between pt-2">
               <span className="text-sm font-semibold">Total leak</span>
-              <span className="mono-num text-xl font-semibold text-foreground">$10,050/mo</span>
+              <span className="mono-num text-xl font-semibold text-foreground">
+                $
+                {leakMap
+                  .reduce((sum, item) => {
+                    const n = parseInt(item.amount.replace(/[^0-9]/g, ""), 10) || 0;
+                    return sum + n;
+                  }, 0)
+                  .toLocaleString()}
+                /mo
+              </span>
             </div>
           </div>
         </div>
@@ -57,17 +68,18 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "Build",
       time: "installed in days",
       title: "I build the fix inside the tools you already pay for.",
-      body:
-        "24/7 front desk, missed-call rescue, quote follow-up, review pipeline, reactivation flows. Installed in your stack. Your team gets zero new logins. You own every login and line of code.",
+      body: "On a system you own. Works with what you're already running — nothing to switch.",
       artifact: (
         <div className="mx-auto w-full max-w-xs rounded-[20px] border-4 border-foreground/10 bg-background p-3 shadow-card">
           <div className="rounded-[16px] bg-surface p-4">
             <div className="text-xs text-muted-foreground">Missed call · 7:42pm</div>
             <div className="mt-1 text-sm font-medium">+1 (815) 555-0142</div>
             <div className="mt-4 rounded-[12px] bg-primary/10 p-3 text-sm text-foreground">
-              {getDemoText(slug)}
+              {getDemoText(industry)}
             </div>
-            <div className="mt-2 text-right text-xs text-muted-foreground mono-num">7:42pm · auto-sent in 28s</div>
+            <div className="mt-2 text-right text-xs text-muted-foreground mono-num">
+              7:42pm · auto-sent in 28s
+            </div>
           </div>
         </div>
       ),
@@ -78,8 +90,7 @@ export function HowItWorks({ slug }: { slug?: string }) {
       label: "You own it",
       time: "no contract",
       title: "Keep me on as your concierge, or don\u2019t.",
-      body:
-        "Month to month, your call. I keep building new automations every couple of weeks and stay on call between. Or run it solo forever \u2014 you own every login and line of code either way. No contract, cancel anytime.",
+      body: "Month to month, your call. I keep building new automations every couple of weeks and stay on call between. Or run it solo forever \u2014 you own every login and line of code either way. No contract, cancel anytime.",
       artifact: (
         <div className="rounded-[12px] border border-line bg-surface p-5">
           <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">

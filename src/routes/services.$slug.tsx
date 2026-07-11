@@ -6,10 +6,11 @@ import { OfferCard } from "@/components/site/OfferCard";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
 import { FinalCta } from "@/components/site/FinalCta";
 import { CTA } from "@/components/site/CTA";
-import { BetaSpots } from "@/components/site/BetaSpots";
+import { PHONE_SCHEMA } from "@/data/phone";
 import { getIndustry } from "@/data/industries";
 import { getHeroSub } from "@/lib/heroSub";
 import { towns as allServiceTowns } from "@/data/serviceArea";
+import { Fragment } from "react";
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
 
@@ -23,10 +24,7 @@ export const Route = createFileRoute("/services/$slug")({
     const i = loaderData?.industry;
     if (!i) {
       return {
-        meta: [
-          { title: "Industry not found — Clockout" },
-          { name: "robots", content: "noindex" },
-        ],
+        meta: [{ title: "Industry not found — Clockout" }, { name: "robots", content: "noindex" }],
       };
     }
     const title = `${i.name} Automation in ${i.town}, IL — Clockout · Built in Days, You Own the System`;
@@ -55,11 +53,24 @@ export const Route = createFileRoute("/services/$slug")({
             provider: {
               "@type": "LocalBusiness",
               name: "Clockout",
-              address: { "@type": "PostalAddress", addressLocality: "Roscoe", addressRegion: "IL", addressCountry: "US" },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Roscoe",
+                addressRegion: "IL",
+                addressCountry: "US",
+              },
               email: "contact@clockout.us",
-              telephone: "+1-608-713-1651",
+              telephone: PHONE_SCHEMA,
             },
-            areaServed: [i.town, "Rockford, IL", "Loves Park, IL", "Machesney Park, IL", "Roscoe, IL", "Beloit, WI", "Janesville, WI"],
+            areaServed: [
+              i.town,
+              "Rockford, IL",
+              "Loves Park, IL",
+              "Machesney Park, IL",
+              "Roscoe, IL",
+              "Beloit, WI",
+              "Janesville, WI",
+            ],
             offers: {
               "@type": "Offer",
               price: 497,
@@ -75,11 +86,16 @@ export const Route = createFileRoute("/services/$slug")({
   notFoundComponent: () => (
     <SiteShell>
       <div className="container-x py-32 text-center">
-        <div className="mono-num text-xs uppercase tracking-wider text-amber">404 / industry not found</div>
+        <div className="mono-num text-xs uppercase tracking-wider text-amber">
+          404 / industry not found
+        </div>
         <h1 className="mt-4 text-4xl md:text-5xl">That trade page doesn't exist.</h1>
         <p className="mt-4 text-muted-foreground">Pick a trade from the menu, or head home.</p>
         <div className="mt-7 flex justify-center gap-3">
-          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90"
+          >
             Go home →
           </Link>
         </div>
@@ -116,7 +132,12 @@ function IndustryPage() {
             </div>
             <h1
               className="font-display"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 3.75rem)", lineHeight: 1.05, letterSpacing: "-0.02em", fontWeight: 600 }}
+              style={{
+                fontSize: "clamp(2.2rem, 5vw, 3.75rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                fontWeight: 600,
+              }}
             >
               {i.heroHeadline}
             </h1>
@@ -124,11 +145,11 @@ function IndustryPage() {
               {getHeroSub(i.slug, i.town)}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <CTA to="/assessment" size="lg">Find the Money I'm Losing →</CTA>
+              <CTA to="/assessment" size="lg">
+                Find the Money I'm Losing →
+              </CTA>
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-              <BetaSpots />
-              <span aria-hidden>·</span>
               <span>10 hrs/week back in 30 days — or free</span>
             </div>
           </div>
@@ -138,79 +159,52 @@ function IndustryPage() {
             </div>
 
             <div className="flex-1 flex flex-col px-6 pb-6 md:px-7 md:pb-7">
-              {/* Phase 1 — Audit */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Money-Leak Map</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Every revenue leak priced in dollars
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Connector */}
-              <motion.div
-                className="flex flex-1 justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-              >
-                <div className="w-px bg-line" />
-              </motion.div>
-
-              {/* Phase 2 — Build */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Built in days</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Automation built inside your existing tools
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Connector */}
-              <motion.div
-                className="flex flex-1 justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.45 }}
-              >
-                <div className="w-px bg-line" />
-              </motion.div>
-
-              {/* Phase 3 — You own it */}
-              <motion.div
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">You own it</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                    Every credential — you own everything, no contracts
-                  </div>
-                </div>
-              </motion.div>
+              {[
+                {
+                  delay: 0.1,
+                  title: "Money-Leak Map",
+                  desc: "Every revenue leak priced in dollars",
+                },
+                {
+                  delay: 0.25,
+                  title: "Built in days",
+                  desc: "Automation built inside your existing tools",
+                },
+                {
+                  delay: 0.4,
+                  title: "You own it",
+                  desc: "Every credential — you own everything, no contracts",
+                },
+              ].map((phase, i) => (
+                <Fragment key={phase.title}>
+                  {i > 0 && (
+                    <motion.div
+                      className="flex flex-1 justify-center overflow-hidden"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3, delay: phase.delay + 0.2 }}
+                    >
+                      <div className="w-px bg-line" />
+                    </motion.div>
+                  )}
+                  <motion.div
+                    className="flex gap-4 items-start"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: phase.delay, ease: "easeOut" }}
+                  >
+                    <div className="flex flex-col items-center">
+                      <div className="mt-1 h-[10px] w-[10px] shrink-0 rounded-full bg-primary" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-foreground">{phase.title}</div>
+                      <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                        {phase.desc}
+                      </div>
+                    </div>
+                  </motion.div>
+                </Fragment>
+              ))}
             </div>
           </aside>
         </div>
@@ -224,16 +218,17 @@ function IndustryPage() {
         <div className="container-x grid gap-14 md:grid-cols-[1fr_1.3fr]">
           <div>
             <div className="eyebrow mb-3">Where it hurts</div>
-            <h2 className="text-4xl md:text-5xl">
-              {i.painHeadline}
-            </h2>
+            <h2 className="text-4xl md:text-5xl">{i.painHeadline}</h2>
             <p className="mt-5 text-muted-foreground">
               You already know what this list says. Reading it out loud just makes it real.
             </p>
           </div>
           <ul className="space-y-5">
             {i.pains.map((p: string, idx: number) => (
-              <li key={p} className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5">
+              <li
+                key={p}
+                className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5"
+              >
                 <span className="mono-num text-primary">{String(idx + 1).padStart(2, "0")}</span>
                 <span className="text-[17px] text-foreground/90">{p}</span>
               </li>
@@ -261,9 +256,62 @@ function IndustryPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-muted-foreground">
-            Built right inside {i.toolName} — the system you already run. Your team gets zero new logins. You keep every credential.
+          <p className="text-sm text-muted-foreground">
+            It runs on your own line and works with what you&apos;ve already got — {i.toolName}, or
+            a paper pad and your cell. Nothing to rip out, nothing to switch. Your team gets zero
+            new logins, and you own every credential.
           </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            On the free call I map your exact setup and build only what I can actually deliver — and
+            if there&apos;s a simpler, cheaper tool that&apos;d serve you better, I&apos;ll show you
+            that too. Your call.
+          </p>
+          {/* HVAC-specific */}
+          {i.slug === "hvac" && (
+            <p className="text-sm text-muted-foreground mt-3">
+              The Build is $497 once and you own every login and line of code — it keeps running the
+              day you stop paying. No contract to claw out of.
+            </p>
+          )}
+          {/* Roofing-specific */}
+          {i.slug === "roofing" && (
+            <p className="text-sm text-muted-foreground mt-3">
+              Missed-call rescue goes live in week 1 — before the next storm, not after. Dialed to
+              your crew, and it&apos;s yours: cancel anytime and every automation keeps running.
+            </p>
+          )}
+          {/* Electrical two-track */}
+          {i.slug === "electrical" && (
+            <>
+              <p className="text-sm text-muted-foreground mt-3">
+                On ServiceTitan? It runs alongside — nothing migrates, nothing changes for your
+                crew. On the call I&apos;ll scope exactly what connects, and I&apos;ll show you the
+                recovered admin hours in real dollars. When your contract lapses, you own the exit.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Still on a paper pad and your cell? Even better — I set it up on a line you own, you
+                never log into anything, and the text-back goes out in your name. One-time $497,
+                nothing monthly.
+              </p>
+            </>
+          )}
+          {/* Cleaning-specific */}
+          {i.slug === "cleaning" && (
+            <p className="text-sm text-muted-foreground mt-3">
+              Every message goes out in your voice — you approve them before they send, and you can
+              take over any conversation from your own phone. Your clients never talk to a robot.
+              And straight talk: I don&apos;t have a cleaning-company testimonial yet — that&apos;s
+              what these founding spots are for.
+            </p>
+          )}
+          {/* Real-estate-specific */}
+          {i.slug === "real-estate" && (
+            <p className="text-sm text-muted-foreground mt-3">
+              The promise: your team&apos;s first response drops under a minute on every lead, and
+              you&apos;ll see the response-time number on your dashboard. If it doesn&apos;t beat
+              what you&apos;re running today, you&apos;ll know in the first week.
+            </p>
+          )}
         </div>
       </section>
 
@@ -275,14 +323,13 @@ function IndustryPage() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            Start free. A 20-minute call where I show you exactly where your{" "}
-            {i.name.toLowerCase()} shop is leaking money — plus a written plan
-            you keep. Want it fixed? The build's $497 (beta, reg. $1,494) and
-            you own everything — 10 hrs a week back in 30 days or I keep
-            working. Keep me on as your concierge after if you want — $750/mo,
-            month to month, cancel anytime.
+            Start free. A 20-minute call where I show you exactly where your {i.name.toLowerCase()}{" "}
+            shop is leaking money — plus a written plan you keep. Want it fixed? The build's $497
+            (beta, reg. $1,494) and you own everything — 10 hrs a week back in 30 days or I keep
+            working. Keep me on as your concierge after if you want — $750/mo, month to month,
+            cancel anytime.
           </h2>
-          <OfferCard />
+          <OfferCard oneLiner moneyAnchor={i.moneyAnchor} />
         </div>
       </section>
 

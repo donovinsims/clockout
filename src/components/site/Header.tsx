@@ -19,9 +19,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { industries } from "@/data/industries";
-
-const PHONE_DISPLAY = "(608) 713-1651";
-const PHONE_HREF = "tel:+16087131651";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/data/phone";
 
 const nav = [
   { to: "/pricing", label: "Pricing" },
@@ -43,9 +41,7 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 border-b border-line bg-background/90 backdrop-blur-md transition-shadow ${
-        scrolled
-          ? "shadow-[0_1px_0_0_var(--color-line),0_8px_24px_-16px_rgb(0_0_0_/_0.08)]"
-          : ""
+        scrolled ? "shadow-[0_1px_0_0_var(--color-line),0_8px_24px_-16px_rgb(0_0_0_/_0.08)]" : ""
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between gap-4">
@@ -130,10 +126,7 @@ export function Header() {
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="z-[60] w-[88vw] max-w-sm flex flex-col p-0"
-            >
+            <SheetContent side="right" className="z-[60] w-[88vw] max-w-sm flex flex-col p-0">
               <SheetHeader className="sr-only">
                 <SheetTitle>Menu</SheetTitle>
                 <SheetDescription>Site navigation</SheetDescription>

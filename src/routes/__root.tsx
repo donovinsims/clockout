@@ -10,13 +10,16 @@ import {
 import { type ReactNode, useEffect } from "react";
 import { Toaster } from "sonner";
 
+import { PHONE_SCHEMA } from "@/data/phone";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <div className="mono-num text-xs uppercase tracking-wider text-amber">404 / route not found</div>
+        <div className="mono-num text-xs uppercase tracking-wider text-amber">
+          404 / route not found
+        </div>
         <h1 className="mt-4 text-5xl">This page hasn't been built yet.</h1>
         <p className="mt-4 text-sm text-dim">
           Probably a stale link. Head back home and pick a trade.
@@ -49,7 +52,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="inline-flex items-center justify-center rounded-md bg-amber px-4 py-2 text-sm font-medium text-amber-foreground hover:bg-amber/90"
           >
             Try again
@@ -72,14 +78,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Clockout — Done-for-you automation for local service businesses" },
-      { name: "description", content: "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime." },
+      {
+        name: "description",
+        content:
+          "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime.",
+      },
       { name: "author", content: "Clockout" },
-      { property: "og:title", content: "Clockout — Done-for-you automation for local service businesses" },
-      { property: "og:description", content: "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime." },
+      {
+        property: "og:title",
+        content: "Clockout — Done-for-you automation for local service businesses",
+      },
+      {
+        property: "og:description",
+        content:
+          "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Clockout — Done-for-you automation for local service businesses" },
-      { name: "twitter:description", content: "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime." },
+      {
+        name: "twitter:title",
+        content: "Clockout — Done-for-you automation for local service businesses",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Flat-fee automation builds for HVAC, plumbing, electrical, roofing, and other owner-operated trade businesses in Northern Illinois and Wisconsin. No contracts. Cancel anytime.",
+      },
       { name: "theme-color", content: "#ffffff" },
       { property: "og:image", content: "https://clockout.us/og.png" },
       { name: "twitter:image", content: "https://clockout.us/og.png" },
@@ -88,8 +112,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "dns-prefetch", href: "https://tally.so" },
-      { rel: "preconnect", href: "https://tally.so" },
     ],
     scripts: [
       {
@@ -98,8 +120,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Clockout",
-          description: "Done-for-you automation for owner-operated trade and local service businesses in Northern Illinois & Southern Wisconsin.",
-          telephone: "+1-608-713-1651",
+          description:
+            "Done-for-you automation for owner-operated trade and local service businesses in Northern Illinois & Southern Wisconsin.",
+          telephone: PHONE_SCHEMA,
           email: "contact@clockout.us",
           address: {
             "@type": "PostalAddress",
@@ -107,7 +130,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressRegion: "IL",
             addressCountry: "US",
           },
-          areaServed: ["Roscoe, IL", "Rockford, IL", "Loves Park, IL", "Machesney Park, IL", "South Beloit, IL", "Beloit, WI", "Janesville, WI"],
+          areaServed: [
+            "Roscoe, IL",
+            "Rockford, IL",
+            "Loves Park, IL",
+            "Machesney Park, IL",
+            "South Beloit, IL",
+            "Beloit, WI",
+            "Janesville, WI",
+          ],
           priceRange: "$497",
           url: "https://clockout.us",
         }),
