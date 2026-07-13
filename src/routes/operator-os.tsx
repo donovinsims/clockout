@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { CTA } from "@/components/site/CTA";
 import { SiteShell } from "@/components/site/SiteShell";
 import { FinalCta } from "@/components/site/FinalCta";
 import { GuaranteeBlock } from "@/components/site/GuaranteeBlock";
@@ -44,12 +45,7 @@ function OperatorOsPage() {
             Month to month, cancel anytime.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/assessment"
-              className="inline-flex h-11 items-center justify-center rounded-[12px] bg-primary px-5 text-[15px] font-medium tracking-tight text-primary-foreground shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--color-primary)_60%,transparent)] transition-all duration-150 active:scale-[.98]"
-            >
-              Find the Money I'm Losing →
-            </Link>
+            <CTA to="/assessment" size="md">Find the Money I'm Losing →</CTA>
           </div>
           <p className="mt-4 text-sm text-dim">
             Starts with a free 20-minute audit · the concierge is your call, after
@@ -194,12 +190,7 @@ function OperatorOsPage() {
               left — locked for life. Cancel anytime, keep everything. Backed by
               the Two-Week Guarantee above.
             </p>
-            <Link
-              to="/assessment"
-              className="mt-8 inline-flex h-11 items-center justify-center rounded-[12px] bg-primary px-5 text-[15px] font-medium tracking-tight text-primary-foreground shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--color-primary)_60%,transparent)] transition-all duration-150 active:scale-[.98]"
-            >
-              Find the Money I'm Losing →
-            </Link>
+            <CTA to="/assessment" size="md">Find the Money I'm Losing →</CTA>
           </div>
         </div>
       </section>

@@ -10,8 +10,8 @@ export function FinalCta({
 }) {
   return (
     <section className="border-b border-line bg-surface">
-      <div className="container-x py-24 md:py-32 text-center">
-        <h2 className="mx-auto max-w-3xl text-4xl md:text-6xl">{headline}</h2>
+      <div className="container-x py-20 md:py-28 text-center">
+        <h2 className="mx-auto max-w-3xl text-4xl md:text-5xl">{headline}</h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">{sub}</p>
         <div className="mt-9 flex justify-center">
           <CTA to="/assessment" size="lg">

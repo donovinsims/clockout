@@ -22,3 +22,10 @@ export const includes = [
   "You keep every login, every doc, every line of code",
   "30 days of tuning after handover",
 ];
+
+/** Headline variants for the service page offer section. Swap the index to test. */
+export const offerHeadlines = [
+  "Start free. The build is $497. You own everything.",
+  "10 hours back in 30 days — or you don't pay.",
+  "A 20-minute call. A fix you own. No contract, no catch.",
+] as const;

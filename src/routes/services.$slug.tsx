@@ -1,4 +1,4 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ProofBar } from "@/components/site/ProofBar";
 import { HowItWorks } from "@/components/site/HowItWorks";
@@ -92,12 +92,7 @@ export const Route = createFileRoute("/services/$slug")({
         <h1 className="mt-4 text-4xl md:text-5xl">That trade page doesn't exist.</h1>
         <p className="mt-4 text-muted-foreground">Pick a trade from the menu, or head home.</p>
         <div className="mt-7 flex justify-center gap-3">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90"
-          >
-            Go home →
-          </Link>
+          <CTA to="/">Go home →</CTA>
         </div>
       </div>
     </SiteShell>
@@ -230,7 +225,7 @@ function IndustryPage() {
                 className="flex gap-4 rounded-[12px] border border-line bg-surface/40 p-5"
               >
                 <span className="mono-num text-primary">{String(idx + 1).padStart(2, "0")}</span>
-                <span className="text-[17px] text-foreground/90">{p}</span>
+                <span className="text-base text-foreground/90">{p}</span>
               </li>
             ))}
           </ul>
@@ -251,7 +246,7 @@ function IndustryPage() {
                   <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary/15 text-primary">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-[16px] text-foreground/90">{b}</p>
+                  <p className="text-base text-foreground/90">{b}</p>
                 </div>
               </div>
             ))}

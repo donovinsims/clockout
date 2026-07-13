@@ -90,9 +90,14 @@ function Index() {
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
           <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            Start free. Own what I build. Keep me on only if you want.
+            A free audit, a fix you own, and 10 hours back in 30 days.
           </h2>
           <OfferCard />
+          <p className="mt-6 max-w-3xl text-sm text-muted-foreground">
+            After the build, keep me on as your concierge if you want — $750/mo,
+            month to month, cancel anytime. Or don&rsquo;t. You own everything
+            either way.
+          </p>
         </div>
       </section>
 

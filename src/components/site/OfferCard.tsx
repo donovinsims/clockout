@@ -1,5 +1,5 @@
 import { Check, ShieldCheck } from "lucide-react";
-import { offer } from "@/data/offer";
+import { offer, GUARANTEE } from "@/data/offer";
 import { CTA } from "./CTA";
 import { BetaSpots } from "./BetaSpots";
 
@@ -39,7 +39,7 @@ export function OfferCard({
             A GoHighLevel agency charges $797–$1,497 a month to run this stack, and you never own
             it. The Build is ${offer.betaPrice}, once — you own all of it.{" "}
             {moneyAnchor ??
-              "Three missed calls a week at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real audit."}
+              "Three missed calls a week at a $450 ticket is $5,400 walking out the door every month — the kind of number I turn up in a real audit."}
           </p>
           <div className="mt-7 flex items-baseline gap-4">
             <span
@@ -93,8 +93,8 @@ export function OfferCard({
       <div className="flex items-start gap-3 border-t border-line bg-surface px-7 py-5 md:px-10">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
         <p className="text-sm text-foreground">
-          <span className="font-semibold">The 10-Hour Guarantee:</span> if the Build doesn&rsquo;t
-          give you 10 hours a week back within 30 days, I keep working — free — until it does.
+          <span className="font-semibold">The 10-Hour Guarantee:</span>{" "}
+          {GUARANTEE.replace("The 10-Hour Guarantee: ", "")}
         </p>
       </div>
     </div>

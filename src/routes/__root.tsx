@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -11,6 +10,7 @@ import { type ReactNode, useEffect } from "react";
 import { Toaster } from "sonner";
 
 import { PHONE_SCHEMA } from "@/data/phone";
+import { CTA, CTAButton } from "@/components/site/CTA";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -25,12 +25,7 @@ function NotFoundComponent() {
           Probably a stale link. Head back home and pick a trade.
         </p>
         <div className="mt-7">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-amber px-5 py-3 text-sm font-medium text-amber-foreground hover:bg-amber/90"
-          >
-            Go home →
-          </Link>
+          <CTA to="/">Go home →</CTA>
         </div>
       </div>
     </div>
@@ -51,21 +46,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Something went wrong. Try again or head home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
+          <CTAButton
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-amber px-4 py-2 text-sm font-medium text-amber-foreground hover:bg-amber/90"
+            size="sm"
           >
             Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-surface"
-          >
+          </CTAButton>
+          <CTA href="/" variant="outline" size="sm">
             Go home
-          </a>
+          </CTA>
         </div>
       </div>
     </div>
