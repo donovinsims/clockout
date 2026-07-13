@@ -93,7 +93,7 @@ This is a copy task. Do not add features, popups, lead magnets, success-state an
 **Shared components:** `src/components/site/CTA.tsx`, `FinalCta.tsx`, `MobileStickyCta.tsx`, `Hero.tsx`, `PageHero.tsx`, `OfferCard.tsx`, `GuaranteeBlock.tsx`, `HowItWorks.tsx`, `LeakCalculator.tsx`, `FAQ.tsx`, `Footer.tsx`; `src/components/ui/button.tsx`.
 
 ### 3.1 `src/data/offer.ts` (constants — fix once, cascades everywhere)
-- `GUARANTEE` → **"The 10-Hour Guarantee: if the Build doesn't give you back 10 hours a week within 30 days, I keep working — free — until it does."** (Used by `OfferCard.tsx` + `GuaranteeBlock.tsx`.)
+- `GUARANTEE_TITLE` → **"The 10-Hour Guarantee"**; `GUARANTEE_BODY` → **"if the Build doesn't give you back 10 hours a week within 30 days, I keep working — free — until it does."**; `GUARANTEE` = `${GUARANTEE_TITLE}: ${GUARANTEE_BODY}`. `OfferCard.tsx` reads `GUARANTEE_TITLE` + `GUARANTEE_BODY` directly; `GuaranteeBlock.tsx` reads the combined `GUARANTEE`.
 - Primary CTA label → **`Find the Money I'm Losing →`**; CTA subtext → the standard subtext (2.2). Remove any "Reserve Beta Access" / "Book the 48-hour audit" strings.
 - Build price: **$497 beta**, **$1,494 standard**. Concierge: **$750/mo**. Remove any `$497/quarter`.
 - Founding spots: **8 total, 3 left.**
@@ -109,7 +109,7 @@ There is **no fixed build-day count** in the current model. Delete any "Day 9 / 
 3. Keep me on as your concierge, or don't — month to month, your call.
 
 ### 3.4 `GuaranteeBlock.tsx` / `OfferCard.tsx`
-- Eyebrow / label → **"The 10-Hour Guarantee."** Both must read the `GUARANTEE` constant from `offer.ts` (no hardcoded "Money-Back Guarantee").
+- Eyebrow / label → **"The 10-Hour Guarantee."** Both must read the `GUARANTEE_TITLE`/`GUARANTEE_BODY`/`GUARANTEE` constants from `offer.ts` (no hardcoded "Money-Back Guarantee").
 
 ### 3.5 `LeakCalculator.tsx`
 - Any "in 48 hours" CTA → **`Find the Money I'm Losing →`**, resolving to the `/assessment` flow.
@@ -228,14 +228,16 @@ Keep the Tally form; on submit, **redirect to `cal.com/donovin`** with name/emai
 
 **OFFER SECTION (reframe + value stack)**
 - Eyebrow: The offer
-- H2: Start free. Own what I build. Keep me on only if you want.
+- H2 (page-level, above the card): A free audit, a fix you own, and 10 hours back in 30 days.
+- OfferCard sub-heading (inside the card): Start free. Own what I build. Keep me on only if you want.
 - Body: First, the free audit — a 20-minute call where I show you where you're leaking money, plus your Money-Leak Map to keep whether you hire me or not. Want it fixed? I build it with you and hand you the keys — no contract, you own everything.
 - What the Build installs: 24/7 missed-call text-back + AI front desk · Quote follow-up engine — recovers 20–35% of quotes that go cold · Automatic Google-review engine · Past-customer reactivation + owner dashboard · 30 days of tuning + your Money-Leak Map
-- A GoHighLevel or marketing agency charges $797–$1,497 a month to run this same stack, and you never own it. The Build is $497, once — you own all of it. Three missed calls a week at a $450 ticket is $5,400 gone every month — the kind of number I turn up in a real audit.
+- A GoHighLevel or marketing agency charges $797–$1,497 a month to run this same stack, and you never own it. The Build is $497, once — you own all of it. Three missed calls a week at a $450 ticket is $5,400 walking out the door every month — the kind of number I turn up in a real audit.
 - Ladder mini-cards: The Audit — Free (the 20-min call + your Money-Leak Map). · The Build — $497 (beta, reg. $1,494). The full stack above. You own it. 30 days of tuning. · Operator OS Concierge — $750/mo (founding, cancel anytime). I keep building with you.
 - The 10-Hour Guarantee: if the Build doesn't give you 10 hours a week back within 30 days, I keep working — free — until it does.
 - CTA: Find the Money I'm Losing →
 - CTA subtext: Free 20-minute leak audit. Pick a time — I'll show you exactly where you're losing money.
+- Below the card: After the build, keep me on as your concierge if you want — $750/mo, month to month, cancel anytime. Or don't. You own everything either way.
 
 **INDUSTRY GRID** — keep (links to the 8 vertical pages).
 
@@ -419,7 +421,7 @@ Run these and paste the results into the PR:
 - [ ] Every `/assessment` CTA resolves to the Tally form → `cal.com/donovin`; Tally form ID + cal handle unchanged; no pricing on `/assessment`.
 - [ ] `/pricing` renders the 3 rungs with the $1,494 anchor shown and no `$497/quarter` anywhere.
 - [ ] `/operator-os` is the concierge home (Two-Week Guarantee, $750/mo, biweekly, optional/never-forced).
-- [ ] `GuaranteeBlock` + `OfferCard` read the `GUARANTEE` constant = The 10-Hour Guarantee.
+- [ ] `GuaranteeBlock` reads the `GUARANTEE` constant and `OfferCard` reads `GUARANTEE_TITLE`/`GUARANTEE_BODY` = The 10-Hour Guarantee.
 - [ ] `HowItWorks` has no "Day N / Handover / 48 hours / 9 days" — it uses the 3-step ladder.
 - [ ] Shea S. testimonial: quote unedited, attribution honest/cross-industry, framing intact. All other proof = placeholders.
 - [ ] `audit.tsx` redirects to `/assessment`; `recovery-guide.tsx` redirected or fully aligned; no routes deleted; `privacy`/`terms` untouched.
