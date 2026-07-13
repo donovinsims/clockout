@@ -1,5 +1,9 @@
-export const GUARANTEE =
-  "The 10-Hour Guarantee: if the Build doesn't give you back 10 hours a week within 30 days, I keep working \u2014 free \u2014 until it does.";
+export const GUARANTEE_TITLE = "The 10-Hour Guarantee";
+
+export const GUARANTEE_BODY =
+  "if the Build doesn't give you back 10 hours a week within 30 days, I keep working \u2014 free \u2014 until it does.";
+
+export const GUARANTEE = `${GUARANTEE_TITLE}: ${GUARANTEE_BODY}`;
 
 export const offer = {
   betaPrice: 497,
@@ -26,6 +30,6 @@ export const includes = [
 /** Headline variants for the service page offer section. Swap the index to test. */
 export const offerHeadlines = [
   "Start free. The build is $497. You own everything.",
-  "10 hours back in 30 days — or you don't pay.",
+  "10 hours back in 30 days — or I keep working free.",
   "A 20-minute call. A fix you own. No contract, no catch.",
 ] as const;

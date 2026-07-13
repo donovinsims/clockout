@@ -1,5 +1,5 @@
 import { Check, ShieldCheck } from "lucide-react";
-import { offer, GUARANTEE } from "@/data/offer";
+import { offer, GUARANTEE_BODY, GUARANTEE_TITLE } from "@/data/offer";
 import { CTA } from "./CTA";
 import { BetaSpots } from "./BetaSpots";
 
@@ -93,8 +93,7 @@ export function OfferCard({
       <div className="flex items-start gap-3 border-t border-line bg-surface px-7 py-5 md:px-10">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
         <p className="text-sm text-foreground">
-          <span className="font-semibold">The 10-Hour Guarantee:</span>{" "}
-          {GUARANTEE.replace("The 10-Hour Guarantee: ", "")}
+          <span className="font-semibold">{GUARANTEE_TITLE}:</span> {GUARANTEE_BODY}
         </p>
       </div>
     </div>
