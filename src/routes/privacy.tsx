@@ -17,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
             <h2 className="pt-6 text-2xl">Why we collect it</h2>
             <p>To respond to your inquiry, deliver the work you hired us for, and stay in touch about that work. We don't sell, rent, or trade your data. We don't run ads on it.</p>
             <h2 className="pt-6 text-2xl">Cookies & analytics</h2>
-            <p>Analytics are planned but not yet active. No tracking scripts are currently loaded on this site.</p>
+            <p>We use <a href="https://plausible.io" className="text-amber hover:underline" target="_blank" rel="noopener noreferrer">Plausible</a> for privacy-friendly pageview analytics (no cookies, no personal data collected) and <a href="https://clarity.microsoft.com" className="text-amber hover:underline" target="_blank" rel="noopener noreferrer">Microsoft Clarity</a> for session recordings and heatmaps to improve our site experience. Neither tool collects personal information or uses tracking cookies.</p>
             <h2 className="pt-6 text-2xl">Your rights</h2>
             <p>Email <a href="mailto:contact@clockout.us" className="text-amber hover:underline">contact@clockout.us</a> at any time to ask what we have on you, request a copy, or have it deleted.</p>
           </div>

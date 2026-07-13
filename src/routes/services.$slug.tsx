@@ -8,6 +8,7 @@ import { FinalCta } from "@/components/site/FinalCta";
 import { CTA } from "@/components/site/CTA";
 import { PHONE_SCHEMA } from "@/data/phone";
 import { getIndustry } from "@/data/industries";
+import { offerHeadlines, ACTIVE_HEADLINE_INDEX } from "@/data/offer";
 import { getHeroSub } from "@/lib/heroSub";
 import { towns as allServiceTowns } from "@/data/serviceArea";
 import { Fragment } from "react";
@@ -317,12 +318,8 @@ function IndustryPage() {
       <section className="border-b border-line py-20 md:py-28">
         <div className="container-x">
           <div className="eyebrow mb-3">The offer</div>
-          <h2 className="mb-10 max-w-3xl text-4xl md:text-5xl">
-            Start free. A 20-minute call where I show you exactly where your {i.name.toLowerCase()}{" "}
-            shop is leaking money — plus a written plan you keep. Want it fixed? The build's $497
-            (beta, reg. $1,494) and you own everything — 10 hrs a week back in 30 days or I keep
-            working. Keep me on as your concierge after if you want — $750/mo, month to month,
-            cancel anytime.
+          <h2 className="mb-4 max-w-3xl text-4xl md:text-5xl">
+            {offerHeadlines[ACTIVE_HEADLINE_INDEX]}
           </h2>
           <OfferCard oneLiner moneyAnchor={i.moneyAnchor} />
         </div>

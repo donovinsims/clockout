@@ -33,3 +33,23 @@ export const offerHeadlines = [
   "10 hours back in 30 days — or I keep working free.",
   "A 20-minute call. A fix you own. No contract, no catch.",
 ] as const;
+
+/**
+ * A/B Headline Testing Protocol
+ * ==============================
+ * Active variant index (0, 1, or 2). Change this constant, deploy, and run for 2-4 weeks.
+ *
+ * Variant 0: "Start free. The build is $497. You own everything."
+ *   — Process-led. Leads with the price and ownership.
+ *
+ * Variant 1: "10 hours back in 30 days — or you don't pay."
+ *   — Outcome-led. Leads with the guarantee as headline promise.
+ *
+ * Variant 2: "A 20-minute call. A fix you own. No contract, no catch."
+ *   — Trust/ownership-led. Emphasizes no-risk angle.
+ *
+ * Measure: assessment form starts, CTA clicks, time on page (via Plausible).
+ * Note: This only affects service page offer h2 (/services/:slug).
+ * The homepage h2 is separate (hardcoded in index.tsx).
+ */
+export const ACTIVE_HEADLINE_INDEX = 0;
