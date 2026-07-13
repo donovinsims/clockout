@@ -32,9 +32,20 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Clockout — Stop losing jobs to missed calls, cold quotes & dead follow-ups" },
-      { name: "description", content: "I find where your service business is leaking money, build the fixes inside the tools you already use, and hand you the keys. Starts with a free 20-minute audit." },
-      { property: "og:title", content: "Clockout — Stop losing jobs to missed calls, cold quotes & dead follow-ups" },
-      { property: "og:description", content: "I find where your service business is leaking money, build the fixes inside the tools you already use, and hand you the keys. Starts with a free 20-minute audit." },
+      {
+        name: "description",
+        content:
+          "I find where your service business is leaking money, build the fixes inside the tools you already use, and hand you the keys. Starts with a free 20-minute audit.",
+      },
+      {
+        property: "og:title",
+        content: "Clockout — Stop losing jobs to missed calls, cold quotes & dead follow-ups",
+      },
+      {
+        property: "og:description",
+        content:
+          "I find where your service business is leaking money, build the fixes inside the tools you already use, and hand you the keys. Starts with a free 20-minute audit.",
+      },
       { property: "og:url", content: "https://clockout.us/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -72,7 +83,11 @@ function Index() {
           </h2>
           <blockquote className="relative mt-12">
             <p className="text-balance text-lg leading-relaxed text-foreground/85 md:text-xl">
-              &ldquo;I needed a seamless, professional client portal, and the system Donovin built exceeded every expectation. The automations run perfectly in the background, and the whole client experience is smooth. It&rsquo;s saved me 10+ hours a week and freed me to focus on my clients. If you need complex operations simplified and automated, this is exactly who you want building it.&rdquo;
+              &ldquo;I needed a seamless, professional client portal, and the system Donovin built
+              exceeded every expectation. The automations run perfectly in the background, and the
+              whole client experience is smooth. It&rsquo;s saved me 10+ hours a week and freed me
+              to focus on my clients. If you need complex operations simplified and automated, this
+              is exactly who you want building it.&rdquo;
             </p>
             <footer className="mt-8">
               <cite className="not-italic font-semibold text-foreground">
@@ -94,9 +109,8 @@ function Index() {
           </h2>
           <OfferCard />
           <p className="mt-6 max-w-3xl text-sm text-muted-foreground">
-            After the build, keep me on as your concierge if you want — $750/mo,
-            month to month, cancel anytime. Or don&rsquo;t. You own everything
-            either way.
+            After the build, keep me on as your concierge if you want — $750/mo, month to month,
+            cancel anytime. Or don&rsquo;t. You own everything either way.
           </p>
         </div>
       </section>
