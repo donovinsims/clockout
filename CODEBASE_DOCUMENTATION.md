@@ -116,7 +116,7 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
     │   │   ├── GuaranteeBlock.tsx      #   Guarantee section with shield icon
     │   │   ├── ToolsStrip.tsx          #   "Works with the tools you already use" tool name strip
     │   │   ├── CTA.tsx                 #   Reusable CTA link/button (4 variants, 3 sizes)
-    │   │   ├── BetaSpots.tsx           #   Animated scarcity pill ("X of Y beta spots remain")
+    │   │   ├── BetaSpots.tsx           #   Animated scarcity pill ("X of Y founding spots remain")
     │   │   ├── ImageWithFallback.tsx   #   Image with dashed placeholder fallback
     │   │   ├── FAQ.tsx                 #   Accordion FAQ section
     │   │   └── FacebookIcon.tsx        #   Inline Facebook SVG icon
@@ -253,7 +253,7 @@ No Vercel config file exists — deployment targets Cloudflare Workers via Nitro
 | --------------------- | ----------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | **CTA**               | `CTA.tsx`               | Primary call-to-action link/button (4 variants, 3 sizes, renders `<a>` or `<Link>`) | `{ to?, href?, variant?, size?, className?, children }`     |
 | **CTAButton**         | (same file)             | `<button>` variant of CTA                                                           | `{ variant?, size?, className?, children, ...buttonAttrs }` |
-| **BetaSpots**         | `BetaSpots.tsx`         | Animated "X of Y beta spots remain" pill with pulsing dot                           | `{ className?: string }`                                    |
+| **BetaSpots**         | `BetaSpots.tsx`         | Animated "X of Y founding spots remain" pill with pulsing dot                       | `{ className?: string }`                                    |
 | **ImageWithFallback** | `ImageWithFallback.tsx` | Image with dashed placeholder fallback on error                                     | `{ src?, alt, width?, height?, label?, className? }`        |
 | **FacebookIcon**      | `FacebookIcon.tsx`      | Inline Facebook SVG icon                                                            | `{ className?: string }`                                    |
 

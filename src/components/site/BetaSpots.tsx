@@ -12,7 +12,7 @@ export function BetaSpots({ className = "" }: { className?: string }) {
       <span className="mono-num">
         {offer.spotsRemaining} of {offer.spotsTotal}
       </span>{" "}
-      beta spots remain
+      founding spots remain
     </span>
   );
 }
