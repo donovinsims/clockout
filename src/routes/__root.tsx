@@ -151,6 +151,18 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Plausible Analytics — privacy-friendly pageview tracking */}
+        <script
+          defer
+          data-domain="clockout.us"
+          src="https://plausible.io/js/script.js"
+        />
+        {/* Microsoft Clarity — session recordings and heatmaps. Replace CLARITY_PROJECT_ID with your actual ID from https://clarity.microsoft.com */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","CLARITY_PROJECT_ID");`,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var d=document;var l=d.createElement('link');l.rel='stylesheet';l.href='${fontHref}';l.media='print';l.onload=function(){this.media='all'};d.head.appendChild(l)})();`,

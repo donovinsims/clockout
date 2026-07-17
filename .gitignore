@@ -47,3 +47,9 @@ dist-ssr
 .mcp.json
 naitive.work.*
 docs/.DS_Store
+
+# Playwright / Lighthouse artifacts
+lighthouse-*.json
+playwright-report/
+tests/.artifacts/
+tests/results/

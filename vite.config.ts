@@ -48,6 +48,8 @@ export default defineConfig({
             id.includes("/node_modules/class-variance-authority/")
           )
             return "vendor-utils";
+          if (id.includes("/node_modules/motion/"))
+            return "vendor-motion";
         },
       },
     },
